@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +18,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
  
     <!-- Main custom CSS file. All overrides for CSS will be here -->
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="{% static 'base/main.css' %}">
 
     <script src="https://unpkg.com/typeit@8.3.3/dist/index.umd.js"></script>
 
@@ -31,7 +33,7 @@
   <!-- Logo text. -->
         
             <a class="navbar-brand mr-4 text-light" href="javascript:void(0)">
-                <img style="width: 60px;" src="/images/F.png" alt="">
+                <img style="width: 60px;" src="{% static 'base/images/F.jpg' %}" alt="">
                 <h1 class="d-inline-block align-middle pt-2 ">Foodstah</h1>
             </a>
             <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
@@ -58,7 +60,7 @@
 
     <div class="home-page-container">
         <div class="image-container">
-            <img class="main-image" src="images/purple_banana.jpg" alt="">
+            <img class="main-image" src="{% static 'base/images/purple_banana.jpg' %}" alt="">
             <!-- <h1 class="centered-text">Food Drinks Recipes Love </h1> -->
             <h1 class="centered-text" id="element"></h1>
             <div class="main-call-to-action">
