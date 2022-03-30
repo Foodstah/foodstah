@@ -1,0 +1,247 @@
+body {
+	font-family: 'Poppins', sans-serif;
+	background-color: #fff278;
+	/* background-image: linear-gradient(to right top, #fff278, #ffb662, #ff7588, #ff50c8, #4b3fd8); */
+	/* padding: 0 20px 0 20px; */
+	color: #0e101c;
+}
+
+.page-container {
+	max-width: 1050px;
+	margin: auto;
+	background-color: white;
+	padding-bottom: 10px;
+	padding: 0 20px 0 20px;
+}
+.home-page-container {
+	max-width: 1050px;
+	margin: auto;
+	background-color: white;
+	padding-bottom: 10px;
+}
+
+/* Centered text image */
+
+.image-container {
+	position: relative;
+	text-align: center;
+	color: white;
+}
+
+.centered-text {
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#element {
+	font-size: 82px;
+	font-family: 'Caveat', cursive;
+}
+
+.sticky-top {
+	max-width: 1050px;
+	margin: auto;
+}
+
+.navbar {
+	max-width: 1050px;
+	margin: auto;
+	-webkit-box-shadow: 0 8px 6px -6px #999;
+	-moz-box-shadow: 0 8px 6px -6px #999;
+	box-shadow: 0 8px 6px -6px #999;
+}
+.bottom-nav {
+	-webkit-box-shadow: 0 20px 30px 6px #999;
+	-moz-box-shadow: 0 20px 30px 6px #999;
+	box-shadow: 0 20px 30px 6px #999;
+}
+
+.custom-toggler .navbar-toggler-icon {
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(255, 242, 120)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.custom-toggler.navbar-toggler {
+	border-color: rgb(255, 242, 120);
+}
+
+.form-control {
+	border-radius: 50px;
+}
+
+h1,
+h2 {
+	font-weight: 800;
+}
+
+.svg-yellow {
+	filter: invert(85%) sepia(53%) saturate(412%) hue-rotate(351deg) brightness(104%) contrast(103%);
+}
+
+/* LANDING PAGE / ENTER THE APP */
+
+img.main-image {
+	max-width: 1050px;
+	width: 100%;
+	height: auto;
+	max-height: 400px;
+}
+
+.main-call-to-action {
+	background-color: #4b3fd8;
+	padding: 20px 0;
+}
+
+button.btn.btn-primary.enter-the-app {
+	font-weight: 900;
+	border-radius: 200px;
+	padding: 10px 20px;
+}
+
+/* What is foodstah section and illustrations */
+
+div.div-space {
+	padding-top: 3rem;
+	padding-bottom: 3rem;
+}
+
+.what-is-foodstah h4,
+.meet-the-team h4 {
+	font-weight: 700;
+}
+.what-is-foodstah h6,
+.meet-the-team h6 {
+	font-weight: 700;
+}
+
+.what-is-foodstah ul li {
+	padding-left: .75rem;
+	padding-right: .75rem;
+}
+
+.what-is-foodstah img {
+	margin-left: auto;
+	margin-right: auto;
+	width: 85%;
+	height: auto;
+	border: 8px solid #4b3fd8;
+	border-radius: 20px;
+}
+.meet-the-team img {
+	width: 250px;
+	height: auto;
+	border: 8px solid #4b3fd8;
+	border-radius: 200px;
+}
+
+/* Main Feed with recipe cards */
+
+.card {
+	box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgb(255, 255, 255), 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+}
+
+.card-header,
+.card-body {
+	background-color: #4b3fd8;
+	color: white;
+}
+
+.card-header a img {
+	width: 50px;
+	height: auto;
+	border-radius: 100%;
+}
+
+.comment-section {
+	padding-left: 10px;
+	background-color: white;
+	color: #0e101c;
+	margin-left: -1rem;
+	margin-right: -1rem;
+	border: 0;
+}
+
+/* BOOTSTRAP OVERRIDES */
+
+/* COLOURS
+    "primary":    #4B3FD8 ,
+    "secondary":  #fff278,
+    "info":       #ffa8d4,
+    "success":    #50d400,
+    "warning":    #FFB53A,
+    "danger":     #FE1151,
+    "white":      #ffffff;,
+    "black":      #0e101c;,
+    
+*/
+
+.bg-primary {
+	background-color: #fff278 !important;
+}
+.bg-secondary {
+	background-color: #4b3fd8 !important;
+}
+.bg-info {
+	background-color: #ffa8d4 !important;
+}
+.bg-success {
+	background-color: #50d400 !important;
+}
+.bg-warning {
+	background-color: #ffb53a !important;
+}
+.bg-danger {
+	background-color: #fe1151 !important;
+}
+.bg-dark {
+	background-color: #0e101c !important;
+}
+
+.text-primary {
+	color: #fff278 !important;
+}
+.text-secondary {
+	color: #4b3fd8 !important;
+}
+.text-info {
+	color: #ffa8d4 !important;
+}
+.text-success {
+	color: #50d400 !important;
+}
+.text-warning {
+	color: #ffb53a !important;
+}
+.text-danger {
+	color: #fe1151 !important;
+}
+.text-light {
+	color: #ffffff !important;
+}
+.text-dark {
+	color: #0e101c !important;
+}
+
+.btn-primary {
+	background-color: #fff278 !important;
+	color: #4b3fd8;
+	border-color: #ffe100;
+}
+.btn-primary:hover {
+	color: #ffa8d4;
+}
+.btn-secondary {
+	background-color: #4b3fd8 !important;
+	color: #fff278;
+	border: 2px solid #fff278;
+	border-color: #ffe100;
+	border-radius: 100px;
+}
+.btn-secondary:hover {
+	border-color: #ffe100;
+}
+
+.navbar-toggler-icon {
+	color: #fff278;
+}

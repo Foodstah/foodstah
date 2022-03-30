@@ -24,3 +24,4 @@ urlpatterns = [
     path("", include("explore.urls")),
     path("", include("user.urls")),
 ]
+
