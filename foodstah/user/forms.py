@@ -16,3 +16,6 @@ class UserSignupForm(UserCreationForm):
     
             if not re.match(r'^[A-Za-z0-9_-]+$', username):
                 raise forms.ValidationError("Sorry , you can only have alphanumeric, _ or - in username")
+            
+            else:
+                return(username)

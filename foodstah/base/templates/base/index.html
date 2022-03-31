@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Foodstah</title>
     <link rel="icon" type="image/x-icon" href="{% static 'base/images/favicon.ico' %}">
-    
+
     <!-- Poppins and Caveat font (Main font) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,9 +48,9 @@
                 <!-- <a class="nav-item nav-link" href="javascript:void(0)">
                   <img class="svg-yellow" src="{% static 'typicons/svg/user.svg' %}" alt="">Profile</a> -->
               
-                <a class="nav-item nav-link me-2" href="javascript:void(0)">
+                <a class="nav-item nav-link me-2" href="{% url 'login' %}">
                   <img class="svg-yellow svg-large" src="{% static 'base/typicons/svg/user.svg' %}" alt="">Login</a>
-                  <a class="nav-item btn btn-primary button" href="javascript:void(0)">Signup</a>
+                  <a class="nav-item btn btn-primary button" href="{% url 'signup' %}">Signup</a>
               </div>
             </div>
           </div>
