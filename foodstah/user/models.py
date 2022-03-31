@@ -7,6 +7,13 @@ from PIL import Image
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
+    description = models.TextField(default=None, max_length=255)
+    website = models.URLField(max_length=255, blank=True, null=True)
+    
+    # posts = 
+    # following = 
+    # followers = 
+
 
     def __str__(self):
-        return f"{self.user.username} Profile"
+        return f"{self.user.username}'s Profile"
