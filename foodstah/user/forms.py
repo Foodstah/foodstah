@@ -5,8 +5,6 @@ from django.contrib.auth.forms import UserCreationForm
 import re
 
 class UserRegisterForm(UserCreationForm):
-    first_name = forms.CharField(max_length=30)
-    last_name = forms.CharField(max_length=30)
     email = forms.EmailField()
 
     class Meta:
