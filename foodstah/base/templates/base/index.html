@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Foodstah</title>
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-     
+    <link rel="icon" type="image/x-icon" href="{% static 'base/images/favicon.ico' %}">
+    
     <!-- Poppins and Caveat font (Main font) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,7 +33,7 @@
   <!-- Logo text. -->
         
             <a class="navbar-brand mr-4 text-light" href="javascript:void(0)">
-                <img style="width: 60px;" src="{% static 'base/images/F.jpg' %}" alt="">
+                <img style="width: 60px;" src="{% static 'base/images/F.png' %}" alt="">
                 <h1 class="d-inline-block align-middle pt-2 ">Foodstah</h1>
             </a>
             <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
@@ -49,7 +49,7 @@
                   <img class="svg-yellow" src="{% static 'typicons/svg/user.svg' %}" alt="">Profile</a> -->
               
                 <a class="nav-item nav-link me-2" href="javascript:void(0)">
-                  <img class="svg-yellow svg-large" src="{% static 'typicons/svg/user.svg' %}" alt="">Login</a>
+                  <img class="svg-yellow svg-large" src="{% static 'base/typicons/svg/user.svg' %}" alt="">Login</a>
                   <a class="nav-item btn btn-primary button" href="javascript:void(0)">Signup</a>
               </div>
             </div>

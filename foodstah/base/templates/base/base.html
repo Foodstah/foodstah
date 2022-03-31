@@ -1,11 +1,17 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if title %}
+        <title>Foodstah - {{ title }}</title>
+    {% else %}
     <title>Foodstah</title>
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    {% endif %}
+    <link rel="icon" type="image/x-icon" href="{% static 'base/images/favicon.ico' %}">
      
     <!-- Poppins font (Main font) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,7 +22,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
  
     <!-- Main custom CSS file. All overrides for CSS will be here -->
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="{% static 'base/main.css' %}">
 </head>
 <body>
 
@@ -27,33 +33,39 @@
       
   <!-- Logo text. -->
             <a class="navbar-brand mr-4 text-light" href="javascript:void(0)">
-              <img style="width: 60px;" src="/images/F.png" alt="">
+              <img style="width: 60px;" src="{% static 'base/images/F.png' %}" alt="">
               <h1 class="d-inline-block align-middle pt-2 ">Foodstah</h1>
             </a>
             <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
               <span class="navbar-toggler-icon custom-toggler"></span>
             </button>   
+
+            {% if user.is_authenticated %}
   <!-- Search form -->
             <div class="collapse navbar-collapse" id="mynavbar">
               <div class="navbar-nav ms-auto me-auto">
                 <form class="d-flex">
                   <input class="form-control  me-2" type="text" placeholder="Search">
-                  <!-- <img class="svg-yellow" src="typicons/svg/zoom.svg" alt=""> -->
+                  <!-- <img class="svg-yellow" src="base/typicons/svg/zoom.svg" alt=""> -->
                   <button class="btn btn-primary" type="button">Search</button>
                 </form>
               </div>
+            {% endif %}
   <!-- User links -->
               <div class="navbar-nav">
+            {% if user.is_authenticated %}
                 <a class="nav-item nav-link" href="javascript:void(0)">
-                  <img class="svg-yellow me-1" src="typicons/svg/home.svg" alt="">Home</a>
+                  <img class="svg-yellow me-1" src="base/typicons/svg/home.svg" alt="">Home</a>
                 <a class="nav-item nav-link" href="javascript:void(0)">
-                  <img class="svg-yellow me-1" src="typicons/svg/plus.svg" alt="">New post</a>
+                  <img class="svg-yellow me-1" src="base/typicons/svg/plus.svg" alt="">New post</a>
                 <a class="nav-item nav-link" href="javascript:void(0)">
-                  <img class="svg-yellow me-1" src="typicons/svg/user.svg" alt="">Profile</a>
-              
-                <!-- <a class="nav-item nav-link me-2" href="javascript:void(0)">
-                  <img class="svg-yellow svg-large" src="typicons/svg/user.svg" alt="">Login</a>
-                  <a class="nav-item  btn btn-primary button" href="javascript:void(0)">Signup</a> -->
+                  <img class="svg-yellow me-1" src="base/typicons/svg/user.svg" alt="">Profile</a>
+             
+            {% else %}
+                <a class="nav-item nav-link me-2" href="javascript:void(0)">
+                  <img class="svg-yellow svg-large" src="base/typicons/svg/user.svg" alt="">Login</a>
+                <a class="nav-item  btn btn-primary button" href="javascript:void(0)">Signup</a>
+            {% endif %}
               </div>
             </div>
           </div>
@@ -64,253 +76,18 @@
   <nav style="background-color: #4B3FD8;" class="navbar bottom-nav fixed-bottom navbar-dark  d-md-none">
     <div class="container-fluid mx-4w">
       <a class="nav-item nav-link" href="javascript:void(0)">
-        <img style="width: 30px;" class="svg-yellow me-1" src="typicons/svg/home.svg" alt=""></a>
+        <img style="width: 30px;" class="svg-yellow me-1" src="base/typicons/svg/home.svg" alt=""></a>
       <a class="nav-item nav-link" href="javascript:void(0)">
-        <img style="width: 30px;" class="svg-yellow me-1" src="typicons/svg/zoom.svg" alt=""></a>
+        <img style="width: 30px;" class="svg-yellow me-1" src="base/typicons/svg/zoom.svg" alt=""></a>
       <a class="nav-item nav-link" href="javascript:void(0)">
-        <img style="width: 30px;" class="svg-yellow me-1" src="typicons/svg/plus.svg" alt=""> </a>
+        <img style="width: 30px;" class="svg-yellow me-1" src="base/typicons/svg/plus.svg" alt=""> </a>
       <a class="nav-item nav-link" href="javascript:void(0)">
-        <img style="width: 30px;" class="svg-yellow me-1" src="typicons/svg/user.svg" alt=""></a>
+        <img style="width: 30px;" class="svg-yellow me-1" src="base/typicons/svg/user.svg" alt=""></a>
     </div>
   </nav>
 
     <div class="page-container">
-      
-      <div class="row">
-        <div class="my-5 col-12 col-sm-12 col-md-6 col-lg-6">
-          <div class="card mx-auto" style="width: 90%;">
-            <div class="card-header d-flex flex-row">
-              <a href="javascript:void(0)">
-                <img src="/images/pancakes_berries.jpg" alt="">
-              </a>
-              <h5 class="my-auto ms-2">User name</h5>
-              <p class="my-auto ms-auto">Date time</p>
-            </div>
-            <img src="images/pancakes_berries.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <div class="title-and-likes">
-                <h5 class="card-title d-inline-block w-50">Post title</h5>
-                <div class="float-end">
-                  <p class="d-inline-block">&#128077; &nbsp; 2 &nbsp;</p>
-                  <p class="d-inline-block">&#129316; &nbsp; 3 &nbsp;</p>
-                  <p class="d-inline-block"> &#128155; &nbsp; 1</p>
-                </div>
-                
-              </div>
-              <div class="comment-section py-2 my-3">
-                <p class="card-text">User X - Omg I love fooooood!</p>
-                <p class="card-text">User Y - Put the pancakes in my belly!</p>
-                <p class="card-text">User Z - I just saved the recipe for later, thanks for this one!</p>
-              </div>
-              <a href="#" class="btn btn-primary float-start">Save post</a>
-              <a href="#" class="btn btn-primary float-end">Request recipe</a>
-            </div>
-          </div> 
-        </div>
-        <div class="my-5 col-12 col-sm-12 col-md-6 col-lg-6">
-          <div class="card mx-auto" style="width: 90%;">
-            <div class="card-header d-flex flex-row">
-              <a href="javascript:void(0)">
-                <img src="/images/pancakes_berries.jpg" alt="">
-              </a>
-              <h5 class="my-auto ms-2">User name</h5>
-              <p class="my-auto ms-auto">Date time</p>
-            </div>
-            <img src="images/pancakes_berries.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <div class="title-and-likes">
-                <h5 class="card-title d-inline-block w-50">Post title</h5>
-                <div class="float-end">
-                  <p class="d-inline-block">&#128077; &nbsp; 2 &nbsp;</p>
-                  <p class="d-inline-block">&#129316; &nbsp; 3 &nbsp;</p>
-                  <p class="d-inline-block"> &#128155; &nbsp; 1</p>
-                </div>
-              </div>
-              <div class="comment-section py-2 my-3">
-                <p class="card-text">User X - Omg I love fooooood!</p>
-                <p class="card-text">User Y - Put the pancakes in my belly!</p>
-                <p class="card-text">User Z - I just saved the recipe for later, thanks for this one!</p>
-              </div>
-              <a href="#" class="btn btn-primary float-start">Save post</a>
-              <a href="#" class="btn btn-primary float-end">Request recipe</a>
-            </div>
-          </div> 
-        </div>
-        <div class="my-5 col-12 col-sm-12 col-md-6 col-lg-6">
-          <div class="card mx-auto" style="width: 90%;">
-            <div class="card-header d-flex flex-row">
-              <a href="javascript:void(0)">
-                <img src="/images/pancakes_berries.jpg" alt="">
-              </a>
-              <h5 class="my-auto ms-2">User name</h5>
-              <p class="my-auto ms-auto">Date time</p>
-            </div>
-            <img src="images/pancakes_berries.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <div class="title-and-likes">
-                <h5 class="card-title d-inline-block w-50">Post title</h5>
-                <div class="float-end">
-                  <p class="d-inline-block">&#128077; &nbsp; 2 &nbsp;</p>
-                  <p class="d-inline-block">&#129316; &nbsp; 3 &nbsp;</p>
-                  <p class="d-inline-block"> &#128155; &nbsp; 1</p>
-                </div>
-              </div>
-              <div class="comment-section py-2 my-3">
-                <p class="card-text">User X - Omg I love fooooood!</p>
-                <p class="card-text">User Y - Put the pancakes in my belly!</p>
-                <p class="card-text">User Z - I just saved the recipe for later, thanks for this one!</p>
-              </div>
-              <a href="#" class="btn btn-primary float-start">Save post</a>
-              <a href="#" class="btn btn-primary float-end">Request recipe</a>
-            </div>
-          </div> 
-        </div>
-        <div class="my-5 col-12 col-sm-12 col-md-6 col-lg-6">
-          <div class="card mx-auto" style="width: 90%;">
-            <div class="card-header d-flex flex-row">
-              <a href="javascript:void(0)">
-                <img src="/images/pancakes_berries.jpg" alt="">
-              </a>
-              <h5 class="my-auto ms-2">User name</h5>
-              <p class="my-auto ms-auto">Date time</p>
-            </div>
-            <img src="images/pancakes_berries.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <div class="title-and-likes">
-                <h5 class="card-title d-inline-block w-50">Post title</h5>
-                <div class="float-end">
-                  <p class="d-inline-block">&#128077; &nbsp; 2 &nbsp;</p>
-                  <p class="d-inline-block">&#129316; &nbsp; 3 &nbsp;</p>
-                  <p class="d-inline-block"> &#128155; &nbsp; 1</p>
-                </div>
-              </div>
-              <div class="comment-section py-2 my-3">
-                <p class="card-text">User X - Omg I love fooooood!</p>
-                <p class="card-text">User Y - Put the pancakes in my belly!</p>
-                <p class="card-text">User Z - I just saved the recipe for later, thanks for this one!</p>
-              </div>
-              <a href="#" class="btn btn-primary float-start">Save post</a>
-              <a href="#" class="btn btn-primary float-end">Request recipe</a>
-            </div>
-          </div> 
-        </div>
-        <div class="my-5 col-12 col-sm-12 col-md-6 col-lg-6">
-          <div class="card mx-auto" style="width: 90%;">
-            <div class="card-header d-flex flex-row">
-              <a href="javascript:void(0)">
-                <img src="/images/pancakes_berries.jpg" alt="">
-              </a>
-              <h5 class="my-auto ms-2">User name</h5>
-              <p class="my-auto ms-auto">Date time</p>
-            </div>
-            <img src="images/pancakes_berries.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <div class="title-and-likes">
-                <h5 class="card-title d-inline-block w-50">Post title</h5>
-                <div class="float-end">
-                  <p class="d-inline-block">&#128077; &nbsp; 2 &nbsp;</p>
-                  <p class="d-inline-block">&#129316; &nbsp; 3 &nbsp;</p>
-                  <p class="d-inline-block"> &#128155; &nbsp; 1</p>
-                </div>
-              </div>
-              <div class="comment-section py-2 my-3">
-                <p class="card-text">User X - Omg I love fooooood!</p>
-                <p class="card-text">User Y - Put the pancakes in my belly!</p>
-                <p class="card-text">User Z - I just saved the recipe for later, thanks for this one!</p>
-              </div>
-              <a href="#" class="btn btn-primary float-start">Save post</a>
-              <a href="#" class="btn btn-primary float-end">Request recipe</a>
-            </div>
-          </div> 
-        </div>
-        <div class="my-5 col-12 col-sm-12 col-md-6 col-lg-6">
-          <div class="card mx-auto" style="width: 90%;">
-            <div class="card-header d-flex flex-row">
-              <a href="javascript:void(0)">
-                <img src="/images/pancakes_berries.jpg" alt="">
-              </a>
-              <h5 class="my-auto ms-2">User name</h5>
-              <p class="my-auto ms-auto">Date time</p>
-            </div>
-            <img src="images/pancakes_berries.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <div class="title-and-likes">
-                <h5 class="card-title d-inline-block w-50">Post title</h5>
-                <div class="float-end">
-                  <p class="d-inline-block">&#128077; &nbsp; 2 &nbsp;</p>
-                  <p class="d-inline-block">&#129316; &nbsp; 3 &nbsp;</p>
-                  <p class="d-inline-block"> &#128155; &nbsp; 1</p>
-                </div>
-              </div>
-              <div class="comment-section py-2 my-3">
-                <p class="card-text">User X - Omg I love fooooood!</p>
-                <p class="card-text">User Y - Put the pancakes in my belly!</p>
-                <p class="card-text">User Z - I just saved the recipe for later, thanks for this one!</p>
-              </div>
-              <a href="#" class="btn btn-primary float-start">Save post</a>
-              <a href="#" class="btn btn-primary float-end">Request recipe</a>
-            </div>
-          </div> 
-        </div>
-        <div class="my-5 col-12 col-sm-12 col-md-6 col-lg-6">
-          <div class="card mx-auto" style="width: 90%;">
-            <div class="card-header d-flex flex-row">
-              <a href="javascript:void(0)">
-                <img src="/images/pancakes_berries.jpg" alt="">
-              </a>
-              <h5 class="my-auto ms-2">User name</h5>
-              <p class="my-auto ms-auto">Date time</p>
-            </div>
-            <img src="images/pancakes_berries.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <div class="title-and-likes">
-                <h5 class="card-title d-inline-block w-50">Post title</h5>
-                <div class="float-end">
-                  <p class="d-inline-block">&#128077; &nbsp; 2 &nbsp;</p>
-                  <p class="d-inline-block">&#129316; &nbsp; 3 &nbsp;</p>
-                  <p class="d-inline-block"> &#128155; &nbsp; 1</p>
-                </div>
-              </div>
-              <div class="comment-section py-2 my-3">
-                <p class="card-text">User X - Omg I love fooooood!</p>
-                <p class="card-text">User Y - Put the pancakes in my belly!</p>
-                <p class="card-text">User Z - I just saved the recipe for later, thanks for this one!</p>
-              </div>
-              <a href="#" class="btn btn-primary float-start">Save post</a>
-              <a href="#" class="btn btn-primary float-end">Request recipe</a>
-            </div>
-          </div> 
-        </div>
-        <div class="my-5 col-12 col-sm-12 col-md-6 col-lg-6">
-          <div class="card mx-auto" style="width: 90%;">
-            <div class="card-header d-flex flex-row">
-              <a href="javascript:void(0)">
-                <img src="/images/pancakes_berries.jpg" alt="">
-              </a>
-              <h5 class="my-auto ms-2">User name</h5>
-              <p class="my-auto ms-auto">Date time</p>
-            </div>
-            <img src="images/pancakes_berries.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <div class="title-and-likes">
-                <h5 class="card-title d-inline-block w-50">Post title</h5>
-                <div class="float-end">
-                  <p class="d-inline-block">&#128077; &nbsp; 2 &nbsp;</p>
-                  <p class="d-inline-block">&#129316; &nbsp; 3 &nbsp;</p>
-                  <p class="d-inline-block"> &#128155; &nbsp; 1</p>
-                </div>
-              </div>
-              <div class="comment-section py-2 my-3">
-                <p class="card-text">User X - Omg I love fooooood!</p>
-                <p class="card-text">User Y - Put the pancakes in my belly!</p>
-                <p class="card-text">User Z - I just saved the recipe for later, thanks for this one!</p>
-              </div>
-              <a href="#" class="btn btn-primary float-start">Save post</a>
-              <a href="#" class="btn btn-primary float-end">Request recipe</a>
-            </div>
-          </div> 
-        </div>
-      </div>
+    {% block content %}{% endblock %}
     </div>
 
 

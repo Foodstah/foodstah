@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 
 import re
 
-class UserRegisterForm(UserCreationForm):
+class UserSignupForm(UserCreationForm):
     email = forms.EmailField()
 
     class Meta:
