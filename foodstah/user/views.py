@@ -8,7 +8,10 @@ from django.contrib.auth.views import LogoutView
 # Create your views here.
 
 def home(request):
-    return render(request, "user/home.html", {})
+    if request.user.is_authenticated():
+        return render(request, "post/food-feed.html", {})
+    else:
+        return render(request, 'base/index.html')
 
 def login(request):
     return render(request, 'user/login.html')
