@@ -171,6 +171,30 @@ div.div-space {
 	border-radius: 200px;
 }
 
+/* DJANGO MESSAGE ALERTS */
+
+.alert {
+	position: relative;
+	margin: 0 -20px;
+	width: auto;
+	padding: 1rem 1rem;
+	margin-bottom: 1rem;
+	border: 1px solid transparent;
+	border-radius: 0.25rem;
+}
+.success-message {
+	border-color: #badbcc;
+	background-color: #50d400 !important;
+	color: #ffffff !important;
+	text-align: center;
+}
+.info-message {
+	border-color: #badbcc;
+	background-color: #ffa8d4 !important;
+	color: #0e101c !important;
+	text-align: center;
+}
+
 /* BOOTSTRAP OVERRIDES */
 
 /* COLOURS
@@ -230,30 +254,6 @@ div.div-space {
 }
 .text-dark {
 	color: #0e101c !important;
-}
-
-/* DJANGO MESSAGE ALERTS */
-
-.alert {
-	position: relative;
-	margin: 0 -20px;
-	width: auto;
-	padding: 1rem 1rem;
-	margin-bottom: 1rem;
-	border: 1px solid transparent;
-	border-radius: 0.25rem;
-}
-.success-message {
-	border-color: #badbcc;
-	background-color: #50d400 !important;
-	color: #ffffff !important;
-	text-align: center;
-}
-.info-message {
-	border-color: #badbcc;
-	background-color: #ffa8d4 !important;
-	color: #0e101c !important;
-	text-align: center;
 }
 
 .btn-primary {
