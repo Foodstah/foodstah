@@ -240,6 +240,12 @@ div.div-space {
 	color: #ffffff !important;
 	text-align: center;
 }
+.info-message {
+	border-color: #badbcc;
+	background-color: #ffa8d4 !important;
+	color: #0e101c !important;
+	text-align: center;
+}
 
 .btn-primary {
 	background-color: #fff278 !important;
