@@ -162,6 +162,15 @@ div.div-space {
 	border: 0;
 }
 
+/* User profile page */
+
+.user-image-stats img {
+	width: 150px;
+	height: auto;
+	border: 8px solid #fff278;
+	border-radius: 200px;
+}
+
 /* BOOTSTRAP OVERRIDES */
 
 /* COLOURS
