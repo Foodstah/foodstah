@@ -71,7 +71,11 @@ body {
 }
 
 h1,
-h2 {
+h2,
+h3,
+h4,
+h5,
+h6 {
 	font-weight: 800;
 }
 
@@ -162,6 +166,11 @@ div.div-space {
 	border: 0;
 }
 
+/* FORMS */
+input {
+	width: 60%;
+}
+
 /* BOOTSTRAP OVERRIDES */
 
 /* COLOURS
@@ -243,6 +252,18 @@ div.div-space {
 .info-message {
 	border-color: #badbcc;
 	background-color: #ffa8d4 !important;
+	color: #0e101c !important;
+	text-align: center;
+}
+.danger-message {
+	border-color: #badbcc;
+	background-color: #fe1151 !important;
+	color: #0e101c !important;
+	text-align: center;
+}
+.warning-message {
+	border-color: #badbcc;
+	background-color: #ffb53a !important;
 	color: #0e101c !important;
 	text-align: center;
 }
