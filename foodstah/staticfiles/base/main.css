@@ -223,6 +223,16 @@ div.div-space {
 	color: #0e101c !important;
 }
 
+/* DJANGO MESSAGE ALERTS */
+
+.alert {
+	margin-bottom: 0px !important;
+}
+.alert-success {
+	background-color: #86aa70 !important;
+	color: #50d400 !important;
+}
+
 .btn-primary {
 	background-color: #fff278 !important;
 	color: #4b3fd8;
