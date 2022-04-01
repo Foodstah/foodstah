@@ -7,5 +7,10 @@ urlpatterns = [
     path("profile/<username>/", user_view.profile_page, name="profile-page"),
     path("signup/", user_view.signup, name="signup"),
     path("login/", auth_view.LoginView.as_view(template_name='user/login.html'), name="login"),
+<<<<<<< HEAD
     path("logout/", auth_view.LogoutView.as_view(template_name='user/logout.html'), name="logout"),
+=======
+    path("logout/", user_view.Logout.as_view(template_name='user/logout.html'), name="logout"),
+    path("profile/<int:id>/", user_view.profile_page, name="profile-page")
+>>>>>>> daniel_branch
 ]
