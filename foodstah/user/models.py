@@ -9,10 +9,10 @@ class Profile(models.Model):
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
     description = models.TextField(default=None, max_length=255)
     website = models.URLField(max_length=255, blank=True, null=True)
-    
-    # posts = 
-    # following = 
-    # followers = 
+
+    # posts =
+    # following =
+    # followers =
 
 
     def __str__(self):
