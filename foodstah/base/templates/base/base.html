@@ -62,7 +62,7 @@
                   <img class="svg-yellow me-1" src="{% static 'base/typicons/svg/home.svg' %}" alt="">Home</a>
                 <a class="nav-item nav-link" href="javascript:void(0)">
                   <img class="svg-yellow me-1" src="{% static 'base/typicons/svg/plus.svg' %}" alt="">New post</a>
-                <a class="nav-item nav-link" href="javascript:void(0)">
+                <a class="nav-item nav-link" href="{% url 'profile-page' username=user.username %}">
                   <img class="svg-yellow me-1" src="{% static 'base/typicons/svg/user.svg' %}" alt="">Profile</a>
              
             {% else %}
