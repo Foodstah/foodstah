@@ -3,25 +3,43 @@
 
 
 {% block content %} 
-<h1>Login page</h1>
+
 
 <div class="content-section">
     <form method="POST">
         {% csrf_token %}
-        <fieldset class="form-group">
+        <fieldset class="form-group pt-4 pb-3">
             <legend class="border-bottom mb-4">
-                Log In
-            </legend>
-            {{ form.as_p }}
+              <h2>Log In </h2> 
+            </legend> 
+            {% if form.errors %}
+            <p class="alert danger-message">The username or password is incorrect</p>
+            {% endif %}
+
+            <div class="text-center pt-4"> 
+            <label for="{{ form.username.username }}" class="requiredField"> <h4>Username </h4>  </label>
+            <div class="">
+                {{ form.username }}
+            </div>
+            
+            </div>
+            <div class="text-center pt-4"> 
+            <label for="{{ form.password.password }}" class="requiredField"> <h4>Password </h4>  </label>
+            <div class="">
+                {{ form.password }}
+            </div>
+            
+            </div>
 
         </fieldset>
-        <div class="form-group mb-2">
+        <div class="form-group text-center mb-2">
             <button class="btn btn-primary" type="submit">Login</button>
         </div>
-        <div class="border-top py-3 ">
+        <div class="border-top mt-4 py-3 ">
             <small class="text-muted">
                 Need An Account? 
-                <a class="ms-2" href="{% url 'signup' %}">Sign Up</a> 
+                <a class="ms-2 btn btn-primary button" href="{% url 'signup' %}">Sign Up</a> 
+                
             </small>
         </div>
     </form>

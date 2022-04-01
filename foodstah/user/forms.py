@@ -14,7 +14,7 @@ class UserSignupForm(UserCreationForm):
     def clean_username(self):
             username = self.cleaned_data['username']
     
-            if not re.match(r'^[A-Za-z0-9_-]+$', username):
+            if not re.match(r'^[A-Za-z0-9_]+$', username):
                 raise forms.ValidationError("Sorry , you can only have alphanumeric, _ or - in username")
             
             else:
