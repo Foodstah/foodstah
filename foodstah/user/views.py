@@ -18,7 +18,7 @@ def home(request):
 def login(request):
     return render(request, 'user/login.html')
 
-class Logout(LogoutView): 
+class Logout(LogoutView):
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             messages.info(request, "You have successfully logged out.")
@@ -41,4 +41,9 @@ def signup(request):
 
 def profile_page(request, username):
     profile = User.objects.get(username=username)
-    return render(request, "user/profile_page.html", {"profile": profile})
+    # current_user = request.user
+    context = {
+        "profile": profile,
+        # "current_user": current_user.username,
+    }
+    return render(request, "user/profile_page.html", context)
