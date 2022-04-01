@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect
 
+from django.shortcuts import render, redirect
 from .models import Profile
 from .forms import UserSignupForm
 from django.contrib import messages
@@ -11,6 +11,7 @@ def home(request):
 
 def login(request):
     return render(request, 'user/login.html')
+
 
 def signup(request):
 
