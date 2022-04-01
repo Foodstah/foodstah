@@ -166,7 +166,6 @@ div.div-space {
 	border: 0;
 }
 
-<<<<<<< HEAD
 /* User profile page */
 
 .user-image-stats img {
@@ -198,11 +197,10 @@ div.div-space {
 	background-color: #ffa8d4 !important;
 	color: #0e101c !important;
 	text-align: center;
-=======
+}
 /* FORMS */
 input {
 	width: 60%;
->>>>>>> daniel_branch
 }
 
 /* BOOTSTRAP OVERRIDES */
@@ -266,8 +264,6 @@ input {
 	color: #0e101c !important;
 }
 
-<<<<<<< HEAD
-=======
 /* DJANGO MESSAGE ALERTS */
 
 .alert {
@@ -304,7 +300,6 @@ input {
 	text-align: center;
 }
 
->>>>>>> daniel_branch
 .btn-primary {
 	background-color: #fff278 !important;
 	color: #4b3fd8;
