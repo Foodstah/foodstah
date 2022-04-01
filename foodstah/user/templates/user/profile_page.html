@@ -1,11 +1,98 @@
 {% extends "base/base.html" %}
+{% load static %}
 {% block content %}
+    
+    <div class="pt-4">
+        <div class="user-image-stats d-flex flex-row">
+            <img class="my-auto me-auto" src="{% static 'base/images/default.jpg' %}" alt="">
+            <h4 class="ms-3 my-auto"> 10 Posts</h4>
+            <h4 class="ms-3 my-auto"> 5 Followers</h4>
+            <h4 class="ms-3 my-auto"> 7 Following</h4>
+        </div>
+        <div class="user-details my-2">
+            <h2>{{ user.username }}</h2>
+            <p>User full name</p>
+            <p>User description - Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam eius officiis odio vel quasi in labore laboriosam accusantium optio consequatur tenetur quo, tempora distinctio, deserunt quisquam dicta aperiam dolor mollitia?</p>
+            <p>User website link</p>
+        </div>
+    </div>
+    <div class="user-posts-saved-posts d-flex flex-row align-middle">
+        <button class="btn btn-primary">Posts</button>
+        <button class="btn btn-primary">Saved Posts</button>
+    </div>
+    <div class="user-posts">
+        <div class="row">
+            <div class="my-5 col-12 col-sm-12 col-md-6 col-lg-4">
+              <div class="card mx-auto" style="width: 90%;">
+                <div class="card-header d-flex flex-row">
+                  <a href="javascript:void(0)">
+                    <img src="/images/pancakes_berries.jpg" alt="">
+                  </a>
+                  <h5 class="my-auto ms-2">User name</h5>
+                  <p class="my-auto ms-auto">Date time</p>
+                </div>
+                <img src="images/pancakes_berries.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <div class="title-and-likes">
+                    <h5 class="card-title d-inline-block w-50">Post title</h5>
+                    <div class="float-end">
+                      <p class="d-inline-block">&#128077; &nbsp; 2 &nbsp;</p>
+                      <p class="d-inline-block">&#129316; &nbsp; 3 &nbsp;</p>
+                      <p class="d-inline-block"> &#128155; &nbsp; 1</p>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div> 
+            </div>
+            <div class="my-5 col-12 col-sm-12 col-md-6 col-lg-4">
+              <div class="card mx-auto" style="width: 90%;">
+                <div class="card-header d-flex flex-row">
+                  <a href="javascript:void(0)">
+                    <img src="/images/pancakes_berries.jpg" alt="">
+                  </a>
+                  <h5 class="my-auto ms-2">User name</h5>
+                  <p class="my-auto ms-auto">Date time</p>
+                </div>
+                <img src="images/pancakes_berries.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <div class="title-and-likes">
+                    <h5 class="card-title d-inline-block w-50">Post title</h5>
+                    <div class="float-end">
+                      <p class="d-inline-block">&#128077; &nbsp; 2 &nbsp;</p>
+                      <p class="d-inline-block">&#129316; &nbsp; 3 &nbsp;</p>
+                      <p class="d-inline-block"> &#128155; &nbsp; 1</p>
+                    </div>
+                  </div>
+                </div>
+              </div> 
+            </div>
+            <div class="my-5 col-12 col-sm-12 col-md-6 col-lg-4">
+              <div class="card mx-auto" style="width: 90%;">
+                <div class="card-header d-flex flex-row">
+                  <a href="javascript:void(0)">
+                    <img src="/images/pancakes_berries.jpg" alt="">
+                  </a>
+                  <h5 class="my-auto ms-2">User name</h5>
+                  <p class="my-auto ms-auto">Date time</p>
+                </div>
+                <img src="images/pancakes_berries.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <div class="title-and-likes">
+                    <h5 class="card-title d-inline-block w-50">Post title</h5>
+                    <div class="float-end">
+                      <p class="d-inline-block">&#128077; &nbsp; 2 &nbsp;</p>
+                      <p class="d-inline-block">&#129316; &nbsp; 3 &nbsp;</p>
+                      <p class="d-inline-block"> &#128155; &nbsp; 1</p>
+                    </div>
+                  </div>
+                </div>
+              </div> 
+            </div>
+        </div>
 
-<body>
-    <h1>{{ profile.username }}</h1>
-    <p>Username: {{ profile.username }}</p>
-    <br>
+    </div>
 
-</body>
+
 
 {% endblock content %}

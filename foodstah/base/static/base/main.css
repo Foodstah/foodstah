@@ -71,7 +71,11 @@ body {
 }
 
 h1,
-h2 {
+h2,
+h3,
+h4,
+h5,
+h6 {
 	font-weight: 800;
 }
 
@@ -162,6 +166,43 @@ div.div-space {
 	border: 0;
 }
 
+/* User profile page */
+
+.user-image-stats img {
+	width: 150px;
+	height: auto;
+	border: 8px solid #fff278;
+	border-radius: 200px;
+}
+
+/* DJANGO MESSAGE ALERTS */
+
+.alert {
+	position: relative;
+	margin: 0 -20px;
+	width: auto;
+	padding: 1rem 1rem;
+	margin-bottom: 1rem;
+	border: 1px solid transparent;
+	border-radius: 0.25rem;
+}
+.success-message {
+	border-color: #badbcc;
+	background-color: #50d400 !important;
+	color: #ffffff !important;
+	text-align: center;
+}
+.info-message {
+	border-color: #badbcc;
+	background-color: #ffa8d4 !important;
+	color: #0e101c !important;
+	text-align: center;
+}
+/* FORMS */
+input {
+	width: 60%;
+}
+
 /* BOOTSTRAP OVERRIDES */
 
 /* COLOURS
@@ -243,6 +284,18 @@ div.div-space {
 .info-message {
 	border-color: #badbcc;
 	background-color: #ffa8d4 !important;
+	color: #0e101c !important;
+	text-align: center;
+}
+.danger-message {
+	border-color: #badbcc;
+	background-color: #fe1151 !important;
+	color: #0e101c !important;
+	text-align: center;
+}
+.warning-message {
+	border-color: #badbcc;
+	background-color: #ffb53a !important;
 	color: #0e101c !important;
 	text-align: center;
 }

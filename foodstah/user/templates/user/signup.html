@@ -4,20 +4,49 @@
     <div class="content-section">
         <form method="POST">
             {% csrf_token %}
-            <fieldset class="form-group">
+            <fieldset class="form-group pt-4 pb-3">
                 <legend class="border-bottom mb-4">
-                    Join Today
+                    <h2>Sign Up</h2>
                 </legend>
-                {{ form.as_p }}
-
+                {% if form.errors %}
+                <p class="alert warning-message">Sorry, your username must only contain letters, numbers and underscores. <br> Passwords must be at least 8 characters long.</p>
+                {% endif %}
+                <div class="text-center pt-4"> 
+                    <label for="{{ form.username.username }}" class="requiredField"> <h4>Username </h4>  </label>
+                    <div class="">
+                        {{ form.username }}
+                    </div>
+                    
+                    </div>
+                <div class="text-center pt-4"> 
+                    <label for="{{ form.email.email }}" class="requiredField"> <h4>Email </h4>  </label>
+                    <div class="">
+                        {{ form.email }}
+                    </div>
+                    
+                    </div>
+                <div class="text-center pt-4"> 
+                    <label for="{{ form.password1.password1 }}" class="requiredField"> <h4>Password </h4>  </label>
+                    <div class="">
+                        {{ form.password1 }}
+                    </div>
+                    
+                    </div>
+                <div class="text-center pt-4"> 
+                    <label for="{{ form.password2.password2 }}" class="requiredField"> <h4>Password confirmation </h4>  </label>
+                    <div class="">
+                        {{ form.password2 }}
+                    </div>
+                    
+                    </div>
             </fieldset>
-            <div class="form-group mb-2">
+            <div class="form-group text-center mb-2">
                 <button class="btn btn-primary" type="submit">Sign Up</button>
             </div>
-            <div class="border-top py-3 ">
+            <div class="border-top mt-4 py-3 ">
                 <small class="text-muted">
                     Already Have An Account? 
-                    <a class="ms-2" href="{% url 'login' %}">Login</a> 
+                    <a class="ms-2 btn btn-primary button" href="{% url 'login' %}">Login</a> 
                 </small>
             </div>
         </form>
