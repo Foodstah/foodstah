@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from .models import Profile
 from .forms import UserSignupForm
 from django.contrib import messages
+from django.contrib.auth.views import LogoutView
 
 # Create your views here.
 
@@ -12,6 +13,11 @@ def home(request):
 def login(request):
     return render(request, 'user/login.html')
 
+class Logout(LogoutView): 
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            messages.info(request, "You have successfully logged out.")
+        return super().dispatch(request, *args, **kwargs)
 
 def signup(request):
 
