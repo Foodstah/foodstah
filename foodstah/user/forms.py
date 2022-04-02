@@ -4,18 +4,21 @@ from django.contrib.auth.forms import UserCreationForm
 
 import re
 
+
 class UserSignupForm(UserCreationForm):
     email = forms.EmailField()
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2']
-    
+        fields = ["username", "email", "password1", "password2"]
+
     def clean_username(self):
-            username = self.cleaned_data['username']
-    
-            if not re.match(r'^[A-Za-z0-9_]+$', username):
-                raise forms.ValidationError("Sorry , you can only have alphanumeric, _ or - in username")
-            
-            else:
-                return(username)
+        username = self.cleaned_data["username"]
+
+        if not re.match(r"^[A-Za-z0-9_]+$", username):
+            raise forms.ValidationError(
+                "Sorry , you can only have alphanumeric, _ or - in username"
+            )
+
+        else:
+            return username
