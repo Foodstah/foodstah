@@ -8,7 +8,7 @@ from django.core.exceptions import ValidationError
 
 
 class Post(models.Model):
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, to_field="id")
     title = models.CharField(max_length=50)
     post_description = models.TextField(max_length=140, null=True, blank=True)
     date_created = models.DateTimeField(default=timezone.now)
