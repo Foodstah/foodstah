@@ -64,7 +64,7 @@
             <!-- <h1 class="centered-text">Food Drinks Recipes Love </h1> -->
             <h1 class="centered-text" id="element"></h1>
             <div class="main-call-to-action">
-                <button class="btn btn-primary enter-the-app" type="button"><a href="javascript:void(0)"></a>Enter the app</button>
+                <a class="btn btn-primary" href="{% url 'signup' %}">Sign Up Now!</a>
             </div>
         </div>
 
@@ -106,12 +106,20 @@
             
             <div class="row mt-5">
                 <div class="mt-4 mb-5 col-12 col-sm-12 col-md-12 col-lg-6">
-                    <h4 class="text-center px-2">The perfect social space for food lovers. </h4>
+                    <h4 class="text-center px-3">The perfect social space for <br> food lovers. </h4>
                         <br>
-                    <p class="mx-4"> We just love food! </p>
-                    <p class="mx-4"> Oh and pancakes </p>
-                    <p class="mx-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero porro cumque laudantium quo. Unde illum deserunt vel amet consequatur. Ratione expedita illo assumenda dolore in iusto culpa? Nobis, alias iusto!</p>
-                    <p class="mx-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero porro cumque laudantium quo. Unde illum deserunt vel amet consequatur. Ratione expedita illo assumenda dolore in iusto culpa? Nobis, alias iusto!</p>
+                    <p class="px-5">If you enjoy food, drinks or discovering new recipes there's a lot to gain from using the app.</p>
+                    <p class="px-5">
+                        If you have ever been tired and indecisive when making a decision about what to cook,
+                        Foodstah may just be the solution to your hanger issues. 
+                    </p>
+                    <p class="px-5">
+                        With access to hundreds of recipes at your fingertips it will make life a lot easier. 
+                        Join today and tryout downloading a new recipe to impress that special someone.
+                    </p>
+                    <div class="text-center">
+                        <a class="btn btn-secondary mt-2" href="{% url 'signup' %}">Sign Up Now!</a>
+                    </div>
                 </div>
                 <div class="d-none d-lg-block mt-4 mb-5 col-12 col-sm-12 col-md-12 col-lg-6">
                     <img class="mx-auto d-block" src="{% static 'base/images/pancakes_berries.jpg' %}" alt="">
@@ -133,6 +141,9 @@
                         <li class="mt-2">Share pictures of delicious meals.</li>
                         <li class="mt-2">Watch videos and cooking classes all at your fingertips.</li>
                     </ul>
+                    <div class="text-center">
+                        <a class="btn btn-secondary mt-2" href="{% url 'signup' %}">Sign Up Now!</a>
+                    </div>
                 </div>
                 <div class="text-center d-block d-lg-none mt-5 col-12 col-sm-12 col-md-12 col-lg-6">
                     <img src="{% static 'base/images/sweet-potato-fries.jpg' %}" alt="">
