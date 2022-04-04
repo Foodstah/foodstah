@@ -15,14 +15,3 @@ class NewPostForm(forms.ModelForm):
             "recipe_description",
             "cooking_time",
             ]
-
-    def __init__(self, *args, **kwargs):
-        self.logged_in_user = kwargs.pop("logged_in_user", None)
-        super(NewPostForm, self).__init__(*args, **kwargs)
-
-    def save(self, commit=True):
-        post = super(NewPostForm, self).save(commit=False)
-        post.author_id = self.logged_in_user.id
-        if commit:
-            post.save()
-        return post

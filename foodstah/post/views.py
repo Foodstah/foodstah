@@ -12,9 +12,10 @@ def post(request):
 def add_post(request):
 
     if request.method == "POST":
-        form = NewPostForm(request.POST, logged_in_user=request.user)
+        form = NewPostForm(request.POST, request.FILES)
 
         if form.is_valid():
+            form.instance.author = request.user
             form.save()
             messages.success(request, "Your post was successfully added.")
             return redirect("/food-feed")
