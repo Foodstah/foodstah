@@ -15,7 +15,7 @@ class UserSignupForm(UserCreationForm):
             username = self.cleaned_data['username']
     
             if not re.match(r'^[A-Za-z0-9_]+$', username):
-                raise forms.ValidationError("Sorry, your username must only contain letters, numbers and underscores")
+                raise forms.ValidationError("Sorry, your username must only contain letters, numbers and underscores.")
 
             elif User.objects.exclude(pk=self.instance.pk).filter(username=username).exists():
                 raise forms.ValidationError(f"Username {username} is already in use.")
