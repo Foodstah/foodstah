@@ -23,3 +23,4 @@ def add_post(request):
 
     form = NewPostForm()
     return render(request, "post/add_post.html", {"addpost_form": form})
+
