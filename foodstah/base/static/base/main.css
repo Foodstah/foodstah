@@ -246,6 +246,7 @@ input[type="checkbox"]:checked::before {
 }
 textarea {
 	width: 60%;
+	height: 100px;
 }
 
 /* BOOTSTRAP OVERRIDES */
@@ -369,6 +370,6 @@ textarea {
 	color: #fff278;
 }
 
-a{
+a {
 	text-decoration: none !important;
-  }
+}
