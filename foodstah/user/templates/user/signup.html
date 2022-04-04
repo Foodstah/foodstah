@@ -8,9 +8,17 @@
                 <legend class="border-bottom mb-4">
                     <h2>Sign Up</h2>
                 </legend>
-                {% if form.errors %}
-                <p class="alert warning-message">Sorry, your username must only contain letters, numbers and underscores. <br> Passwords must be at least 8 characters long.</p>
+                {% for field in form %}
+                <div>
+                {% if field.errors %}
+                    {% for error in field.errors %}
+                    <p class="alert warning-message">{{ error }}</p>
+                    {% endfor %}
                 {% endif %}
+                </div>
+                {% endfor %}
+
+
                 <div class="text-center pt-4"> 
                     <label for="{{ form.username.username }}" class="requiredField"> <h4>Username </h4>  </label>
                     <div class="">
