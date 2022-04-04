@@ -314,13 +314,14 @@ input {
 }
 .btn-secondary {
 	background-color: #4b3fd8 !important;
-	color: #fff278;
+	color: #ffffff;
 	border: 2px solid #fff278;
 	border-color: #ffe100;
-	border-radius: 100px;
+	border-radius: 5px;
 }
 .btn-secondary:hover {
 	border-color: #ffe100;
+	color: #fff278;
 }
 
 .navbar-toggler-icon {
