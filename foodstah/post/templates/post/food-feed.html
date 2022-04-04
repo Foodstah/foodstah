@@ -19,12 +19,12 @@
                 <div class="title-and-likes">
                   <h5 class="card-title d-inline-block w-50">{{ post.title }}</h5>
                   <div class="float-end">
-                  <a class="d-inline-block">&#128077; &nbsp; &nbsp;</a>
-                  <p class="d-inline-block">&#129316; &nbsp; 3 &nbsp;</p>
-                  <p class="d-inline-block"> &#128155; &nbsp; 1</p>
+                  <a class="d-inline-block" href="{% url 'give-like' post.id %}">&#128077; &nbsp; &nbsp;</a>{{ post.like_count }}
+                  <a class="d-inline-block" href="{% url 'give-love' post.id %}">&#128155; &nbsp; &nbsp;</a>{{ post.love_count }}
+                  <a class="d-inline-block no-link" href="{% url 'give-drooling-face' post.id %}">&#129316; &nbsp; &nbsp;</a>{{ post.droolingface_count }}
                   </div>
                 <div>
-                  <p>Post description: {{ post.post_description }}</p>
+                  <p>Post description: {{ post.post_description }}</p>   
                 </div>
                 <div>
               {% if post.is_recipe %}
