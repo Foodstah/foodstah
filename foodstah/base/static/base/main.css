@@ -327,3 +327,7 @@ input {
 .navbar-toggler-icon {
 	color: #fff278;
 }
+
+a{
+	text-decoration: none !important;
+  }
