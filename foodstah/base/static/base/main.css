@@ -2,8 +2,12 @@ body {
 	font-family: 'Poppins', sans-serif;
 	background-color: #fff278;
 	/* background-image: linear-gradient(to right top, #fff278, #ffb662, #ff7588, #ff50c8, #4b3fd8); */
-	/* padding: 0 20px 0 20px; */
 	color: #0e101c;
+}
+@media (max-width: 768px) {
+	html {
+		margin-bottom: 50px;
+	}
 }
 
 .page-container {

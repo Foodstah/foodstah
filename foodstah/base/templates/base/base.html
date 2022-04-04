@@ -24,7 +24,7 @@
     <!-- Main custom CSS file. All overrides for CSS will be here -->
     <link rel="stylesheet" href="{% static 'base/main.css' %}">
 </head>
-<body class="pb-5">
+<body>
 
   <!-- NAVIGATION BAR -->
   
@@ -77,7 +77,7 @@
 
   <!-- Navigation fixed bottom for smaller screens -->
 
-  <nav style="background-color: #4B3FD8;" class="navbar bottom-nav fixed-bottom navbar-dark  d-md-none">
+  <nav style="background-color: #4B3FD8;" class="navbar bottom-nav fixed-bottom navbar-dark d-md-none">
     <div class="container-fluid mx-4w">
       {% if user.is_authenticated %}
       <a class="nav-item nav-link" href="{% url 'food-feed' %}">

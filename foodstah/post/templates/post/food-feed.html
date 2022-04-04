@@ -2,11 +2,12 @@
 {% load static %}
 
 {% block content %}
+<div class="row"> 
 {% if posts %}
   {% for post in posts %}
-        <div class="row">
+  
           <div class="my-5 col-12 col-sm-12 col-md-6 col-lg-6">
-            <div class="card mx-auto" style="width: 90%;">
+            <div class="card mx-auto" style="width: 100%;">
               <div class="card-header d-flex flex-row">
                 <a href="javascript:void(0)">
                   <img src="{{ profile.image.url }}" alt="">
@@ -19,38 +20,40 @@
                 <div class="title-and-likes">
                   <h5 class="card-title d-inline-block w-50">{{ post.title }}</h5>
                   <div class="float-end">
-                  <a class="d-inline-block" href="{% url 'give-like' post.id %}">&#128077; &nbsp;</a>{{ post.like_count }}&nbsp;
-                  <a class="d-inline-block" href="{% url 'give-love' post.id %}">&#128155; &nbsp;</a>{{ post.love_count }} &nbsp;
-                  <a class="d-inline-block no-link" href="{% url 'give-drooling-face' post.id %}">&#129316; &nbsp;</a>{{ post.droolingface_count }}
+                    <a class="d-inline-block" href="{% url 'give-like' post.id %}">&#128077; &nbsp;</a>{{ post.like_count }}&nbsp;
+                    <a class="d-inline-block" href="{% url 'give-love' post.id %}">&#128155; &nbsp;</a>{{ post.love_count }} &nbsp;
+                    <a class="d-inline-block no-link" href="{% url 'give-drooling-face' post.id %}">&#129316; &nbsp;</a>{{ post.droolingface_count }}
                   </div>
                 <div>
-                  <p>Post description: {{ post.post_description }}</p>   
+                  <p>{{ post.post_description }}</p>   
                 </div>
                 <div>
-              {% if post.is_recipe %}
-                <p>This is a recipe! Here you have its info!</p>
+                {% if post.is_recipe %}
+                <h6>Recipe</h6>
                 <p>Ingredients: {{ post.ingredients }}</p>
-                <p>description: {{ post.recipe_description }}</p>
+                <p>Instructions: {{ post.recipe_description }}</p>
                 <p>Cooking time: {{ post.cooking_time }}</p>
-                <p></p>
+                {% endif %}
+                </div>
+                <!--Comments section. -->
+              </div>
+              <div class="comment-section py-2 my-3">
+                <p class="card-text">User X - Omg I love fooooood!</p>
+                <p class="card-text">User Y - Put the pancakes in my belly!</p>
+                <p class="card-text">User Z - I just saved the recipe for later, thanks for this one!</p>
+              </div>
+              <a href="#" class="btn btn-primary float-start">Save post</a>
+              {% if post.is_recipe %}
+              <a href="#" class="btn btn-primary float-end">Download recipe</a>
+              {% else %}
+              <a href="#" class="btn btn-primary float-end">Request recipe</a>
               {% endif %}
             </div>
-            <!--Comments section. -->
-          </div>
-          <div class="comment-section py-2 my-3">
-            <p class="card-text">User X - Omg I love fooooood!</p>
-            <p class="card-text">User Y - Put the pancakes in my belly!</p>
-            <p class="card-text">User Z - I just saved the recipe for later, thanks for this one!</p>
-          </div>
-          <a href="#" class="btn btn-primary float-start">Save post</a>
-          <a href="#" class="btn btn-primary float-end">Request recipe</a>
-        </div>
-      </div> 
+          </div> 
     </div>
-</div>
 {% endfor %}
 
 {% else %}
-<p>No post available</p>
+<p class="alert .info-message">No posts available. You must create a new post or follow another user to see posts.</p>
 {% endif %}
 {% endblock content %}

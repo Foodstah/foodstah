@@ -40,6 +40,7 @@
                     <div> {{ addpost_form.post_description }} </div>
                 
                 </div>
+                <!-- Image upload  -->
             <div class="pt-4"> 
                 <label for="{{ form.main_image.main_image }}" class="requiredField" for="file-ip-1"> <h4 me-3>Upload image </h4>  </label>
                     <div type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);"> {{ addpost_form.main_image }} </div>
@@ -53,7 +54,7 @@
                 
                 <label for="{{ form.is_recipe.is_recipe }}" class="requiredField"> <h4 me-3>Add recipe? </h4></label>
                 <p class="text-muted">Sharing is caring &#128521;</p>
-                <a onclick="toggleRecipe()">
+                <h5 class="d-inline-block">Tick me:</h5><a class="ms-3 d-inline-block" onclick="toggleRecipe()">
                     {{ addpost_form.is_recipe }} 
                 </a>
                    
