@@ -18,7 +18,7 @@ please feel free to change everything
 <p>Hi {{user.username}}. Want to add a new post?</p>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ addpost_form }}
+        {{ addpost_form.as_p }}
         <button class="btn btn-primary" type="submit">Add Post</button>
     </form>
 </div>
