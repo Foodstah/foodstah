@@ -1,37 +1,113 @@
 {% extends "base/base.html" %}
 {% load static %}
 
-<!-- Hi Camila and Daniel! This is just a rough draft so
-    i can test the form and adding post function hahaha.
-
-please feel free to change everything
--->
-
 {% block content %}
 
 {% if user.is_authenticated %}
 
 
-<h1>Add New Blog Post:</h1>
-
 <!--Add new post-->
-<p>Hi {{user.username}}. Want to add a new post?</p>
+
+<div class="content-section">
+    
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ addpost_form.as_p }}
-        <button class="btn btn-primary" type="submit">Add Post</button>
+        <fieldset class="form-group pt-4 pb-3">
+            <legend class="border-bottom mb-4">
+                <h2>New Post</h2>
+            </legend>
+
+            {% for field in form %}
+            <div>
+            {% if field.errors %}
+                {% for error in field.errors %}
+                <p class="alert warning-message">{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+            </div>
+            {% endfor %}
+
+
+            <div class="pt-4"> 
+                <label for="{{ form.title.title }}" class="requiredField"> <h4 me-3>Title </h4>  </label>
+                
+                    <div> {{ addpost_form.title }} </div>
+                
+                
+                </div>
+            <div class="pt-4"> 
+                <label for="{{ form.post_description.post_description }}" class="requiredField"> <h4 me-3>Description </h4>  </label>
+                    <div> {{ addpost_form.post_description }} </div>
+                
+                </div>
+            <div class="pt-4"> 
+                <label for="{{ form.main_image.main_image }}" class="requiredField" for="file-ip-1"> <h4 me-3>Upload image </h4>  </label>
+                    <div type="file"  id="file-ip-1" accept="image/*" onchange="showPreview(event);"> {{ addpost_form.main_image }} </div>
+
+                    <div class="preview">
+                        <img id="file-ip-1-preview">
+                    </div>
+
+                </div>
+            <div class="pt-4"> 
+                
+                <label for="{{ form.is_recipe.is_recipe }}" class="requiredField"> <h4 me-3>Add recipe? </h4></label>
+                <p class="text-muted">Sharing is caring &#128521;</p>
+                <a onclick="toggleRecipe()">
+                    {{ addpost_form.is_recipe }} 
+                </a>
+                   
+
+        <div style="display: none;" id="recipeButton"> 
+            <div class="pt-4"> 
+                <label for="{{ form.ingredients.ingredients }}" class="requiredField"> <h4 me-3>Ingredients </h4>  </label>
+                    <div> {{ addpost_form.ingredients }} </div>
+
+            <div class="pt-4"> 
+                <label for="{{ form.recipe_description.recipe_description }}" class="requiredField"> <h4 me-3>Recipe instructions </h4>  </label>
+                    <div> {{ addpost_form.recipe_description }} </div>
+
+            <div class="pt-4"> 
+                <label for="{{ form.cooking_time.cooking_time }}" class="requiredField"> <h4 me-3>Cooking time </h4>  </label>
+                    <div> {{ addpost_form.cooking_time }} </div>
+                </div>
+         </div>
+        </fieldset>
+        <div class="form-group text-center mb-2">
+            <button class="btn btn-primary my-4" type="submit">Upload</button>
+        </div>
+        
     </form>
 </div>
 
 {% else %}
 
-<p class="text-center">Looks like you're not authenticated. <a href="/login">Login</a> to add blog posts.</p>
+<p class="text-center">Looks like you're not authenticated. <a href="/login">Login here</a> to add blog posts.</p>
 
 {% endif %}
 
 
 
 
-
+<script type="text/javascript">
+    function toggleRecipe() {
+        var x = document.getElementById("recipeButton");
+        if (x.style.display === "none") {
+        x.style.display = "block";
+        } else if (x.style.display === "block") {
+        x.style.display = "none";
+        }
+    }
+</script>
+<script type="text/javascript">
+    function showPreview(event){
+  if(event.target.files.length > 0){
+    var src = URL.createObjectURL(event.target.files[0]);
+    var preview = document.getElementById("file-ip-1-preview");
+    preview.src = src;
+    preview.style.display = "block";
+  }
+}
+</script>
 
 {% endblock content %}

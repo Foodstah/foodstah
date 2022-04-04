@@ -17,8 +17,8 @@ def add_post(request):
         if form.is_valid():
             form.instance.author = request.user
             form.save()
-            messages.success(request, "Your post was successfully added.")
-            return redirect("/food-feed")
+            messages.success(request, "Your post was added successfully.")
+            return redirect("food-feed")
 
         messages.error(request, "Unsuccessful. Could not add new post.")
 

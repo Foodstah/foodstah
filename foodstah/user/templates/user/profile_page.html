@@ -60,7 +60,7 @@
             {% if user.is_authenticated %}
                 <a class="nav-item nav-link" href="{% url 'food-feed' %}">
                   <img class="svg-yellow me-1" src="{% static 'base/typicons/svg/home.svg' %}" alt="">Home</a>
-                <a class="nav-item nav-link" href="javascript:void(0)">
+                <a class="nav-item nav-link" href="{% url 'add-post' %}">
                   <img class="svg-yellow me-1" src="{% static 'base/typicons/svg/plus.svg' %}" alt="">New post</a>
                 <a class="nav-item nav-link" href="{% url 'logout' %}">
                   <img class="svg-yellow me-1" src="{% static 'base/typicons/svg/user.svg' %}" alt="">Logout</a>
@@ -88,7 +88,7 @@
       {% endif %}
       <a class="nav-item nav-link" href="javascript:void(0)">
         <img style="width: 30px;" class="svg-yellow me-1" src="{% static 'base/typicons/svg/zoom.svg' %}" alt=""></a>
-      <a class="nav-item nav-link" href="javascript:void(0)">
+      <a class="nav-item nav-link" href="{% url 'add-post' %}">
         <img style="width: 30px;" class="svg-yellow me-1" src="{% static 'base/typicons/svg/plus.svg' %}" alt=""> </a>
       <a class="nav-item nav-link" href="{% url 'profile-page' username=user.username %}">
         <img style="width: 30px;" class="svg-yellow me-1" src="{% static 'base/typicons/svg/user.svg' %}" alt=""></a>

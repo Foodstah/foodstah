@@ -84,7 +84,7 @@
         <img style="width: 30px;" class="svg-yellow me-1" src="{% static 'base/typicons/svg/home.svg' %}" alt=""></a>
       <a class="nav-item nav-link" href="javascript:void(0)">
         <img style="width: 30px;" class="svg-yellow me-1" src="{% static 'base/typicons/svg/zoom.svg' %}" alt=""></a>
-      <a class="nav-item nav-link" href="javascript:void(0)">
+      <a class="nav-item nav-link" href="{% url 'add-post' %}">
         <img style="width: 30px;" class="svg-yellow me-1" src="{% static 'base/typicons/svg/plus.svg' %}" alt=""> </a>
       <a class="nav-item nav-link" href="{% url 'profile-page' username=user.username %}">
         <img style="width: 30px;" class="svg-yellow me-1" src="{% static 'base/typicons/svg/user.svg' %}" alt=""></a>
