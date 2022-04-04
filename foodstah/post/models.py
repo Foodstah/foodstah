@@ -17,6 +17,9 @@ class Post(models.Model):
     ingredients = models.TextField(blank=True, null=True)
     recipe_description = models.TextField(blank=True, null=True)
     cooking_time = models.CharField(max_length=20, blank=True, null=True)
+    likes = models.ManyToManyField(User,related_name='post_likes')
+    loves = models.ManyToManyField(User,related_name='post_loves')
+    drooling_faces = models.ManyToManyField(User,related_name='post_drooling_faces')
 
     def clean(self, *args, **kwargs):
         if (self.is_recipe and self.ingredients == None) or (self.is_recipe and self.ingredients == None) or (self.is_recipe and self.recipe_description == None) or (self.is_recipe and self.cooking_time == None):
@@ -25,3 +28,12 @@ class Post(models.Model):
 
     def __str__(self) -> str:
         return self.title
+
+    def like_count(self):
+        return self.likes.count()
+
+    def love_count(self):
+        return self.loves.count()
+
+    def droolingface_count(self):
+        return self.drooling_faces.count()
