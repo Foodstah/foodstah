@@ -10,7 +10,6 @@ def post(request):
     return render(request, 'post/food-feed.html', {'posts':posts})
 
 def add_post(request):
-
     if request.method == "POST":
         form = NewPostForm(request.POST, request.FILES)
 
