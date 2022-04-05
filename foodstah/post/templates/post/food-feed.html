@@ -2,10 +2,10 @@
 {% load static %}
 
 {% block content %}
-<div class="row"> 
+<div class="row">
 {% if posts %}
   {% for post in posts %}
-  
+
           <div class="my-5 col-12 col-sm-12 col-md-6 col-lg-6">
             <div class="card mx-auto" style="width: 100%;">
               <div class="card-header d-flex flex-row">
@@ -20,12 +20,12 @@
                 <div class="title-and-likes">
                   <h5 class="card-title d-inline-block w-50">{{ post.title }}</h5>
                   <div class="float-end">
-                    <a class="d-inline-block" href="{% url 'give-like' post.id %}">&#128077; &nbsp;</a>{{ post.like_count }}&nbsp;
-                    <a class="d-inline-block" href="{% url 'give-love' post.id %}">&#128155; &nbsp;</a>{{ post.love_count }} &nbsp;
-                    <a class="d-inline-block no-link" href="{% url 'give-drooling-face' post.id %}">&#129316; &nbsp;</a>{{ post.droolingface_count }}
+                    <a class="d-inline-block reaction-button" href="{% url 'give-like' post.id %}" data-id="like-{{ post.id }}">&#128077; &nbsp;</a><span id="like-{{ post.id }}">{{ post.like_count }}</span>&nbsp;
+                    <a class="d-inline-block reaction-button" href="{% url 'give-love' post.id %}" data-id="love-{{ post.id }}">&#128155; &nbsp;</a><span id="love-{{ post.id }}">{{ post.love_count }}</span> &nbsp;
+                    <a class="d-inline-block no-link reaction-button" href="{% url 'give-drooling-face' post.id %}" data-id="drool-{{ post.id }}">&#129316; &nbsp;</a><span id="drool-{{ post.id }}">{{ post.droolingface_count }}</span>
                   </div>
                 <div>
-                  <p>{{ post.post_description }}</p>   
+                  <p>{{ post.post_description }}</p>
                 </div>
                 <div>
                 {% if post.is_recipe %}
@@ -49,11 +49,39 @@
               <a href="#" class="btn btn-primary float-end">Request recipe</a>
               {% endif %}
             </div>
-          </div> 
+          </div>
     </div>
 {% endfor %}
 
 {% else %}
 <p class="alert .info-message">No posts available. You must create a new post or follow another user to see posts.</p>
 {% endif %}
+<script type="text/javascript">
+  const pageContainer = document.querySelector('.page-container')
+  pageContainer.addEventListener('click', event => {
+    if (event.target.matches('.reaction-button')) {
+      event.preventDefault()
+      reactionToPost(event.target)
+      return
+    }
+  })
+
+function reactionToPost(reactionButton) {
+   const link = reactionButton.href
+   const id = reactionButton.dataset.id
+
+   fetch(link, {
+      headers: {
+        'Accept': 'application/json',
+      },
+   }).then(
+       response => response.json()
+    ).then(
+      json => {
+        document.querySelector(`#${id}`).innerHTML = json.reactions
+      }
+    )
+}
+</script>
+
 {% endblock content %}

@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 from .forms import NewPostForm
 from .models import Post
 from django.contrib import messages
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -30,6 +31,8 @@ def give_like(request,pk):
         post.likes.remove(request.user)
     else:
         post.likes.add(request.user.id)
+    if request.META['HTTP_ACCEPT'] == "application/json":
+        return JsonResponse({"reactions": post.likes.count()})
     return redirect("/food-feed")
 
 def give_love(request,pk):
@@ -38,6 +41,8 @@ def give_love(request,pk):
         post.loves.remove(request.user)
     else:
         post.loves.add(request.user.id)
+    if request.META['HTTP_ACCEPT'] == "application/json":
+        return JsonResponse({"reactions": post.loves.count()})
     return redirect("/food-feed")
 
 def give_drooling_face(request,pk):
@@ -46,4 +51,6 @@ def give_drooling_face(request,pk):
         post.drooling_faces.remove(request.user)
     else:
         post.drooling_faces.add(request.user.id)
+    if request.META['HTTP_ACCEPT'] == "application/json":
+        return JsonResponse({"reactions": post.drooling_faces.count()})
     return redirect("/food-feed")
