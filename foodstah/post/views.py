@@ -1,8 +1,10 @@
 from django.shortcuts import get_object_or_404, render, redirect
-from .forms import NewPostForm
-from .models import Post
 from django.contrib import messages
 from django.http import JsonResponse
+from django.views.generic import DetailView
+from .forms import NewPostForm
+from .models import Post
+
 
 # Create your views here.
 
@@ -54,3 +56,7 @@ def give_drooling_face(request,pk):
     if request.META['HTTP_ACCEPT'] == "application/json":
         return JsonResponse({"reactions": post.drooling_faces.count()})
     return redirect("/food-feed")
+
+class PostDetailsView(DetailView):
+    model = Post
+    context_object_name = 'post'

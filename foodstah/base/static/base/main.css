@@ -183,6 +183,16 @@ div.div-space {
 	border-radius: 200px;
 }
 
+/* Posts */
+
+.title-and-likes a {
+	color: #ffffff;
+}
+
+a.reaction-button {
+	font-size: 18px;
+}
+
 /* DJANGO MESSAGE ALERTS */
 
 .alert {
