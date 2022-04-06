@@ -145,7 +145,7 @@
 
                     {% csrf_token %}
 
-                    <input type="hidden" name="user" value="{{ current_user }}">
+                    <input type="hidden" name="user" value="{{ profile }}">
                     <input type="hidden" name="follower" value="{{ user.username }}">
                     <input type="hidden" name="value" value="follow">
 
