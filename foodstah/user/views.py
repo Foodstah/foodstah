@@ -48,11 +48,30 @@ def signup(request):
 
 def profile_page(request, username):
     profile = User.objects.get(username=username)
-    # current_user = request.user
+    profile_followers = len(Following.objects.filter(user=profile))
+    profile_following = len(Following.objects.filter(follower=profile))
+
+    # the logic for whether logged in profile is already following or not
+    # -> whether to display follow or unfollow
+    followlist1 = Following.objects.filter(user=profile)
+    followlist2 = []
+    follow_button_value = ""
+    for follower in followlist1:
+        followlist1 = follower.follower
+        followlist2.append(followlist1)
+        if profile in followlist2:
+            follow_button_value = "unfollow"
+        else:
+            follow_button_value = "follow"
+
+    # the context
     context = {
         "profile": profile,
-        # "current_user": current_user.username,
+        "profile_followers": profile_followers,
+        "profile_following": profile_following,
+        "follow_button_value": follow_button_value,
     }
+
     return render(request, "user/profile_page.html", context)
 
 
@@ -66,4 +85,7 @@ def followers_count(request):
     if value == "follow":
         followers_cnt = Following.objects.create(follower=follower, user=user)
         followers_cnt.save()
+    if value == "unfollow":
+        followers_cnt = Following.objects.get(follower=follower, user=user)
+        followers_cnt.delete()
     return redirect("profile-page", username=user)
