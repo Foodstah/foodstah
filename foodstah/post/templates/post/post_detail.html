@@ -17,8 +17,8 @@
     
 {% if post.author == user %}
 <div class="ms-5 ps-5 mt-4">
-    <a class="btn btn-primary px-3" href="#">Edit</a>
-    <a class=" btn btn-secondary mx-2" href="#">Delete</a>
+    <a class="btn btn-primary px-3" href="{% url 'post-update' post.id %}">Edit</a>
+    <a class=" btn btn-secondary mx-2" href="{% url 'post-delete' post.id %}">Delete</a>
 </div>  
 {% else %}
 <div class="ms-5 ps-5 mt-4">

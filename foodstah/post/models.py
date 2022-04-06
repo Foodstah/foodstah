@@ -2,6 +2,7 @@ from django.db import models
 from user.models import User
 from django.utils import timezone
 from django.core.exceptions import ValidationError
+from django.urls import reverse
 
 
 # Create your models here.
@@ -28,6 +29,10 @@ class Post(models.Model):
 
     def __str__(self) -> str:
         return self.title
+    
+
+    def get_absolute_url(self):
+        return reverse('post-detail', kwargs={'pk':self.pk})
 
     def like_count(self):
         return self.likes.count()
