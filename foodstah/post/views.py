@@ -22,7 +22,7 @@ def add_post(request):
             messages.success(request, "Your post was added successfully.")
             return redirect("food-feed")
 
-        messages.error(request, "Unsuccessful. Could not add new post.")
+        messages.info(request, "If you're adding a recipe you must include the ingredients, instructions and cooking time.")
 
     form = NewPostForm()
     return render(request, "post/add_post.html", {"addpost_form": form})
