@@ -2,8 +2,12 @@ body {
 	font-family: 'Poppins', sans-serif;
 	background-color: #fff278;
 	/* background-image: linear-gradient(to right top, #fff278, #ffb662, #ff7588, #ff50c8, #4b3fd8); */
-	/* padding: 0 20px 0 20px; */
 	color: #0e101c;
+}
+@media (max-width: 768px) {
+	html {
+		margin-bottom: 50px;
+	}
 }
 
 .page-container {
@@ -71,7 +75,11 @@ body {
 }
 
 h1,
-h2 {
+h2,
+h3,
+h4,
+h5,
+h6 {
 	font-weight: 800;
 }
 
@@ -162,6 +170,100 @@ div.div-space {
 	border: 0;
 }
 
+/* User profile page */
+
+.user-image-stats img {
+	width: 150px;
+	height: auto;
+	border: 8px solid #fff278;
+	border-radius: 200px;
+}
+.user-image-card {
+	border: 4px solid #fff278;
+	border-radius: 200px;
+}
+
+/* Posts */
+
+.title-and-likes a {
+	color: #ffffff;
+}
+
+a.reaction-button {
+	font-size: 18px;
+}
+
+/* DJANGO MESSAGE ALERTS */
+
+.alert {
+	position: relative;
+	margin: 0 -20px;
+	width: auto;
+	padding: 1rem 1rem;
+	margin-bottom: 1rem;
+	border: 1px solid transparent;
+	border-radius: 0.25rem;
+}
+.success-message {
+	border-color: #badbcc;
+	background-color: #50d400 !important;
+	color: #ffffff !important;
+	text-align: center;
+}
+.info-message {
+	border-color: #badbcc;
+	background-color: #ffa8d4 !important;
+	color: #0e101c !important;
+	text-align: center;
+}
+
+/* FORMS */
+
+input {
+	width: 60%;
+}
+
+.preview img {
+	max-width: 60%;
+}
+
+input[type="checkbox"] {
+	-webkit-appearance: none;
+	appearance: none;
+	/* For iOS < 15 to remove gradient background */
+	background-color: rgb(255, 255, 255);
+	/* Not removed via appearance */
+	appearance: none;
+	background-color: #fff;
+	font: inherit;
+	color: #4b3fd8;
+	width: 1.15em;
+	height: 1.15em;
+	border: 0.15em solid #4b3fd8;
+	border-radius: 0.15em;
+	transform: translateY(-0.075em);
+	display: grid;
+	place-content: center;
+}
+input[type="checkbox"]::before {
+	content: "";
+	width: 0.65em;
+	height: 0.65em;
+	transform: scale(0);
+	transition: 120ms transform ease-in-out;
+	box-shadow: inset 1em 1em var(--form-control-color);
+	background-color: CanvasText;
+	transform-origin: bottom left;
+	clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+input[type="checkbox"]:checked::before {
+	transform: scale(1);
+}
+textarea {
+	width: 60%;
+	height: 100px;
+}
+
 /* BOOTSTRAP OVERRIDES */
 
 /* COLOURS
@@ -226,11 +328,37 @@ div.div-space {
 /* DJANGO MESSAGE ALERTS */
 
 .alert {
-	margin-bottom: 0px !important;
+	position: relative;
+	margin: 0 -20px;
+	width: auto;
+	padding: 1rem 1rem;
+	margin-bottom: 1rem;
+	border: 1px solid transparent;
+	border-radius: 0.25rem;
 }
-.alert-success {
-	background-color: #86aa70 !important;
-	color: #50d400 !important;
+.success-message {
+	border-color: #badbcc;
+	background-color: #50d400 !important;
+	color: #ffffff !important;
+	text-align: center;
+}
+.info-message {
+	border-color: #badbcc;
+	background-color: #ffa8d4 !important;
+	color: #0e101c !important;
+	text-align: center;
+}
+.danger-message {
+	border-color: #badbcc;
+	background-color: #fe1151 !important;
+	color: #0e101c !important;
+	text-align: center;
+}
+.warning-message {
+	border-color: #badbcc;
+	background-color: #ffb53a !important;
+	color: #0e101c !important;
+	text-align: center;
 }
 
 .btn-primary {
@@ -243,15 +371,20 @@ div.div-space {
 }
 .btn-secondary {
 	background-color: #4b3fd8 !important;
-	color: #fff278;
+	color: #ffffff;
 	border: 2px solid #fff278;
 	border-color: #ffe100;
-	border-radius: 100px;
+	border-radius: 5px;
 }
 .btn-secondary:hover {
 	border-color: #ffe100;
+	color: #fff278;
 }
 
 .navbar-toggler-icon {
 	color: #fff278;
+}
+
+a {
+	text-decoration: none !important;
 }

@@ -112,16 +112,16 @@
               <div class="d-inline-block d-flex justify-content-end">
                 <img class="my-auto me-auto" src="{{ user.profile.image.url }}" alt="">
                 <h5 class="ms-3 my-auto d-inline-block"> 10 Posts</h5>
-                <h5 class="ms-3 my-auto d-inline-block"> 5 Followers</h5>
-                <h5 class="ms-3 my-auto d-inline-block"> 7 Following</h5>
+                <h5 class="ms-3 my-auto d-inline-block"> {{ profile_followers }} Followers</h5>
+                <h5 class="ms-3 my-auto d-inline-block"> {{ profile_following }} Following</h5>
               </div>
             </div>
             <div class="d-sm-block d-md-none">
               <img class="mb-3 me-auto" src="{{ user.profile.image.url }}" alt="">
               <div class="d-flex">
                 <h5 class="ms-2 my-auto"> 10 Posts</h5>
-                <h5 class="ms-3 my-auto"> 5 Followers</h5>
-                <h5 class="ms-3 my-auto"> 7 Following</h5>
+                <h5 class="ms-3 my-auto"> {{ profile_followers }} Followers</h5>
+                <h5 class="ms-3 my-auto"> {{ profile_following }} Following</h5>
               </div>
             </div>
 
@@ -147,11 +147,21 @@
 
                     <input type="hidden" name="user" value="{{ profile }}">
                     <input type="hidden" name="follower" value="{{ user.username }}">
-                    <input type="hidden" name="value" value="follow">
 
+
+                    {% if follow_button_value == "follow" %}
+                    <input type="hidden" name="value" value="follow">
                         <button type="submit" class="btn btn-secondary mt-3">
                             Follow
                         </button>
+
+                    {% else %}
+                    <input type="hidden" name="value" value="unfollow">
+                        <button type="submit" class="btn btn-secondary mt-3">
+                            Unfollow
+                        </button>
+
+                    {% endif %}
 
                 </form>
               </div>
