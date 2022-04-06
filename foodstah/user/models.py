@@ -19,3 +19,16 @@ class Profile(models.Model):
 
     def __str__(self):
         return f"{self.user.username}'s Profile"
+
+
+class Following(models.Model):
+    follower = models.CharField(max_length=1000)
+    user = models.CharField(max_length=1000)
+
+    def __str__(self):
+        return self.user
+
+
+    # user_id = models.ForeignKey(Profile, related_name="following", on_delete=models.CASCADE)
+
+    # following_user_id = models.ForeignKey(Profile, related_name="followers", on_delete=models.CASCADE)

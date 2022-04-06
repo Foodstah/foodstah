@@ -133,8 +133,24 @@
               <h6>{{ user.profile.first_name }} {{ user.profile.last_name }}</h6>
               <p>{{ user.profile.description }} </p>
               <a href="{{ user.profile.website }}" target="blank">{{ user.profile.website }} </a>
+
               <div>
+
                 <a href="#" class="btn btn-secondary mt-3">Edit profile</a>
+
+                <form action="{% url 'followers_count' %}" method="POST">
+
+                    {% csrf_token %}
+
+                    <input type="hidden" name="user" value="{{ current_user }}">
+                    <input type="hidden" name="follower" value="{{ user.username }}">
+                    <input type="hidden" name="value" value="follow">
+
+                        <button type="submit" class="btn btn-secondary mt-3">
+                            Follow
+                        </button>
+
+                </form>
               </div>
               
           </div>

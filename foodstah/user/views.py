@@ -1,8 +1,9 @@
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 from django.shortcuts import render, redirect
 
-from .models import Profile
+from .models import Profile, Following
 from .forms import UserSignupForm
 from django.contrib import messages
 from django.contrib.auth.views import LogoutView
@@ -46,9 +47,25 @@ def signup(request):
 
 def profile_page(request, username):
     profile = User.objects.get(username=username)
+    current_user = request.GET.get("user")
+    logged_in_user = request.user.username
     # current_user = request.user
     context = {
         "profile": profile,
+        "current_user": current_user,
         # "current_user": current_user.username,
     }
     return render(request, "user/profile_page.html", context)
+
+
+# all the functions for following are below
+
+def followers_count(request):
+    if request.method == "POST":
+        value = request.POST["value"]
+        user = request.user
+        follower = request.POST["follower"]
+        if value == "follow":
+            followers_cnt = Following.objects.create(follower=follower, user=user)
+            followers_cnt.save()
+        return redirect("profile-page", username=user)
