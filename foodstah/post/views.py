@@ -1,8 +1,11 @@
 from django.shortcuts import get_object_or_404, render, redirect
-from .forms import NewPostForm
-from .models import Post
+from django.urls import reverse_lazy
 from django.contrib import messages
 from django.http import JsonResponse
+from django.views.generic import DetailView, UpdateView, DeleteView
+from .forms import NewPostForm
+from .models import Post
+
 
 # Create your views here.
 
@@ -20,7 +23,7 @@ def add_post(request):
             messages.success(request, "Your post was added successfully.")
             return redirect("food-feed")
 
-        messages.error(request, "Unsuccessful. Could not add new post.")
+        messages.info(request, "If you're adding a recipe you must include the ingredients, instructions and cooking time.")
 
     form = NewPostForm()
     return render(request, "post/add_post.html", {"addpost_form": form})
@@ -54,3 +57,26 @@ def give_drooling_face(request,pk):
     if request.META['HTTP_ACCEPT'] == "application/json":
         return JsonResponse({"reactions": post.drooling_faces.count()})
     return redirect("/food-feed")
+
+class PostDetailsView(DetailView):
+    model = Post
+    context_object_name = 'post'
+
+class PostUpdateView(UpdateView):
+    model = Post
+    fields = [
+            "title",
+            "post_description",
+            "main_image",
+            "is_recipe",
+            "ingredients",
+            "recipe_description",
+            "cooking_time",
+            ]
+    template_name = 'post/post-update.html'
+    context_object_name = 'post'
+
+class PostDeleteView(DeleteView):
+    model = Post
+    context_object_name = 'post'
+    success_url = reverse_lazy('food-feed')

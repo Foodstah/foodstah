@@ -15,10 +15,14 @@
                 <h5 class="my-auto ms-2">{{ post.author }}</h5>
                 <p class="my-auto ms-auto">{{ post.date_created }}</p>
               </div>
+              <a href="{% url 'post-detail' post.id %}"> 
               <img src="{{ post.main_image.url }}" class="card-img-top" alt="...">
+              </a>
               <div class="card-body">
                 <div class="title-and-likes">
-                  <h5 class="card-title d-inline-block w-50">{{ post.title }}</h5>
+                  <a href="{% url 'post-detail' post.id %}">
+                    <h5 class="card-title d-inline-block w-50">{{ post.title }}</h5>
+                  </a>
                   <div class="float-end">
                     <a class="d-inline-block reaction-button" href="{% url 'give-like' post.id %}" data-id="like-{{ post.id }}">&#128077; &nbsp;</a><span id="like-{{ post.id }}">{{ post.like_count }}</span>&nbsp;
                     <a class="d-inline-block reaction-button" href="{% url 'give-love' post.id %}" data-id="love-{{ post.id }}">&#128155; &nbsp;</a><span id="love-{{ post.id }}">{{ post.love_count }}</span> &nbsp;

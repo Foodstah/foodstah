@@ -1,0 +1,29 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<form method="post">
+    {% csrf_token %}
+
+    <h3 class="text-center pt-4">Are you sure you want to delete: </h3>
+    <h5 class="text-center"> "{{ post }}"?</h5>
+    <div class="mx-auto" style="max-width: 400px;"> 
+        <img src="{{ post.main_image.url }}" class="img-fluid my-3" alt="">
+    </div>
+    <p class="text-muted text-center">If this was a mistake, simply click return.</p>
+    
+    <div class="d-flex justify-content-center">
+        <a class="btn btn-primary my-4" href="{% url 'post-detail' post.id %}">Return</a>
+        <span class="ms-5"></span>
+        <button class="btn btn-secondary my-4" type="submit">Delete</button>
+    </div>
+    
+</form>
+
+
+{% endif %}
+
+{% endblock content %}

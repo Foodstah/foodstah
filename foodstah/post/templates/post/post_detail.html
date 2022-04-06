@@ -1,0 +1,92 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="pt-4">
+    <img style="width: 100px;" class="rounded-circle float-start me-3" src="{{ post.author.profile.image.url }}" alt="">
+    <h1 class="d-inline-block">{{post.title}} </h1>
+    <br>
+    <a class="d-inline-block reaction-button" href="{% url 'give-like' post.id %}" data-id="like-{{ post.id }}">&#128077; &nbsp;</a><span id="like-{{ post.id }}">{{ post.like_count }}</span>&nbsp;
+    <a class="d-inline-block reaction-button" href="{% url 'give-love' post.id %}" data-id="love-{{ post.id }}">&#128155; &nbsp;</a><span id="love-{{ post.id }}">{{ post.love_count }}</span> &nbsp;
+    <a class="d-inline-block no-link reaction-button" href="{% url 'give-drooling-face' post.id %}" data-id="drool-{{ post.id }}">&#129316; &nbsp;</a><span id="drool-{{ post.id }}">{{ post.droolingface_count }}</span>
+      
+    <a href="#">
+        <h4 class="d-block pt-2">by @{{ post.author }}</h4>
+    </a>
+    
+{% if post.author == user %}
+<div class="ms-5 ps-5 mt-4">
+    <a class="btn btn-primary px-3" href="{% url 'post-update' post.id %}">Edit</a>
+    <a class=" btn btn-secondary mx-2" href="{% url 'post-delete' post.id %}">Delete</a>
+</div>  
+{% else %}
+<div class="ms-5 ps-5 mt-4">
+    <a href="#" class="btn btn-primary">Save post</a>
+    {% if post.is_recipe %}
+    <a href="#" class="btn btn-secondary">Download recipe</a>
+    {% else %}
+    <a href="#" class="btn btn-secondary">Request recipe</a>
+    {% endif %}
+</div>
+{% endif %}
+</div>
+
+<div class="mx-auto" style="max-width: 500px;"> 
+<img src="{{ post.main_image.url }}" class="img-fluid my-3" alt="">
+</div>
+
+<div class="text-center">
+    <span>{{ post.date_created }}</span>
+    <p>{{ post.post_description }}</p>
+</div>
+<div>
+    {% if post.is_recipe %}
+    <h6>Recipe</h6>
+    <p>Ingredients: {{ post.ingredients }}</p>
+    <p>Instructions: {{ post.recipe_description }}</p>
+    <p>Cooking time: {{ post.cooking_time }}</p>
+    {% endif %}
+</div>
+
+<!--Comments section. -->
+<div class="comment-section px-5 py-4 my-3">
+    <h4>Comments</h4>
+    <p class="card-text">User X - Omg I love fooooood!</p>
+    <p class="card-text">User Y - Put the pancakes in my belly!</p>
+    <p class="card-text">User Z - I just saved the recipe for later, thanks for this one!</p>
+</div>
+
+  
+
+
+
+<script type="text/javascript">
+  const pageContainer = document.querySelector('.page-container')
+  pageContainer.addEventListener('click', event => {
+    if (event.target.matches('.reaction-button')) {
+      event.preventDefault()
+      reactionToPost(event.target)
+      return
+    }
+  })
+
+function reactionToPost(reactionButton) {
+   const link = reactionButton.href
+   const id = reactionButton.dataset.id
+
+   fetch(link, {
+      headers: {
+        'Accept': 'application/json',
+      },
+   }).then(
+       response => response.json()
+    ).then(
+      json => {
+        document.querySelector(`#${id}`).innerHTML = json.reactions
+      }
+    )
+}
+</script>
+
+{% endblock %}
