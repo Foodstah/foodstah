@@ -57,16 +57,89 @@
   </nav>
 
   <!-- Main image and button to bring user to the app -->
-
+    <!-- Carousel -->
     <div class="home-page-container">
         <div class="image-container">
+
+    <div id="demo" class="carousel slide" data-bs-ride="carousel">
+
+        <!-- Indicators/dots -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="3"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="4"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="5"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="6"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="7"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="8"></button>
+        </div>
+    
+        <!-- The slideshow/carousel -->
+        <div class="carousel-inner">
+            <div class="carousel-item active max-height">
+                <h1 class="centered-text" >Food</h1>
+                <img src="{% static 'base/images/food1.jpg' %}" alt="Los Angeles" class="d-block w-100">
+            </div>
+            <div class="carousel-item max-height">
+                <h1 class="centered-text" >Drinks</h1>
+                <img src="{% static 'base/images/drink1.jpg' %}" alt="Chicago" class="d-block w-100">
+            </div>
+            <div class="carousel-item max-height">
+                <h1 class="centered-text" >Recipes</h1>
+                <img src="{% static 'base/images/food2.jpg' %}" alt="New York" class="d-block w-100">
+            </div>
+            <div class="carousel-item max-height">
+                <h1 class="centered-text" >Food</h1>
+                <img src="{% static 'base/images/food3.jpg' %}" alt="Los Angeles" class="d-block w-100">
+            </div>
+            <div class="carousel-item max-height">
+                <h1 class="centered-text" >Drinks</h1>
+                <img src="{% static 'base/images/drink2.jpg' %}" alt="Chicago" class="d-block w-100">
+            </div>
+            <div class="carousel-item max-height">
+                <h1 class="centered-text" >Recipes</h1>
+                <img src="{% static 'base/images/food4.jpg' %}" alt="New York" class="d-block w-100">
+            </div>
+            <div class="carousel-item max-height">
+                <h1 class="centered-text" >Food</h1>
+                <img src="{% static 'base/images/food5.jpg' %}" alt="Los Angeles" class="d-block w-100">
+            </div>
+            <div class="carousel-item max-height">
+                <h1 class="centered-text" >Drinks</h1>
+                <img src="{% static 'base/images/drink3.jpg' %}" alt="Chicago" class="d-block w-100">
+            </div>
+            <div class="carousel-item max-height">
+                <h1 class="centered-text" >Recipes</h1>
+                <img src="{% static 'base/images/food6.jpg' %}" alt="New York" class="d-block w-100">
+            </div>
+        </div>
+    </div>
+    
+            <!-- <h1 class="centered-text" id="element"></h1> -->
+            <div class="main-call-to-action">
+                <a class="btn btn-primary" href="{% url 'signup' %}">Sign Up Now!</a>
+            </div>
+    
+        <!-- Left and right controls/icons -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+
+    <!-- <div class="home-page-container">
+        <div class="image-container">
             <img class="main-image" src="{% static 'base/images/purple_banana.jpg' %}" alt="">
-            <!-- <h1 class="centered-text">Food Drinks Recipes Love </h1> -->
+            <h1 class="centered-text">Food Drinks Recipes Love </h1>
             <h1 class="centered-text" id="element"></h1>
             <div class="main-call-to-action">
                 <a class="btn btn-primary" href="{% url 'signup' %}">Sign Up Now!</a>
             </div>
-        </div>
+        </div> --> 
 
     <!-- Illustration section -->
 
@@ -158,22 +231,26 @@
 
             <div class="row">
                 <div class="mt-4 col-12 col-sm-12 col-md-12 col-lg-4">
-                    <img class="mx-auto d-block" src="{% static 'base/images/pancakes_berries.jpg' %}" alt="">
+                    <img class="mx-auto d-block" src="{% static 'base/images/Camila.jpg' %}" alt="">
                     <h4 class="text-center mt-4">Camilla </h4>
                     <h6 class="text-center mt-4">Client engagement manager</h6>
                     <p class="mx-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias accusamus aliquid architecto accusantium hic. Vitae, perferendis similique. Corporis eligendi soluta, qui aut rerum delectus, omnis eum doloribus numquam, officiis eos!</p>
                 </div>
                 <div class="mt-4 col-12 col-sm-12 col-md-12 col-lg-4">
-                    <img class="mx-auto d-block" src="{% static 'base/images/pancakes_berries.jpg' %}" alt="">
+                    <img class="mx-auto d-block" src="{% static 'base/images/Daniel2.jpg' %}" alt="">
                     <h4 class="text-center mt-4">Daniel </h4>
                     <h6 class="text-center mt-4">Lead developer</h6>
-                    <p class="mx-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias accusamus aliquid architecto accusantium hic. Vitae, perferendis similique. Corporis eligendi soluta, qui aut rerum delectus, omnis eum doloribus numquam, officiis eos!</p>
+                    <p class="mx-4">With a broad array of skills and urge for continuous learning Daniel took the lead for this project. </p>
+                    <p class="mx-4">Attention to detail and an eye for design came in great use while creating the brand identity and UI behind Foodstah.</p>
+                    <p class="mx-4">With his innovative mindset, strong communication skills and amazingly talented team that surrounds him he told us "this project was an enjoyable process that [he] would happily do all over again."</p>
                 </div>
                 <div class="mt-4 col-12 col-sm-12 col-md-12 col-lg-4">
-                    <img class="mx-auto d-block" src="{% static 'base/images/pancakes_berries.jpg' %}" alt="">
+                    <img class="mx-auto d-block" src="{% static 'base/images/Raphaela.jpg' %}" alt="">
                     <h4 class="text-center mt-4">Raphaela </h4>
                     <h6 class="text-center mt-4">Operations manager</h6>
-                    <p class="mx-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias accusamus aliquid architecto accusantium hic. Vitae, perferendis similique. Corporis eligendi soluta, qui aut rerum delectus, omnis eum doloribus numquam, officiis eos!</p>
+                    <p class="mx-4">Raphaela possesses a passion for sustainable collaborations and is highly effective when creating a structured work environment. </p>
+                    <p class="mx-4">With experience in cloud based operations such as AWS, and other technologies like git and the command line, we quite quickly realised she was the perfect fit for the role.
+                        Her skills accompanied by her drive to work on a project that will bring change to the online culinary scene saw her immediately adapt into her position as a productive team member.</p>
                 </div>
             </div>
       
@@ -184,111 +261,6 @@
 
     <!-- JS script linking for Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-        new TypeIt("#element", { 
-        lifeLike: false, 
-        speed: 0 
-})
-	.type("F")
-	.pause(240)
-	.type("o")
-	.pause(240)
-	.type("o")
-	.pause(240)
-	.type("d")
-	.pause(790)
-	.delete(1)
-	.pause(150)
-	.delete(1)
-	.pause(150)
-	.delete(1)
-	.pause(150)
-	.delete(1)
-	.pause(150)
-	.type("D")
-	.pause(240)
-	.type("r")
-	.pause(240)
-	.type("i")
-	.pause(240)
-	.type("n")
-	.pause(240)
-	.type("k")
-	.pause(240)
-	.type("s")
-	.pause(240)
-	.delete(1)
-	.pause(150)
-	.delete(1)
-	.pause(150)
-	.delete(1)
-	.pause(150)
-	.delete(1)
-	.pause(150)
-	.delete(1)
-	.pause(150)
-	.delete(1)
-	.pause(240)
-	.type("R")
-	.pause(240)
-	.type("e")
-	.pause(240)
-	.type("c")
-	.pause(240)
-	.type("i")
-	.pause(240)
-	.type("p")
-	.pause(240)
-	.type("e")
-	.pause(240)
-	.type("s")
-	.pause(385)
-	// .delete(1)
-	// .pause(150)
-	// .delete(1)
-	// .pause(150)
-	// .delete(1)
-	// .pause(150)
-	// .delete(1)
-	// .pause(150)
-	// .delete(1)
-	// .pause(150)
-	// .delete(1)
-	// .pause(150)
-	// .delete(1)
-	// .pause(240)
-	// .type("L")
-	// .pause(240)
-	// .type("o")
-	// .pause(240)
-	// .type("v")
-	// .pause(240)
-	// .type("e")
-	// .pause(240)
-	// .type("!")
-	// .pause(240)
-	// .type(" ")
-	// .pause(240)
-	// .type(" ")
-	// .pause(240)
-	// .type("&#129316;")
-	.pause(826)
-	// .delete(1)
-	// .pause(500)
-	// .delete(1)
-	// .pause(150)
-	// .delete(1)
-	// .pause(150)
-	// .delete(1)
-	// .pause(150)
-	// .delete(1)
-	// .pause(150)
-	// .delete(1)
-	// .pause(150)
-	// .delete(1)
-    // .pause(240)
-	// .type("&#129316;")
-	.go();
-    </script>
+    
 </body>
 </html>

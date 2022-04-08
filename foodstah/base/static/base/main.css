@@ -10,6 +10,10 @@ body {
 	}
 }
 
+.max-height {
+	max-height: 550px;
+}
+
 .page-container {
 	max-width: 1050px;
 	margin: auto;
@@ -34,13 +38,21 @@ body {
 
 .centered-text {
 	position: absolute;
-	top: 40%;
+	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
 
+h1.centered-text {
+	font-size: 98px;
+	font-family: 'Caveat', cursive;
+}
 #element {
-	font-size: 82px;
+	font-size: 98px;
+	font-family: 'Caveat', cursive;
+}
+#element {
+	font-size: 98px;
 	font-family: 'Caveat', cursive;
 }
 
