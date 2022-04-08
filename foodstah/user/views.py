@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
 from .models import Profile
-from .forms import UserSignupForm
+from .forms import UserSignupForm, ProfileForm
 from django.contrib import messages
 from django.contrib.auth.views import LogoutView
 
@@ -46,9 +46,18 @@ def signup(request):
 
 def profile_page(request, username):
     profile = User.objects.get(username=username)
+    form = ProfileForm()
     # current_user = request.user
     context = {
         "profile": profile,
+        "profile_form": form
         # "current_user": current_user.username,
     }
+    form = ProfileForm(data=request.POST, files=request.FILES, instance=request.user.profile)
+
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+            return redirect(request.META['HTTP_REFERER'])
+
     return render(request, "user/profile_page.html", context)
