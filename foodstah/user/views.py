@@ -3,14 +3,8 @@ from django.urls import reverse
 from django.views.decorators.http import require_POST
 
 from django.shortcuts import render, redirect
-
-<<<<<<< HEAD
 from .models import Profile, Following
-from .forms import UserSignupForm
-=======
-from .models import Profile
 from .forms import UserSignupForm, ProfileForm
->>>>>>> camila
 from django.contrib import messages
 from django.contrib.auth.views import LogoutView
 
