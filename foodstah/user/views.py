@@ -4,8 +4,13 @@ from django.views.decorators.http import require_POST
 
 from django.shortcuts import render, redirect
 
+<<<<<<< HEAD
 from .models import Profile, Following
 from .forms import UserSignupForm
+=======
+from .models import Profile
+from .forms import UserSignupForm, ProfileForm
+>>>>>>> camila
 from django.contrib import messages
 from django.contrib.auth.views import LogoutView
 
@@ -48,6 +53,8 @@ def signup(request):
 
 def profile_page(request, username):
     profile = User.objects.get(username=username)
+    form = ProfileForm()
+
     profile_followers = len(Following.objects.filter(user=profile))
     profile_following = len(Following.objects.filter(follower=profile))
 
@@ -64,14 +71,24 @@ def profile_page(request, username):
         else:
             follow_button_value = "follow"
 
+    
+
+    # update profile form
+    form = ProfileForm(data=request.POST, files=request.FILES, instance=request.user.profile)
+
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+            return redirect(request.META['HTTP_REFERER'])
+
     # the context
     context = {
         "profile": profile,
         "profile_followers": profile_followers,
         "profile_following": profile_following,
         "follow_button_value": follow_button_value,
+        "profile_form": form,
     }
-
     return render(request, "user/profile_page.html", context)
 
 

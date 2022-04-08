@@ -1,6 +1,9 @@
+import imp
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm  
+
+from .models import Profile
 
 import re
 
@@ -22,3 +25,14 @@ class UserSignupForm(UserCreationForm):
             raise forms.ValidationError(f"Username {username} is already in use.")
         else:
             return(username)
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = [
+            "first_name",
+            "last_name",
+            "image",
+            "description",
+            "website"
+        ]
