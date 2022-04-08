@@ -1,6 +1,9 @@
+import imp
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm  
+
+from .models import Profile
 
 import re
 
@@ -26,3 +29,15 @@ class MyAuthenticationForm(AuthenticationForm):
 
     def clean_username(self):
         return self.cleaned_data['username'].lower()
+
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = [
+            "first_name",
+            "last_name",
+            "image",
+            "description",
+            "website"
+        ]
