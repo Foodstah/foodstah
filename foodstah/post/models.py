@@ -24,7 +24,12 @@ class Post(models.Model):
     def clean(self, *args, **kwargs):
         if (self.is_recipe and self.ingredients == None) or (self.is_recipe and self.ingredients == None) or (self.is_recipe and self.recipe_description == None) or (self.is_recipe and self.cooking_time == None):
             raise ValidationError('You need to complete the recipe fields!')
+        
         super().clean(*args, **kwargs)
+
+    def save(self, *args, **kwargs):
+        self.full_clean()
+        return super().save(*args, **kwargs)
 
     def __str__(self) -> str:
         return self.title
