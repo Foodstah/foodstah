@@ -65,7 +65,7 @@ def profile_page(request, username):
         else:
             follow_button_value = "follow"
 
-    
+
 
     # update profile form
     form = ProfileForm(data=request.POST, files=request.FILES, instance=request.user.profile)
