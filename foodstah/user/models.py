@@ -1,6 +1,7 @@
-from django.db import models
 from django.contrib.auth.models import User
+from django.db import models
 from PIL import Image
+from django.conf import settings
 
 # Create your models here.
 
@@ -12,6 +13,12 @@ class Profile(models.Model):
     image = models.ImageField(default="default.jpg", upload_to="profile_pics")
     description = models.TextField(default=None, max_length=255, blank=True, null=True)
     website = models.URLField(max_length=255, blank=True, default="")
+
+    def get_profile_image(self):
+        if self.image:
+            return self.image.url
+        return settings.MEDIA_URL.get_default()
+
 
     # posts =
     # following =
