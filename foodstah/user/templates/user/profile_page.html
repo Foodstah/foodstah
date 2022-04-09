@@ -90,7 +90,7 @@
         <img style="width: 30px;" class="svg-yellow me-1" src="{% static 'base/typicons/svg/zoom.svg' %}" alt=""></a>
       <a class="nav-item nav-link" href="{% url 'add-post' %}">
         <img style="width: 30px;" class="svg-yellow me-1" src="{% static 'base/typicons/svg/plus.svg' %}" alt=""> </a>
-      <a class="nav-item nav-link" href="{% url 'profile-page' username=user.username %}">
+      <a class="nav-item nav-link" href="{% url 'profile-page' username=profile.username %}">
         <img style="width: 30px;" class="svg-yellow me-1" src="{% static 'base/typicons/svg/user.svg' %}" alt=""></a>
     </div>
   </nav>
@@ -132,9 +132,9 @@
               <h2>@{{ profile.username }}</h2>
 
 
-              <h6>{{ user.profile.first_name|default_if_none:"" }} {{ user.profile.last_name|default_if_none:"" }}</h6>
-              <p>{{ user.profile.description|default_if_none:"" }} </p>
-              <a href="{{ user.profile.website }}" target="blank">{{ user.profile.website|default_if_none:"" }} </a>
+              <h6>{{ profile.first_name|default_if_none:"" }} {{ profile.last_name|default_if_none:"" }}</h6>
+              <p>{{ profile.description|default_if_none:"" }} </p>
+              <a href="{{ profile.website }}" target="blank">{{ profile.website|default_if_none:"" }} </a>
               
 
               <div>
@@ -146,7 +146,7 @@
                     {% csrf_token %}
 
                     <input type="hidden" name="user" value="{{ profile }}">
-                    <input type="hidden" name="follower" value="{{ user.username }}">
+                    <input type="hidden" name="follower" value="{{ profile.username }}">
 
 
                     {% if follow_button_value == "follow" %}

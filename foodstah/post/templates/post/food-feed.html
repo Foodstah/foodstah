@@ -13,9 +13,12 @@
                   <img src="{{ user.profile.image.url }}" alt="">
                 </a>
                 <h5 class="my-auto ms-2">{{ post.author }}</h5>
+                {% comment %} <a href="{% url 'profile-page' username=user.username %}">
+                  <h5 class="my-auto ms-2">{{ post.author }}</h5>
+                </a> {% endcomment %}
                 <p class="my-auto ms-auto">{{ post.date_created }}</p>
               </div>
-              <a href="{% url 'post-detail' post.id %}"> 
+              <a href="{% url 'post-detail' post.id %}">
               <img src="{{ post.main_image.url }}" class="card-img-top" alt="...">
               </a>
               <div class="card-body">
