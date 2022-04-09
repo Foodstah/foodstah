@@ -37,7 +37,7 @@
   {% else %}
             <a class="navbar-brand mr-4 text-light" href="{% url 'index' %}">
   {% endif %}
-              <img style="width: 60px;" src="{% static 'base/images/F.png' %}" alt="">
+              <img style="width: 60px;" src="{% static 'base/images/F_blue.png' %}" alt="">
               <h1 class="d-inline-block align-middle pt-2 ">Foodstah</h1>
             </a>
             <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
@@ -50,7 +50,7 @@
               <div class="navbar-nav ms-auto me-auto">
                 <form class="d-flex">
                   <input class="form-control  me-2" type="text" placeholder="Search">
-                  <!-- <img class="svg-yellow" src="base/typicons/svg/zoom.svg" alt=""> -->
+                  <!-- <img class="svg-white" src="base/typicons/svg/zoom.svg" alt=""> -->
                   <button class="btn btn-primary" type="button">Search</button>
                 </form>
               </div>
@@ -59,15 +59,15 @@
               <div class="navbar-nav">
             {% if user.is_authenticated %}
                 <a class="nav-item nav-link" href="{% url 'food-feed' %}">
-                  <img class="svg-yellow me-1" src="{% static 'base/typicons/svg/home.svg' %}" alt="">Home</a>
+                  <img class="svg-white me-1" src="{% static 'base/typicons/svg/home.svg' %}" alt="">Home</a>
                 <a class="nav-item nav-link" href="{% url 'add-post' %}">
-                  <img class="svg-yellow me-1" src="{% static 'base/typicons/svg/plus.svg' %}" alt="">New post</a>
+                  <img class="svg-white me-1" src="{% static 'base/typicons/svg/plus.svg' %}" alt="">New post</a>
                 <a class="nav-item nav-link" href="{% url 'logout' %}">
-                  <img class="svg-yellow me-1" src="{% static 'base/typicons/svg/user.svg' %}" alt="">Logout</a>
+                  <img class="svg-white me-1" src="{% static 'base/typicons/svg/user.svg' %}" alt="">Logout</a>
              
             {% else %}
                 <a class="nav-item nav-link me-2" href="{% url 'login' %}">
-                  <img class="svg-yellow svg-large" src="{% static 'base/typicons/svg/user.svg' %}" alt="">Login</a>
+                  <img class="svg-white svg-large" src="{% static 'base/typicons/svg/user.svg' %}" alt="">Login</a>
                 <a class="nav-item  btn btn-primary button" href="{% url 'signup' %}">Signup</a>
             {% endif %}
               </div>
@@ -77,21 +77,21 @@
 
   <!-- Navigation fixed bottom for smaller screens -->
 
-  <nav style="background-color: #4B3FD8;" class="navbar bottom-nav fixed-bottom navbar-dark  d-md-none">
+  <nav style="background-color: #1367E1;" class="navbar bottom-nav fixed-bottom navbar-dark  d-md-none">
     <div class="container-fluid mx-4w">
       {% if user.is_authenticated %}
       <a class="nav-item nav-link" href="{% url 'food-feed' %}">
-        <img style="width: 30px;" class="svg-yellow me-1" src="{% static 'base/typicons/svg/home.svg' %}" alt=""></a>
+        <img style="width: 30px;" class="svg-white me-1" src="{% static 'base/typicons/svg/home.svg' %}" alt=""></a>
       {% else %}
       <a class="nav-item nav-link" href="{% url 'index' %}">
-        <img style="width: 30px;" class="svg-yellow me-1" src="{% static 'base/typicons/svg/home.svg' %}" alt=""></a>
+        <img style="width: 30px;" class="svg-white me-1" src="{% static 'base/typicons/svg/home.svg' %}" alt=""></a>
       {% endif %}
       <a class="nav-item nav-link" href="javascript:void(0)">
-        <img style="width: 30px;" class="svg-yellow me-1" src="{% static 'base/typicons/svg/zoom.svg' %}" alt=""></a>
+        <img style="width: 30px;" class="svg-white me-1" src="{% static 'base/typicons/svg/zoom.svg' %}" alt=""></a>
       <a class="nav-item nav-link" href="{% url 'add-post' %}">
-        <img style="width: 30px;" class="svg-yellow me-1" src="{% static 'base/typicons/svg/plus.svg' %}" alt=""> </a>
-      <a class="nav-item nav-link" href="{% url 'profile-page' username=profile.username %}">
-        <img style="width: 30px;" class="svg-yellow me-1" src="{% static 'base/typicons/svg/user.svg' %}" alt=""></a>
+        <img style="width: 30px;" class="svg-white me-1" src="{% static 'base/typicons/svg/plus.svg' %}" alt=""> </a>
+      <a class="nav-item nav-link" href="{% url 'profile-page' username=user.username %}">
+        <img style="width: 30px;" class="svg-white me-1" src="{% static 'base/typicons/svg/user.svg' %}" alt=""></a>
     </div>
   </nav>
 
