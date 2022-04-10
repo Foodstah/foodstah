@@ -2,6 +2,8 @@ from django.contrib.auth.models import User
 from django.db import models
 from PIL import Image
 from django.conf import settings
+from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
 
@@ -28,9 +30,18 @@ class Profile(models.Model):
         return f"{self.user.username}'s Profile"
 
 
+# class Following(models.Model):
+#     follower = models.CharField(max_length=1000)
+#     user = models.CharField(max_length=1000)
+
+#     def __str__(self):
+#         return self.user
+
+# below this is my new Following class experiment.
+
 class Following(models.Model):
-    follower = models.CharField(max_length=1000)
-    user = models.CharField(max_length=1000)
+    user = models.ForeignKey(User, related_name="following", on_delete=models.CASCADE)
+    follower = models.ForeignKey(User, related_name="followers", on_delete=models.CASCADE)
 
     def __str__(self):
         return self.user

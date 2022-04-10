@@ -56,7 +56,7 @@ def profile_page(request, username):
     # -> whether to display follow or unfollow
     followlist1 = Following.objects.filter(user=profile)
     followlist2 = []
-    follow_button_value = ""
+    follow_button_value = "follow"
     for follower in followlist1:
         followlist1 = follower.follower
         followlist2.append(followlist1)
