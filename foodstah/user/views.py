@@ -89,10 +89,11 @@ def update_profile(request, username):
             data=request.POST, files=request.FILES, instance=request.user.profile
         )
         if form.is_valid():
+            form.website = "http://" +form.website
             form.save()
             return redirect("profile-page", username=username)
     form = ProfileForm()
-    return render(request, "user/update_profile_page.html", {"profile_form": form})
+    return render(request, "user/update_profile_page.html", {"form": form})
 
 
 @require_POST

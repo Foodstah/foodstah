@@ -2,13 +2,77 @@
 {% load static %}
 
 {% block content %}
-<div>
+
+{% if user.is_authenticated %}
+<div class="content-section">
     <form method="POST" enctype="multipart/form-data">
       {% csrf_token %}
-      {{ profile_form.as_p }}
-      <button class="btn btn-primary" type="submit">Update Profile</button>
-      <a href="{% url 'profile-page' user.username %}" class="btn btn-primary" type="submit">Cancel</a>
+      <fieldset class="form-group pt-4 pb-3">
+        <legend class="border-bottom mb-4">
+            <h2>Update Profile</h2>
+        </legend>
+
+        {% for field in form %}
+        <div>
+        {% if field.errors %}
+            {% for error in field.errors %}
+            <p class="alert warning-message">{{ error }}</p>
+            {% endfor %}
+        {% endif %}
+        </div>
+        {% endfor %}
+
+
+        <div class="pt-2"> 
+            <label for="{{ form.first_name.first_name }}" class="requiredField"> <h4 me-3>First name </h4>  </label>
+            
+                <div> {{ form.first_name }} </div>
+            
+            
+        </div>
+        <div class="pt-4"> 
+            <label for="{{ form.last_name.last_name }}" class="requiredField"> <h4 me-3>Last name </h4>  </label>
+                <div> {{ form.last_name }} </div>
+        </div>
+
+        <div class="pt-4"> 
+            <label for="{{ form.description.description }}" class="requiredField"> <h4 me-3>Description </h4>  </label>
+                <div> {{ form.description }} </div>
+        </div>
+            <!-- Image upload  -->
+        <div class="pt-4"> 
+            <label for="{{ form.image.image }}" class="requiredField" for="file-ip-1"> <h4 me-3>Profile image </h4>  </label>
+                <div type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);"> {{ form.image }} </div>
+
+                <div class="preview">
+                    <img id="file-ip-1-preview">
+                </div>
+            <div class="pt-4"> 
+              <label for="{{ form.website.website }}" class="requiredField"> <h4 me-3>website </h4>  </label>
+                  <div> {{ form.website }} </div>
+              
+            </div>
+        </div>
+
+        <div class="pt-4"> 
+      </fieldset>
+
+      <div class="form-group text-center mb-2">
+        <button class="btn btn-primary my-4" type="submit">Update Profile</button>
+        <a href="{% url 'profile-page' user.username %}" class="btn btn-primary" type="submit">Cancel</a>
+      </div>  
     </form>
 </div>
 
+{% endif %}
+<script type="text/javascript">
+  function showPreview(event){
+if(event.target.files.length > 0){
+  var src = URL.createObjectURL(event.target.files[0]);
+  var preview = document.getElementById("file-ip-1-preview");
+  preview.src = src;
+  preview.style.display = "block";
+}
+}
+</script>
 {% endblock content %}
