@@ -4,7 +4,7 @@
 {% block content %}
 
 <div class="pt-4">
-    <img style="width: 100px;" class="rounded-circle float-start me-3" src="{{ post.author.profile.image.url }}" alt="{{post.author}}">
+    <img style="width: 100px; height: 100px;" class="rounded-circle float-start me-3" src="{{ post.author.profile.image.url }}" alt="{{post.author}}">
     <h1 class="d-inline-block">{{post.title}} </h1>
     <br>
     <a class="d-inline-block reaction-button" href="{% url 'give-like' post.id %}" data-id="like-{{ post.id }}">&#128077; &nbsp;</a><span id="like-{{ post.id }}">{{ post.like_count }}</span>&nbsp;
