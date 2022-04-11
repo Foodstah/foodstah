@@ -10,16 +10,15 @@
             <div class="card mx-auto" style="width: 100%;">
               <div class="card-header d-flex flex-row">
                 <a href="javascript:void(0)">
-                  <img src="{{ user.profile.image.url }}" alt="">
+                  <img src="{{ user.profile.image.url }}" alt="Profile image for {{ post.author}}">
                 </a>
-                <h5 class="my-auto ms-2">{{ post.author }}</h5>
-                {% comment %} <a href="{% url 'profile-page' username=user.username %}">
+                <a class="my-auto" style="color: white;" href="{% url 'profile-page' username=user.username %}">
                   <h5 class="my-auto ms-2">{{ post.author }}</h5>
-                </a> {% endcomment %}
+                </a>
                 <p class="my-auto ms-auto">{{ post.date_created }}</p>
               </div>
               <a href="{% url 'post-detail' post.id %}">
-              <img src="{{ post.main_image.url }}" class="card-img-top" alt="...">
+              <img src="{{ post.main_image.url }}" class="card-img-top" alt="Image of {{ post.title }} by {{post.author}}">
               </a>
               <div class="card-body">
                 <div class="title-and-likes">
