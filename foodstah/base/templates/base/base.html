@@ -31,7 +31,7 @@
   <div class="container-fluid">
 <!-- Logo text. -->
           <a class="navbar-brand mr-4 text-light" href="{% url 'food-feed' %}">
-            <img style="width: 60px;" src="{% static 'base/images/F_blue.png' %}" alt="">
+            <img style="width: 60px;" src="{% static 'base/images/F_blue.png' %}" alt="Foodstah logo image">
             <h1 class="d-inline-block align-middle pt-2 ">Foodstah</h1>
           </a>
           <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
@@ -48,11 +48,11 @@
 <!-- User links -->
             <div class="navbar-nav">
               <a class="nav-item nav-link" href="{% url 'food-feed' %}">
-                <img class="svg-white me-1" src="{% static 'base/typicons/svg/home.svg' %}" alt="">Home</a>
+                <img class="svg-white me-1" src="{% static 'base/typicons/svg/home.svg' %}" alt="Foodstah home icon">Home</a>
               <a class="nav-item nav-link" href="{% url 'add-post' %}">
-                <img class="svg-white me-1" src="{% static 'base/typicons/svg/plus.svg' %}" alt="">New post</a>
+                <img class="svg-white me-1" src="{% static 'base/typicons/svg/plus.svg' %}" alt="Foodstah create new post icon">New post</a>
               <a class="nav-item nav-link" href="{% url 'profile-page' username=user.username %}">
-                <img class="svg-white me-1" src="{% static 'base/typicons/svg/user.svg' %}" alt="">Profile</a>
+                <img class="svg-white me-1" src="{% static 'base/typicons/svg/user.svg' %}" alt="Foodstah user profile icon">Profile</a>
             </div>
           </div>
         </div>
@@ -64,7 +64,7 @@
     <div class="container-fluid">
   <!-- Logo text. -->
             <a class="navbar-brand mr-4 text-light" href="{% url 'index' %}">
-              <img style="width: 60px;" src="{% static 'base/images/F_blue.png' %}" alt="">
+              <img style="width: 60px;" src="{% static 'base/images/F_blue.png' %}" alt="Foodstah logo image">
               <h1 class="d-inline-block align-middle pt-2 ">Foodstah</h1>
             </a>
             <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
@@ -74,7 +74,7 @@
   <!-- User links -->
               <div class="navbar-nav ms-auto me-3">
                 <a class="nav-item nav-link me-2" href="{% url 'login' %}">
-                  <img class="svg-white svg-large" src="{% static 'base/typicons/svg/user.svg' %}" alt="">Login</a>
+                  <img class="svg-white svg-large" src="{% static 'base/typicons/svg/user.svg' %}" alt="Foodstah user login icon">Login</a>
                 <a class="nav-item my-auto btn btn-primary button" href="{% url 'signup' %}">Signup</a>
               </div>
             </div>
@@ -88,22 +88,22 @@
     <div class="container-fluid mx-4w">
       {% if user.is_authenticated %}
       <a class="nav-item nav-link" href="{% url 'food-feed' %}">
-        <img style="width: 30px;" class="svg-white me-1" src="{% static 'base/typicons/svg/home.svg' %}" alt=""></a>
+        <img style="width: 30px;" class="svg-white me-1" src="{% static 'base/typicons/svg/home.svg' %}" alt="Foodstah homepage icon"></a>
       <a class="nav-item nav-link" href="javascript:void(0)">
-        <img style="width: 30px;" class="svg-white me-1" src="{% static 'base/typicons/svg/zoom.svg' %}" alt=""></a>
+        <img style="width: 30px;" class="svg-white me-1" src="{% static 'base/typicons/svg/zoom.svg' %}" alt="Foodstah search and explore page icon"></a>
       <a class="nav-item nav-link" href="{% url 'add-post' %}">
-        <img style="width: 30px;" class="svg-white me-1" src="{% static 'base/typicons/svg/plus.svg' %}" alt=""> </a>
+        <img style="width: 30px;" class="svg-white me-1" src="{% static 'base/typicons/svg/plus.svg' %}" alt="Foodstah create new post icon"> </a>
       <a class="nav-item nav-link" href="{% url 'profile-page' username=user.username %}">
-        <img style="width: 30px;" class="svg-white me-1" src="{% static 'base/typicons/svg/user.svg' %}" alt=""></a>
+        <img style="width: 30px;" class="svg-white me-1" src="{% static 'base/typicons/svg/user.svg' %}" alt="Foodstah profile page icon"></a>
         {% else %}
         <a class="nav-item nav-link" href="{% url 'index' %}">
-          <img style="width: 30px;" class="svg-white me-1" src="{% static 'base/typicons/svg/home.svg' %}" alt=""></a>
+          <img style="width: 30px;" class="svg-white me-1" src="{% static 'base/typicons/svg/home.svg' %}" alt="Foodstah homepage icon"></a>
         <a class="nav-item nav-link" href="javascript:void(0)">
-          <img style="width: 30px;" class="svg-white me-1" src="{% static 'base/typicons/svg/zoom.svg' %}" alt=""></a>
+          <img style="width: 30px;" class="svg-white me-1" src="{% static 'base/typicons/svg/zoom.svg' %}" alt="Foodstah search and explore page icon"></a>
         <a class="nav-item nav-link" href="javascript:void(0)">
-          <img style="width: 30px;" class="svg-white me-1" src="{% static 'base/typicons/svg/plus.svg' %}" alt=""> </a>
+          <img style="width: 30px;" class="svg-white me-1" src="{% static 'base/typicons/svg/plus.svg' %}" alt="Foodstah create new post icon"> </a>
         <a class="nav-item nav-link" href="{% url 'login' %}">
-          <img style="width: 30px;" class="svg-white me-1" src="{% static 'base/typicons/svg/user.svg' %}" alt=""></a>
+          <img style="width: 30px;" class="svg-white me-1" src="{% static 'base/typicons/svg/user.svg' %}" alt="Foodstah profile page icon"></a>
       {% endif %}
       
     </div>
