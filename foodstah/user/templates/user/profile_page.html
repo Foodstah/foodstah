@@ -6,8 +6,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% if title %}
-        <title>Foodstah - {{ title }}</title>
+   <meta name="description" property="og:description" content="Discover new food, drinks, recipes and more. Foodstah is the perfect place for foodies, foodsters or food and drink lovers.">
+    <meta name="keywords" content="foodstah, recipes, food, drinks, foodster">
+
+    {% if profile.username %}
+
+        <title>Foodstah - {{ profile.username }}</title>
     {% else %}
     <title>Foodstah</title>
     {% endif %}
@@ -137,7 +141,7 @@
               <a href="{{ profile.website }}" target="blank">{{ profile.website|default_if_none:"" }} </a>
               
 
-              <div>
+              <div class="d-flex">
 
                 <a href="{% url 'profile-update' user.username %}" class="btn btn-secondary mt-3">Edit profile</a>
 

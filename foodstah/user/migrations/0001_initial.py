@@ -15,23 +15,53 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Following',
+            name="Following",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('follower', models.CharField(max_length=1000)),
-                ('user', models.CharField(max_length=1000)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("follower", models.CharField(max_length=1000)),
+                ("user", models.CharField(max_length=1000)),
             ],
         ),
         migrations.CreateModel(
-            name='Profile',
+            name="Profile",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('first_name', models.CharField(blank=True, max_length=30, null=True)),
-                ('last_name', models.CharField(blank=True, max_length=30, null=True)),
-                ('image', models.ImageField(default='default.jpg', upload_to='profile_pics')),
-                ('description', models.TextField(blank=True, default=None, max_length=255, null=True)),
-                ('website', models.URLField(blank=True, default='', max_length=255)),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("first_name", models.CharField(blank=True, max_length=30, null=True)),
+                ("last_name", models.CharField(blank=True, max_length=30, null=True)),
+                (
+                    "image",
+                    models.ImageField(default="default.jpg", upload_to="profile_pics"),
+                ),
+                (
+                    "description",
+                    models.TextField(
+                        blank=True, default=None, max_length=255, null=True
+                    ),
+                ),
+                ("website", models.URLField(blank=True, default="", max_length=255)),
+                (
+                    "user",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]

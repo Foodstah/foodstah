@@ -5,16 +5,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path(
-        "",
-        user_view.home,
-        name="home"
-    ),
-    path(
-        "signup/",
-        user_view.signup,
-        name="signup"
-    ),
+    path("", user_view.home, name="home"),
+    path("signup/", user_view.signup, name="signup"),
     path(
         "login/",
         auth_view.LoginView.as_view(template_name="user/login.html"),
@@ -32,12 +24,16 @@ urlpatterns = [
     ),
     path(
         "password-reset/done/",
-        auth_view.PasswordResetDoneView.as_view(template_name="user/password_reset_done.html"),
+        auth_view.PasswordResetDoneView.as_view(
+            template_name="user/password_reset_done.html"
+        ),
         name="password-reset-done",
     ),
     path(
         "password_reset_confirm/<uidb64>/<token>/",
-        auth_view.PasswordResetConfirmView.as_view(template_name="user/password_reset_confirm.html"),
+        auth_view.PasswordResetConfirmView.as_view(
+            template_name="user/password_reset_confirm.html"
+        ),
         name="password_reset_confirm",
     ),
     path(
@@ -50,7 +46,7 @@ urlpatterns = [
         user_view.followers_count,
         name="followers_count",
     ),
-    path("profile/<username>/update", user_view.update_profile, name="profile-update")
+    path("profile/<username>/update", user_view.update_profile, name="profile-update"),
 ]
 
 
