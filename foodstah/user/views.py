@@ -89,7 +89,6 @@ def update_profile(request, username):
             data=request.POST, files=request.FILES, instance=request.user.profile
         )
         if form.is_valid():
-            form.website = "http://" +form.website
             form.save()
             return redirect("profile-page", username=username)
     form = ProfileForm()
