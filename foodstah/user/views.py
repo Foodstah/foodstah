@@ -34,8 +34,9 @@ def signup(request):
     if request.method == "POST":
         form = UserSignupForm(request.POST)
         if form.is_valid():
-            form.save()
             username = form.cleaned_data.get("username")
+            print("SAVE")
+            form.save()
             messages.success(request, f"Account successfully created for {username}!")
             return redirect("login")
 
