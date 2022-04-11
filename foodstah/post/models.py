@@ -21,6 +21,7 @@ class Post(models.Model):
     likes = models.ManyToManyField(User,related_name='post_likes')
     loves = models.ManyToManyField(User,related_name='post_loves')
     drooling_faces = models.ManyToManyField(User,related_name='post_drooling_faces')
+    favorite_posts = models.ManyToManyField(User, related_name='favorite_posts', default=None, blank=True)
 
     def clean(self, *args, **kwargs):
         if (self.is_recipe and self.ingredients == None) or (self.is_recipe and self.ingredients == None) or (self.is_recipe and self.recipe_description == None) or (self.is_recipe and self.cooking_time == None):
