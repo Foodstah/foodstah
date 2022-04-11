@@ -90,8 +90,9 @@ def update_profile(request, username):
         )
         if form.is_valid():
             form.save()
+            messages.success(request, f'Your account details have been updated.')
             return redirect("profile-page", username=username)
-    form = ProfileForm()
+    form = ProfileForm(instance=request.user.profile)
     return render(request, "user/update_profile_page.html", {"form": form})
 
 

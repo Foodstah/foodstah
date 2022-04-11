@@ -1,8 +1,9 @@
 from django.shortcuts import get_object_or_404, render, redirect
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.contrib import messages
 from django.http import HttpResponseRedirect, JsonResponse, HttpResponse
 from django.views.generic import DetailView, UpdateView, DeleteView
+from django.contrib.messages.views import SuccessMessageMixin
 from .forms import NewPostForm
 from .models import Post
 from io import BytesIO
@@ -113,7 +114,7 @@ class PostDetailsView(DetailView):
     context_object_name = "post"
 
 
-class PostUpdateView(UpdateView):
+class PostUpdateView(SuccessMessageMixin , UpdateView):
     model = Post
     fields = [
         "title",
@@ -126,9 +127,12 @@ class PostUpdateView(UpdateView):
     ]
     template_name = "post/post-update.html"
     context_object_name = "post"
-
+    success_message = "Your post has successfully updated."
 
 class PostDeleteView(DeleteView):
     model = Post
     context_object_name = "post"
-    success_url = reverse_lazy("food-feed")
+
+    def get_success_url(self):
+        messages.info(self.request, f"Your post was deleted successfully.")
+        return reverse("food-feed")

@@ -137,8 +137,8 @@
 
 
               <h6>{{ profile.first_name|default_if_none:"" }} {{ profile.last_name|default_if_none:"" }}</h6>
-              <p>{{ profile.description|default_if_none:"" }} </p>
-              <a href="{{ profile.website }}" target="blank">{{ profile.website|default_if_none:"" }} </a>
+              <p>{{ profile.profile.description|default_if_none:"" }} </p>
+              <a href="{{ profile.profile.website }}" target="blank">{{ profile.website|default_if_none:"" }} </a>
               
 
               <div class="d-flex">
