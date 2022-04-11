@@ -11,7 +11,7 @@
     <a class="d-inline-block reaction-button" href="{% url 'give-love' post.id %}" data-id="love-{{ post.id }}">&#128155; &nbsp;</a><span id="love-{{ post.id }}">{{ post.love_count }}</span> &nbsp;
     <a class="d-inline-block no-link reaction-button" href="{% url 'give-drooling-face' post.id %}" data-id="drool-{{ post.id }}">&#129316; &nbsp;</a><span id="drool-{{ post.id }}">{{ post.droolingface_count }}</span>
       
-    <a href="#">
+    <a href="{% url 'profile-page' username=post.author.username %}">
         <h4 class="d-block pt-2">by @{{ post.author }}</h4>
     </a>
     

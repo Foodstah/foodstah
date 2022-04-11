@@ -4,6 +4,7 @@ from django.views.decorators.http import require_POST
 
 from django.shortcuts import render, redirect
 from .models import Profile, Following
+from post.models import Post
 from .forms import UserSignupForm, ProfileForm
 from django.contrib import messages
 from django.contrib.auth.views import LogoutView
@@ -50,6 +51,7 @@ def profile_page(request, username):
     profile = User.objects.get(username=username)
     form = ProfileForm()
 
+    profile_posts = len(Post.objects.filter(author=profile))
     profile_followers = len(Following.objects.filter(user=profile))
     profile_following = len(Following.objects.filter(follower=profile))
 
@@ -83,6 +85,7 @@ def profile_page(request, username):
         "profile_following": profile_following,
         "follow_button_value": follow_button_value,
         "profile_form": form,
+        "profile_posts": profile_posts,
     }
     return render(request, "user/profile_page.html", context)
 
