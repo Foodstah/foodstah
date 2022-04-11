@@ -14,7 +14,7 @@ class Profile(models.Model):
     last_name = models.CharField(max_length=30, blank=True, null=True)
     image = models.ImageField(default="default.jpg", upload_to="profile_pics")
     description = models.TextField(default=None, max_length=255, blank=True, null=True)
-    website = models.URLField(max_length=255, blank=True, default="")
+    website = models.URLField(max_length=255, blank=True, null=True,)
     # following = models.ManyToManyField(User, related_name="following", blank=True)
 
     def get_profile_image(self):
@@ -22,13 +22,6 @@ class Profile(models.Model):
             return self.image.url
         return settings.MEDIA_URL.get_default()
 
-
-
-
-
-    # posts =
-    # following =
-    # followers =
 
     def __str__(self):
         return f"{self.user.username}'s Profile"

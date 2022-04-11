@@ -4,6 +4,7 @@ from django.views.decorators.http import require_POST
 
 from django.shortcuts import render, redirect
 from .models import Profile, Following
+from post.models import Post
 from .forms import UserSignupForm, ProfileForm
 from django.contrib import messages
 from django.contrib.auth.views import LogoutView
@@ -34,8 +35,9 @@ def signup(request):
     if request.method == "POST":
         form = UserSignupForm(request.POST)
         if form.is_valid():
-            form.save()
             username = form.cleaned_data.get("username")
+            print("SAVE")
+            form.save()
             messages.success(request, f"Account successfully created for {username}!")
             return redirect("login")
 
@@ -47,6 +49,10 @@ def signup(request):
 
 def profile_page(request, username):
     profile = User.objects.get(username=username)
+
+
+    profile_posts = len(Post.objects.filter(author=profile))
+
     profile_followers = len(Following.objects.filter(user=profile))
     profile_following = len(Following.objects.filter(follower=profile))
 
@@ -69,6 +75,8 @@ def profile_page(request, username):
         "profile_followers": profile_followers,
         "profile_following": profile_following,
         "follow_button_value": follow_button_value,
+        "profile_posts": profile_posts,
+
     }
     return render(request, "user/profile_page.html", context)
 
@@ -88,8 +96,13 @@ def update_profile(request,username):
 @require_POST
 def followers_count(request):
     value = request.POST["value"]
-    user = request.POST["user"]
-    follower = request.POST["follower"]
+    # what fixed this?:
+    # First, get the raw usernames of both the user and follower from the page
+    # Load the related object from the model
+    # Then we will create / delete the object from the Follower
+    user = User.objects.get(username=request.POST["user"])
+    follower = User.objects.get(username=request.POST["follower"])
+    print(follower)
     if value == "follow":
         followers_cnt = Following.objects.create(follower=follower, user=user)
         followers_cnt.save()
