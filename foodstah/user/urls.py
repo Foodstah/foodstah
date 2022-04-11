@@ -50,6 +50,7 @@ urlpatterns = [
         user_view.followers_count,
         name="followers_count",
     ),
+    path("profile/<username>/update", user_view.update_profile, name="profile-update")
 ]
 
 

@@ -1,0 +1,14 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block content %}
+<div>
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ profile_form.as_p }}
+      <button class="btn btn-primary" type="submit">Update Profile</button>
+      <a href="{% url 'profile-page' user.username %}" class="btn btn-primary" type="submit">Cancel</a>
+    </form>
+</div>
+
+{% endblock content %}
