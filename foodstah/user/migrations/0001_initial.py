@@ -15,6 +15,14 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
+            name='Following',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('follower', models.CharField(max_length=1000)),
+                ('user', models.CharField(max_length=1000)),
+            ],
+        ),
+        migrations.CreateModel(
             name='Profile',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
@@ -24,14 +32,6 @@ class Migration(migrations.Migration):
                 ('description', models.TextField(blank=True, default=None, max_length=255, null=True)),
                 ('website', models.URLField(blank=True, default='', max_length=255)),
                 ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-            ],
-        ),
-        migrations.CreateModel(
-            name='Following',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('follower', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='followers', to=settings.AUTH_USER_MODEL)),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='following', to=settings.AUTH_USER_MODEL)),
             ],
         ),
     ]

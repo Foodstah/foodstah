@@ -34,8 +34,9 @@ def signup(request):
     if request.method == "POST":
         form = UserSignupForm(request.POST)
         if form.is_valid():
-            form.save()
             username = form.cleaned_data.get("username")
+            print("SAVE")
+            form.save()
             messages.success(request, f"Account successfully created for {username}!")
             return redirect("login")
 
@@ -91,8 +92,13 @@ def profile_page(request, username):
 @require_POST
 def followers_count(request):
     value = request.POST["value"]
-    user = request.POST["user"]
-    follower = request.POST["follower"]
+    # what fixed this?:
+    # First, get the raw usernames of both the user and follower from the page
+    # Load the related object from the model
+    # Then we will create / delete the object from the Follower
+    user = User.objects.get(username=request.POST["user"])
+    follower = User.objects.get(username=request.POST["follower"])
+    print(follower)
     if value == "follow":
         followers_cnt = Following.objects.create(follower=follower, user=user)
         followers_cnt.save()
