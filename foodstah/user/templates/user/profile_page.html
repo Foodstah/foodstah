@@ -170,7 +170,7 @@
       </div>
       <div class="user-posts-saved-posts pt-3 d-flex justify-content-center">
           <button class="btn btn-primary me-2">My Posts</button>
-          <a href="{% url 'saved-posts' %}" class="btn btn-primary ms-2">Saved Posts</a>
+          <a href="{% url 'saved-posts' user.username %}" class="btn btn-primary ms-2">Saved Posts</a>
       </div>
       <div class="user-posts">
           <div class="row">
