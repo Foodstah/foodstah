@@ -10,7 +10,7 @@
             <div class="card mx-auto" style="width: 100%;">
               <div class="card-header d-flex flex-row">
                 <a href="{% url 'profile-page' username=post.author.username %}">
-                  <img src="{{ user.profile.image.url }}" alt="Profile image for {{ post.author}}">
+                  <img src="{{ post.author.profile.image.url }}" alt="Profile image for {{ post.author}}">
                 </a>
                 <a class="my-auto" style="color: white;" href="{% url 'profile-page' username=post.author.username %}">
                   <h5 class="my-auto ms-2">{{ post.author }}</h5>
