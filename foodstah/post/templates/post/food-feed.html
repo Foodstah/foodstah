@@ -48,7 +48,7 @@
                 <p class="card-text">User Y - Put the pancakes in my belly!</p>
                 <p class="card-text">User Z - I just saved the recipe for later, thanks for this one!</p>
               </div>
-              <a href="#" class="btn btn-primary float-start">Save post</a>
+              <a href="{% url 'save-post' post.id %}" class="btn btn-primary float-start">Save post</a>
               {% if post.is_recipe %}
               <a href="#" class="btn btn-primary float-end">Download recipe</a>
               {% else %}

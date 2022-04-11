@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse_lazy
 from django.contrib import messages
-from django.http import JsonResponse, HttpResponse
+from django.http import HttpResponseRedirect, JsonResponse, HttpResponse
 from django.views.generic import DetailView, UpdateView, DeleteView
 from .forms import NewPostForm
 from .models import Post
@@ -82,6 +82,25 @@ def give_drooling_face(request,pk):
     if request.META['HTTP_ACCEPT'] == "application/json":
         return JsonResponse({"reactions": post.drooling_faces.count()})
     return redirect("/food-feed")
+
+def save_post(request,pk):
+    post = get_object_or_404(Post,id=pk)
+    if post.favorite_posts.filter(id=request.user.id).exists():
+        post.favorite_posts.remove(request.user)
+    else:
+        post.favorite_posts.add(request.user)
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+def saved_post(request):
+    user_saved_post = Post.objects.filter(favorite_posts=request.user)
+    return render(request, "post/saved_post.html", {'user_saved_post':user_saved_post})
+
+
+
+
+
+
+
 
 class PostDetailsView(DetailView):
     model = Post
