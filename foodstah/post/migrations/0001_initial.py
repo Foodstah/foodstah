@@ -16,22 +16,60 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Post',
+            name="Post",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=50)),
-                ('post_description', models.TextField(blank=True, max_length=140, null=True)),
-                ('date_created', models.DateTimeField(default=django.utils.timezone.now)),
-                ('date_updated', models.DateTimeField(auto_now=True)),
-                ('main_image', models.ImageField(upload_to='post_pics')),
-                ('is_recipe', models.BooleanField()),
-                ('ingredients', models.TextField(blank=True, null=True)),
-                ('recipe_description', models.TextField(blank=True, null=True)),
-                ('cooking_time', models.CharField(blank=True, max_length=20, null=True)),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-                ('drooling_faces', models.ManyToManyField(related_name='post_drooling_faces', to=settings.AUTH_USER_MODEL)),
-                ('likes', models.ManyToManyField(related_name='post_likes', to=settings.AUTH_USER_MODEL)),
-                ('loves', models.ManyToManyField(related_name='post_loves', to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=50)),
+                (
+                    "post_description",
+                    models.TextField(blank=True, max_length=140, null=True),
+                ),
+                (
+                    "date_created",
+                    models.DateTimeField(default=django.utils.timezone.now),
+                ),
+                ("date_updated", models.DateTimeField(auto_now=True)),
+                ("main_image", models.ImageField(upload_to="post_pics")),
+                ("is_recipe", models.BooleanField()),
+                ("ingredients", models.TextField(blank=True, null=True)),
+                ("recipe_description", models.TextField(blank=True, null=True)),
+                (
+                    "cooking_time",
+                    models.CharField(blank=True, max_length=20, null=True),
+                ),
+                (
+                    "author",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "drooling_faces",
+                    models.ManyToManyField(
+                        related_name="post_drooling_faces", to=settings.AUTH_USER_MODEL
+                    ),
+                ),
+                (
+                    "likes",
+                    models.ManyToManyField(
+                        related_name="post_likes", to=settings.AUTH_USER_MODEL
+                    ),
+                ),
+                (
+                    "loves",
+                    models.ManyToManyField(
+                        related_name="post_loves", to=settings.AUTH_USER_MODEL
+                    ),
+                ),
             ],
         ),
     ]

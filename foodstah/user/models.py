@@ -14,14 +14,17 @@ class Profile(models.Model):
     last_name = models.CharField(max_length=30, blank=True, null=True)
     image = models.ImageField(default="default.jpg", upload_to="profile_pics")
     description = models.TextField(default=None, max_length=255, blank=True, null=True)
-    website = models.URLField(max_length=255, blank=True, null=True,)
+    website = models.URLField(
+        max_length=255,
+        blank=True,
+        null=True,
+    )
     # following = models.ManyToManyField(User, related_name="following", blank=True)
 
     def get_profile_image(self):
         if self.image:
             return self.image.url
         return settings.MEDIA_URL.get_default()
-
 
     def __str__(self):
         return f"{self.user.username}'s Profile"
@@ -36,13 +39,15 @@ class Profile(models.Model):
 
 # below this is my new Following class experiment.
 
+
 class Following(models.Model):
     user = models.ForeignKey(User, related_name="following", on_delete=models.CASCADE)
-    follower = models.ForeignKey(User, related_name="followers", on_delete=models.CASCADE)
+    follower = models.ForeignKey(
+        User, related_name="followers", on_delete=models.CASCADE
+    )
 
     def __str__(self):
         return self.user
-
 
     # user_id = models.ForeignKey(Profile, related_name="following", on_delete=models.CASCADE)
 

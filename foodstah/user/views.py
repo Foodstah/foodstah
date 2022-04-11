@@ -50,7 +50,6 @@ def signup(request):
 def profile_page(request, username):
     profile = User.objects.get(username=username)
 
-
     profile_posts = len(Post.objects.filter(author=profile))
 
     profile_followers = len(Following.objects.filter(user=profile))
@@ -76,22 +75,25 @@ def profile_page(request, username):
         "profile_following": profile_following,
         "follow_button_value": follow_button_value,
         "profile_posts": profile_posts,
-
     }
     return render(request, "user/profile_page.html", context)
 
 
 # all the functions for following are below
 
-def update_profile(request,username):
+
+def update_profile(request, username):
     # update profile form
     if request.method == "POST":
-        form = ProfileForm(data=request.POST, files=request.FILES, instance=request.user.profile)
+        form = ProfileForm(
+            data=request.POST, files=request.FILES, instance=request.user.profile
+        )
         if form.is_valid():
             form.save()
             return redirect("profile-page", username=username)
     form = ProfileForm()
     return render(request, "user/update_profile_page.html", {"profile_form": form})
+
 
 @require_POST
 def followers_count(request):
