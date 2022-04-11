@@ -17,12 +17,12 @@
                 </a> {% endcomment %}
                 <p class="my-auto ms-auto">{{ post.date_created }}</p>
             </div>
-            <a href="{% url 'post-detail' post.id %}">
+            <a href="{% url 'post-detail' post.slug %}">
                 <img src="{{ post.main_image.url }}" class="card-img-top" alt="...">
             </a>
             <div class="card-body">
                 <div class="title-and-likes">
-                    <a href="{% url 'post-detail' post.id %}">
+                    <a href="{% url 'post-detail' post.slug %}">
                         <h5 class="card-title d-inline-block w-50">{{ post.title }}</h5>
                     </a>
                     <div class="float-end">

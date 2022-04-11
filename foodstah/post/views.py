@@ -103,7 +103,7 @@ def save_post(request, pk):
     return HttpResponseRedirect(request.META["HTTP_REFERER"])
 
 
-def saved_post(request):
+def saved_post(request,username):
     user_saved_post = Post.objects.filter(favorite_posts=request.user)
     return render(request, "post/saved_post.html", {"user_saved_post": user_saved_post})
 
