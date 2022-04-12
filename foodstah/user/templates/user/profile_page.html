@@ -6,8 +6,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% if title %}
-        <title>Foodstah - {{ title }}</title>
+   <meta name="description" property="og:description" content="Discover new food, drinks, recipes and more. Foodstah is the perfect place for foodies, foodsters or food and drink lovers.">
+    <meta name="keywords" content="foodstah, recipes, food, drinks, foodster">
+
+    {% if profile.username %}
+
+        <title>Foodstah - {{ profile.username }}</title>
     {% else %}
     <title>Foodstah</title>
     {% endif %}
@@ -111,7 +115,7 @@
             <div style="display: none;" class="d-md-block">
               <div class="d-inline-block d-flex justify-content-end">
                 <img class="my-auto me-auto" src="{{ user.profile.image.url }}" alt="">
-                <h5 class="ms-3 my-auto d-inline-block"> 10 Posts</h5>
+                <h5 class="ms-3 my-auto d-inline-block"> {{ profile_posts }} Posts</h5>
                 <h5 class="ms-3 my-auto d-inline-block"> {{ profile_followers }} Followers</h5>
                 <h5 class="ms-3 my-auto d-inline-block"> {{ profile_following }} Following</h5>
               </div>
@@ -119,7 +123,7 @@
             <div class="d-sm-block d-md-none">
               <img class="mb-3 me-auto" src="{{ user.profile.image.url }}" alt="">
               <div class="d-flex">
-                <h5 class="ms-2 my-auto"> 10 Posts</h5>
+                <h5 class="ms-2 my-auto"> {{ profile_posts }} Posts</h5>
                 <h5 class="ms-3 my-auto"> {{ profile_followers }} Followers</h5>
                 <h5 class="ms-3 my-auto"> {{ profile_following }} Following</h5>
               </div>
@@ -133,13 +137,13 @@
 
 
               <h6>{{ profile.first_name|default_if_none:"" }} {{ profile.last_name|default_if_none:"" }}</h6>
-              <p>{{ profile.description|default_if_none:"" }} </p>
-              <a href="{{ profile.website }}" target="blank">{{ profile.website|default_if_none:"" }} </a>
+              <p>{{ profile.profile.description|default_if_none:"" }} </p>
+              <a href="{{ profile.profile.website }}" target="blank">{{ profile.website|default_if_none:"" }} </a>
               
 
-              <div>
+              <div class="d-flex">
 
-                <a href="#" class="btn btn-secondary mt-3">Edit profile</a>
+                <a href="{% url 'profile-update' user.username %}" class="btn btn-secondary mt-3">Edit profile</a>
 
                 <form action="{% url 'followers_count' %}" method="POST">
 
@@ -167,90 +171,44 @@
               </div>
               
           </div>
-          <div>
-            <form method="POST" enctype="multipart/form-data">
-              {% csrf_token %}
-              {{ profile_form.as_p }}
-              <button class="btn btn-primary" type="submit">Update Profile</button>
-            </form>
-          </div>
       </div>
       <div class="user-posts-saved-posts pt-3 d-flex justify-content-center">
           <button class="btn btn-primary me-2">My Posts</button>
-          <button class="btn btn-primary ms-2">Saved Posts</button>
+          <a href="{% url 'saved-posts' user.username %}" class="btn btn-primary ms-2">Saved Posts</a>
       </div>
-      <div class="user-posts">
-          <div class="row">
-              <div class="my-5 col-12 col-sm-12 col-md-6 col-lg-4">
-                <div class="card mx-auto" style="width: 100%;">
-                  <div class="card-header d-flex flex-row">
-                    <a href="javascript:void(0)">
-                      <img class="user-image-card" src="{{ user.profile.image.url }}" alt="">
-                    </a>
-                    <h5 class="my-auto ms-2">User name</h5>
-                    <p class="my-auto ms-auto">Date time</p>
-                  </div>
-                  <img src="images/pancakes_berries.jpg" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <div class="title-and-likes">
-                      <h5 class="card-title d-inline-block w-50">Post title</h5>
-                      <div class="float-end">
-                        <p class="d-inline-block">&#128077; &nbsp; 2 &nbsp;</p>
-                        <p class="d-inline-block">&#129316; &nbsp; 3 &nbsp;</p>
-                        <p class="d-inline-block"> &#128155; &nbsp; 1</p>
-                      </div>
-                      
-                    </div>
-                  </div>
-                </div> 
+      <div class="row">
+      {% if user_posts%}
+      {% for post in user_posts %}
+        <div class="my-5 col-12 col-sm-12 col-md-6 col-lg-6">
+          <div class="card mx-auto" style="width: 100%;">
+            <div class="card-header d-flex flex-row">
+              <a href="{% url 'profile-page' username=post.author.username %}">
+                <img src="{{ post.author.profile.image.url }}" alt="Profile image for {{ post.author}}">
+              </a>
+              <a class="my-auto" style="color: white;" href="{% url 'profile-page' username=post.author.username %}">
+                <h5 class="my-auto ms-2">{{ post.author }}</h5>
+              </a>
+              <p class="my-auto ms-auto">{{ post.date_created }}</p>
+            </div>
+            <a href="{{ post.get_absolute_url }}">
+              <img src="{{ post.main_image.url }}" class="card-img-top" alt="Image of {{ post.title }} by {{post.author}}">
+            </a>
+            <div class="card-body">
+              <div class="title-and-likes">
+                <a href="{{ post.get_absolute_url }}">
+                  <h5 class="card-title d-inline-block w-50">{{ post.title }}</h5>
+                </a>
+                <div class="float-end">
+                  <a class="d-inline-block reaction-button" href="{% url 'give-like' post.id %}" data-id="like-{{ post.id }}">&#128077; &nbsp;</a><span id="like-{{ post.id }}">{{ post.like_count }}</span>&nbsp;
+                  <a class="d-inline-block reaction-button" href="{% url 'give-love' post.id %}" data-id="love-{{ post.id }}">&#128155; &nbsp;</a><span id="love-{{ post.id }}">{{ post.love_count }}</span> &nbsp;
+                  <a class="d-inline-block no-link reaction-button" href="{% url 'give-drooling-face' post.id %}" data-id="drool-{{ post.id }}">&#129316; &nbsp;</a><span id="drool-{{ post.id }}">{{ post.droolingface_count }}</span>
+                </div>
               </div>
-              <div class="my-5 col-12 col-sm-12 col-md-6 col-lg-4">
-                <div class="card mx-auto" style="width: 100%;">
-                  <div class="card-header d-flex flex-row">
-                    <a href="javascript:void(0)">
-                      <img class="user-image-card" src="{{ user.profile.image.url }}" alt="">
-                    </a>
-                    <h5 class="my-auto ms-2">User name</h5>
-                    <p class="my-auto ms-auto">Date time</p>
-                  </div>
-                  <img src="images/pancakes_berries.jpg" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <div class="title-and-likes">
-                      <h5 class="card-title d-inline-block w-50">Post title</h5>
-                      <div class="float-end">
-                        <p class="d-inline-block">&#128077; &nbsp; 2 &nbsp;</p>
-                        <p class="d-inline-block">&#129316; &nbsp; 3 &nbsp;</p>
-                        <p class="d-inline-block"> &#128155; &nbsp; 1</p>
-                      </div>
-                    </div>
-                  </div>
-                </div> 
-              </div>
-              <div class="my-5 col-12 col-sm-12 col-md-6 col-lg-4">
-                <div class="card mx-auto" style="width: 100%;">
-                  <div class="card-header d-flex flex-row">
-                    <a href="javascript:void(0)">
-                      <img class="user-image-card" src="{{ user.profile.image.url }}" alt="">
-                    </a>
-                    <h5 class="my-auto ms-2">User name</h5>
-                    <p class="my-auto ms-auto">Date time</p>
-                  </div>
-                  <img src="images/pancakes_berries.jpg" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <div class="title-and-likes">
-                      <h5 class="card-title d-inline-block w-50">Post title</h5>
-                      <div class="float-end">
-                        <p class="d-inline-block">&#128077; &nbsp; 2 &nbsp;</p>
-                        <p class="d-inline-block">&#129316; &nbsp; 3 &nbsp;</p>
-                        <p class="d-inline-block"> &#128155; &nbsp; 1</p>
-                      </div>
-                    </div>
-                  </div>
-                </div> 
-              </div>
-          </div>
-
+            </div>
+        </div>     
       </div>
+      {% endfor %}
+      {% endif %}
     </div>
 
 

@@ -9,20 +9,20 @@
           <div class="my-5 col-12 col-sm-12 col-md-6 col-lg-6">
             <div class="card mx-auto" style="width: 100%;">
               <div class="card-header d-flex flex-row">
-                <a href="javascript:void(0)">
-                  <img src="{{ user.profile.image.url }}" alt="Profile image for {{ post.author}}">
+                <a href="{% url 'profile-page' username=post.author.username %}">
+                  <img src="{{ post.author.profile.image.url }}" alt="Profile image for {{ post.author}}">
                 </a>
-                <a class="my-auto" style="color: white;" href="{% url 'profile-page' username=user.username %}">
+                <a class="my-auto" style="color: white;" href="{% url 'profile-page' username=post.author.username %}">
                   <h5 class="my-auto ms-2">{{ post.author }}</h5>
                 </a>
                 <p class="my-auto ms-auto">{{ post.date_created }}</p>
               </div>
-              <a href="{% url 'post-detail' post.id %}">
+              <a href="{{ post.get_absolute_url }}">
               <img src="{{ post.main_image.url }}" class="card-img-top" alt="Image of {{ post.title }} by {{post.author}}">
               </a>
               <div class="card-body">
                 <div class="title-and-likes">
-                  <a href="{% url 'post-detail' post.id %}">
+                  <a href="{{ post.get_absolute_url }}">
                     <h5 class="card-title d-inline-block w-50">{{ post.title }}</h5>
                   </a>
                   <div class="float-end">
@@ -48,7 +48,7 @@
                 <p class="card-text">User Y - Put the pancakes in my belly!</p>
                 <p class="card-text">User Z - I just saved the recipe for later, thanks for this one!</p>
               </div>
-              <a href="#" class="btn btn-primary float-start">Save post</a>
+              <a href="{% url 'save-post' post.id %}" class="btn btn-primary float-start">Save post</a>
               {% if post.is_recipe %}
               <a href="#" class="btn btn-primary float-end">Download recipe</a>
               {% else %}

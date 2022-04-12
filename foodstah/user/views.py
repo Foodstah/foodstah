@@ -4,6 +4,7 @@ from django.views.decorators.http import require_POST
 
 from django.shortcuts import render, redirect
 from .models import Profile, Following
+from post.models import Post
 from .forms import UserSignupForm, ProfileForm
 from django.contrib import messages
 from django.contrib.auth.views import LogoutView
@@ -48,7 +49,8 @@ def signup(request):
 
 def profile_page(request, username):
     profile = User.objects.get(username=username)
-    form = ProfileForm()
+
+    profile_posts = len(Post.objects.filter(author=profile))
 
     profile_followers = len(Following.objects.filter(user=profile))
     profile_following = len(Following.objects.filter(follower=profile))
@@ -66,15 +68,11 @@ def profile_page(request, username):
         else:
             follow_button_value = "follow"
 
+    
+    user_posts = Post.objects.filter(author=profile)
 
 
-    # update profile form
-    form = ProfileForm(data=request.POST, files=request.FILES, instance=request.user.profile)
 
-    if request.method == "POST":
-        if form.is_valid():
-            form.save()
-            return redirect(request.META['HTTP_REFERER'])
 
     # the context
     context = {
@@ -82,12 +80,28 @@ def profile_page(request, username):
         "profile_followers": profile_followers,
         "profile_following": profile_following,
         "follow_button_value": follow_button_value,
-        "profile_form": form,
+        "profile_posts": profile_posts,
+        "user_posts": user_posts
     }
     return render(request, "user/profile_page.html", context)
 
 
 # all the functions for following are below
+
+
+def update_profile(request, username):
+    # update profile form
+    if request.method == "POST":
+        form = ProfileForm(
+            data=request.POST, files=request.FILES, instance=request.user.profile
+        )
+        if form.is_valid():
+            form.save()
+            messages.success(request, f'Your account details have been updated.')
+            return redirect("profile-page", username=username)
+    form = ProfileForm(instance=request.user.profile)
+    return render(request, "user/update_profile_page.html", {"form": form})
+
 
 @require_POST
 def followers_count(request):
