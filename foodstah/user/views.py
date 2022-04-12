@@ -98,10 +98,10 @@ def followers_count(request):
     # Then we will create / delete the object from the Follower
     user = User.objects.get(username=request.POST["user"])
     follower = User.objects.get(username=request.POST["follower"])
-    print(follower)
     if value == "follow":
         followers_cnt = Following.objects.create(follower=follower, user=user)
         followers_cnt.save()
+        print(follower, user)
     if value == "unfollow":
         followers_cnt = Following.objects.get(follower=follower, user=user)
         followers_cnt.delete()
