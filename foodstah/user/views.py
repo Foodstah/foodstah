@@ -69,6 +69,12 @@ def profile_page(request, username):
         else:
             follow_button_value = "follow"
 
+    
+    user_posts = Post.objects.filter(author=profile)
+
+
+
+
     # the context
     context = {
         "profile": profile,
@@ -76,6 +82,7 @@ def profile_page(request, username):
         "profile_following": profile_following,
         "follow_button_value": follow_button_value,
         "profile_posts": profile_posts,
+        "user_posts": user_posts
     }
     return render(request, "user/profile_page.html", context)
 
