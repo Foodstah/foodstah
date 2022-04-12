@@ -7,7 +7,7 @@ from .models import Profile, Following
 from post.models import Post
 from .forms import UserSignupForm, ProfileForm
 from django.contrib import messages
-from django.contrib.auth.views import LogoutView
+from django.contrib.auth.views import LogoutView, LoginView
 
 # Create your views here.
 
@@ -19,8 +19,9 @@ def home(request):
         return render(request, "base/index.html")
 
 
-def login(request):
-    return render(request, "user/login.html")
+class Login(LoginView):
+    """ Must enter a login view with login username as lower() """
+    pass
 
 
 class Logout(LogoutView):
