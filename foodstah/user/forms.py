@@ -30,6 +30,15 @@ class UserSignupForm(UserCreationForm):
         else:
             return username
 
+class UserSignInForm(AuthenticationForm):
+    class Meta:
+        model = User
+        fields = ["username", "password"]
+   
+    def clean_username(self):
+        username = self.cleaned_data["username"].lower()
+        return username
+
 
 class ProfileForm(forms.ModelForm):
     class Meta:

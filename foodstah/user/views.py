@@ -1,11 +1,10 @@
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.views.decorators.http import require_POST
-
 from django.shortcuts import render, redirect
 from .models import Profile, Following
 from post.models import Post
-from .forms import UserSignupForm, ProfileForm
+from .forms import UserSignupForm, ProfileForm, UserSignInForm
 from django.contrib import messages
 from django.contrib.auth.views import LogoutView, LoginView
 
@@ -21,7 +20,7 @@ def home(request):
 
 class Login(LoginView):
     """ Must enter a login view with login username as lower() """
-    pass
+    form_class = UserSignInForm
 
 
 class Logout(LogoutView):
