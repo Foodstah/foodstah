@@ -136,9 +136,9 @@
               <h2>@{{ profile.username }}</h2>
 
 
-              <h6>{{ profile.first_name|default_if_none:"" }} {{ profile.last_name|default_if_none:"" }}</h6>
-              <p>{{ profile.profile.description|default_if_none:"" }} </p>
-              <a href="{{ profile.profile.website }}" target="blank">{{ profile.website|default_if_none:"" }} </a>
+              <h6>{{ user.profile.first_name|default_if_none:"" }} {{ user.profile.last_name|default_if_none:"" }}</h6>
+              <p>{{ user.profile.description|default_if_none:"" }} </p>
+              <a href="{{ user.profile.website }}" target="blank">{{ user.profile.website|default_if_none:"" }} </a>
               
 
               <div class="d-flex">
