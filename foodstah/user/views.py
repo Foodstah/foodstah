@@ -71,7 +71,7 @@ def profile_page(request, username):
     
     user_posts = Post.objects.filter(author=profile)
 
-
+    user_saved_post = Post.objects.filter(favorite_posts=request.user)
 
 
     # the context
@@ -81,7 +81,8 @@ def profile_page(request, username):
         "profile_following": profile_following,
         "follow_button_value": follow_button_value,
         "profile_posts": profile_posts,
-        "user_posts": user_posts
+        "user_posts": user_posts,
+        "user_saved_post": user_saved_post
     }
     return render(request, "user/profile_page.html", context)
 

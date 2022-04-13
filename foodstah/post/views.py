@@ -10,29 +10,48 @@ from io import BytesIO
 from django.template.loader import get_template
 from xhtml2pdf import pisa
 
-
-def render_to_pdf(template_src, context_dict={}):
-    template = get_template(template_src)
-    html = template.render(context_dict)
-    result = BytesIO()
-    pdf = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")), result)
-    if not pdf.err:
-        return HttpResponse(result.getvalue(), content_type="application/pdf")
-    return None
+from django.conf import settings
+from weasyprint import HTML, CSS
+from weasyprint.text.fonts import FontConfiguration
+from django.template.loader import render_to_string
 
 
-def recipe_to_pdf(request, pk):
-    recipe = Post.objects.get(pk=pk)
-
+def recipe_to_pdf(request, slug):
+    recipe = Post.objects.get(slug=slug)
     context = {}
     context["post"] = recipe
-    pdf = render_to_pdf("post/pdf_template.html", context_dict=context)
 
-    response = HttpResponse(pdf, content_type="application/pdf")
+    # html_template = get_template('post/pdf_template.html').render()
+    html_template = render_to_string('post/pdf_template.html', context=context)
+    pdf_file = HTML(string=html_template).write_pdf()
+    response = HttpResponse(pdf_file, content_type='application/pdf')
     filename = f"Foodstah - {recipe.title}.pdf"
     content = f"attachment; filename={filename}"
-    response["Content-Disposition"] = content
+    response['Content-Disposition'] = 'filename="Foodstah - recipe.pdf"'
     return response
+
+# def render_to_pdf(template_src, context_dict={}):
+#     template = get_template(template_src)
+#     html = template.render(context_dict)
+#     result = BytesIO()
+#     pdf = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")), result)
+#     if not pdf.err:
+#         return HttpResponse(result.getvalue(), content_type="application/pdf")
+#     return None
+
+
+# def recipe_to_pdf(request, pk):
+#     recipe = Post.objects.get(pk=pk)
+
+#     context = {}
+#     context["post"] = recipe
+#     pdf = render_to_pdf("post/pdf_template.html", context_dict=context)
+
+#     response = HttpResponse(pdf, content_type="application/pdf")
+#     filename = f"Foodstah - {recipe.title}.pdf"
+#     content = f"attachment; filename={filename}"
+#     response["Content-Disposition"] = content
+#     return response
 
 
 # Create your views here.
