@@ -56,7 +56,7 @@ h3 {
     display:block;
 	font-weight: 800;
 	font-size: 28px;
-    color: #1367e1;
+    color: #4B3FD8;
     font-family: Poppins
 }
 
@@ -65,7 +65,7 @@ img {
 	margin: auto;
 	max-width: 350px;
 	max-height: auto;
-    border: 4px solid #1367e1;
+    border: 4px solid #4B3FD8;
     border-radius: 10px;
 }
 
@@ -79,15 +79,15 @@ footer {
 	position: fixed;
 	bottom: 0px;
 	left: 400px;
-    color: #1367e1;
-    border: 2px solid #1367e1;
+    color: #4B3FD8;
+    border: 2px solid #4B3FD8;
     padding: 5px;
     border-radius: 10px;
 }
 .center{
     display: block;
     text-align: center;
-    color: #1367e1;
+    color: #4B3FD8;
 }
 """,
         font_config=font_config,

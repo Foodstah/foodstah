@@ -40,7 +40,7 @@
   <div class="container-fluid">
 <!-- Logo text. -->
           <a class="navbar-brand mr-4 text-light" href="{% url 'food-feed' %}">
-            <img style="width: 60px;" src="{% static 'base/images/F_blue.png' %}" alt="Foodstah logo image">
+            <img style="width: 60px;" src="{% static 'base/images/F_purple.png' %}" alt="Foodstah logo image">
             <h1 class="d-inline-block align-middle pt-2 ">Foodstah</h1>
           </a>
           <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
@@ -73,7 +73,7 @@
     <div class="container-fluid">
   <!-- Logo text. -->
             <a class="navbar-brand mr-4 text-light" href="{% url 'index' %}">
-              <img style="width: 60px;" src="{% static 'base/images/F_blue.png' %}" alt="Foodstah logo image">
+              <img style="width: 60px;" src="{% static 'base/images/F_purple.png' %}" alt="Foodstah logo image">
               <h1 class="d-inline-block align-middle pt-2 ">Foodstah</h1>
             </a>
             <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
@@ -93,7 +93,7 @@
 
   <!-- Navigation fixed bottom for smaller screens -->
 
-  <nav style="background-color: #1367E1;" class="navbar bottom-nav fixed-bottom navbar-dark d-md-none">
+  <nav style="background-color: #4B3FD8;" class="navbar bottom-nav fixed-bottom navbar-dark d-md-none">
     <div class="container-fluid mx-4w">
       {% if user.is_authenticated %}
       <a class="nav-item nav-link" href="{% url 'food-feed' %}">
