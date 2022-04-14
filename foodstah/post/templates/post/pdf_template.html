@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+    {% load static %}
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,19 +8,22 @@
     <title>Foodstah - {{title}}</title>
 </head>
 <body>
-    <h1 style="font-weight: 900;">{{post.title}}</h1>
+    <h1>{{post.title}}</h1>
     <h3>by @{{post.author}}</h3>
 
     <img src="http://127.0.0.1:8000{{post.main_image.url}}" alt="">
 
     <br>
     <br>
-    <h4>Time:</h4>
-    <p>{{post.cooking_time}}</p>
-    <h4>Ingredients:</h4>
+    <h4 class="inline">Time:</h4> <p class="inline">{{post.cooking_time}}</p>
+    <h4>Ingredients</h4>
     <p>{{post.ingredients}}</p>
-    <h4>Instructions:</h4>
+    <h4>Instructions</h4>
     <p>{{post.recipe_description}}</p>
     
+    <footer>
+        <img class="inline" src="{% static 'images/F_blue.png' %}" alt="">
+        <p class="inline center">Recipes from around the globe, powered by Foodstah.</p>
+    </footer>
 </body>
 </html>

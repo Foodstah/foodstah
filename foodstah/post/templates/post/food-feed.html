@@ -50,7 +50,7 @@
               </div>
               <a href="{% url 'save-post' post.id %}" class="btn btn-primary float-start">Save post</a>
               {% if post.is_recipe %}
-              <a href="#" class="btn btn-primary float-end">Download recipe</a>
+              <a href="{% url 'download-recipe' post.slug %}" class="btn btn-primary float-end">Download recipe</a>
               {% else %}
               <a href="#" class="btn btn-primary float-end">Request recipe</a>
               {% endif %}
