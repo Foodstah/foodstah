@@ -1,0 +1,46 @@
+@font-face {
+	font-family: 'Poppins';
+	src: url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,700;0,800;1,200;1,400;1,900&display=swap');
+}
+
+@page {
+	size: A4; /* Change from the default size of A4 */
+	margin: 40px; /* Set margin on each page */
+}
+
+body {
+	font-family: 'Poppins';
+}
+h1 {
+	font-weight: 800;
+	font-size: 44px;
+	text-align: center;
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+h3 {
+	margin-top: 0;
+	padding-left: 80px;
+	font-weight: 800;
+	font-size: 28px;
+	text-align: center;
+}
+
+img {
+	display: block;
+	margin: auto;
+	max-width: 300px;
+	max-height: 300px;
+}
+
+.inline {
+	display: inline-block;
+	margin: 0;
+}
+
+footer {
+	display: block;
+	position: fixed;
+	bottom: 0px;
+	left: 20px;
+}

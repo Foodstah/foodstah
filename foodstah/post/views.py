@@ -17,17 +17,89 @@ from django.template.loader import render_to_string
 
 
 def recipe_to_pdf(request, slug):
+    font_config = FontConfiguration()
     recipe = Post.objects.get(slug=slug)
+    title = recipe.title
     context = {}
     context["post"] = recipe
 
-    # html_template = get_template('post/pdf_template.html').render()
     html_template = render_to_string('post/pdf_template.html', context=context)
-    pdf_file = HTML(string=html_template).write_pdf()
+    html = HTML(string=html_template)
+    css = CSS(
+        string="""
+        @font-face {
+	font-family: Poppins;
+	src: url(https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,700;0,800;1,200;1,400;1,900);
+}
+
+
+@page {
+	size: A4; /* Change from the default size of A4 */
+	margin: 40px; /* Set margin on each page */
+}
+
+body {
+	font-family: Poppins
+}
+h1 {
+	font-weight: 800;
+	font-size: 44px;
+	text-align: center;
+	margin-bottom: 0;
+	padding-bottom: 0;
+    font-family: Poppins
+}
+h3 {
+	margin-top: 10px;
+	padding-left: 80px;
+    text-align: right;
+    display:block;
+	font-weight: 800;
+	font-size: 28px;
+    color: #1367e1;
+    font-family: Poppins
+}
+
+img {
+	display: block;
+	margin: auto;
+	max-width: 350px;
+	max-height: auto;
+    border: 4px solid #1367e1;
+    border-radius: 10px;
+}
+
+.inline {
+	display: inline-block;
+	margin: 0;
+}
+
+footer {
+	display: block;
+	position: fixed;
+	bottom: 0px;
+	left: 400px;
+    color: #1367e1;
+    border: 2px solid #1367e1;
+    padding: 5px;
+    border-radius: 10px;
+}
+.center{
+    display: block;
+    text-align: center;
+    color: #1367e1;
+}
+""",
+        font_config=font_config,
+    )
+    pdf_file = html.write_pdf(stylesheets=[css],
+        font_config=font_config)
+
+    
     response = HttpResponse(pdf_file, content_type='application/pdf')
-    filename = f"Foodstah - {recipe.title}.pdf"
+    filename = f"Foodstah - {title}.pdf"
     content = f"attachment; filename={filename}"
-    response['Content-Disposition'] = 'filename="Foodstah - recipe.pdf"'
+    response['Content-Disposition'] = content
     return response
 
 # def render_to_pdf(template_src, context_dict={}):

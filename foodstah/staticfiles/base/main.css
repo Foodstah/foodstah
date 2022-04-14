@@ -174,8 +174,9 @@ div.div-space {
 
 .card-header a img {
 	width: 50px;
-	height: auto;
+	height: 50px;
 	border-radius: 100%;
+	border: 2px solid #ffffff;
 }
 
 .comment-section {
@@ -191,8 +192,8 @@ div.div-space {
 
 .user-image-stats img {
 	width: 150px;
-	height: auto;
-	border: 8px solid #ffffff;
+	height: 150px;
+	border: 6px solid #1367e1;
 	border-radius: 200px;
 }
 .user-image-card {
