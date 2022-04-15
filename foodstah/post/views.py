@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect, JsonResponse, HttpResponse
 from django.views.generic import DetailView, UpdateView, DeleteView
 from django.contrib.messages.views import SuccessMessageMixin
-from .forms import NewPostForm
+from .forms import NewPostForm, NewCommentForm
 from .models import Post
 from io import BytesIO
 from django.template.loader import get_template
@@ -227,3 +227,23 @@ class PostDeleteView(DeleteView):
     def get_success_url(self):
         messages.info(self.request, f"Your post was deleted successfully.")
         return reverse("food-feed")
+
+
+def add_comment(request,slug):
+    if request.method == "POST":
+        form = NewCommentForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            form.instance.post_slug = {'slug': slug}
+            form.instance.user = request.user
+            form.save()
+            messages.success(request, "Your comment was added successfully.")
+            return redirect("food-feed")
+
+        messages.info(
+            request,
+            "There was an problem trying to add your comment.",
+        )
+
+    form = NewCommentForm()
+    return render(request, "post/new_comment.html", {"new_comment_form": form})

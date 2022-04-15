@@ -63,3 +63,15 @@ class Post(models.Model):
 
     def droolingface_count(self):
         return self.drooling_faces.count()
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post, related_name="comments", on_delete=models.CASCADE)
+    username = models.ForeignKey(User, on_delete=models.CASCADE)
+    body = models.TextField()
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self) -> str:
+        return f"{self.post.title} - {self.username}"
+    
+    def get_absolute_url(self):
+        return reverse("new-comment", kwargs={"slug": self.post.slug})
