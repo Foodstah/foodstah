@@ -1,0 +1,66 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+
+<!--Add new post-->
+
+<div class="content-section">
+    
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="form-group pt-4 pb-3">
+            <legend class="border-bottom mb-4">
+                <h2>New Comment</h2>
+            </legend>
+
+            {% for field in form %}
+            <div>
+            {% if field.errors %}
+                {% for error in field.errors %}
+                <p class="alert warning-message">{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+            </div>
+            {% endfor %}
+
+
+            <div class="pt-2"> 
+                <label for="{{ form.body.body }}" class="requiredField"> <h4 me-3>Body </h4>  </label>
+                <div> {{ new_comment_form.body }} </div>
+            </div>
+                 
+        </fieldset>
+        <div class="form-group text-center mb-2">
+            
+            <button class="btn btn-primary my-4" type="submit">Add comment</button>
+        </div>
+        
+    </form>
+</div>
+
+{% else %}
+
+<p class="text-center">Looks like you're not authenticated. <a href="{% url '/login' %}">Login here</a> to add blog posts.</p>
+
+{% endif %}
+
+
+
+
+
+<script type="text/javascript">
+    function showPreview(event){
+  if(event.target.files.length > 0){
+    var src = URL.createObjectURL(event.target.files[0]);
+    var preview = document.getElementById("file-ip-1-preview");
+    preview.src = src;
+    preview.style.display = "block";
+  }
+}
+</script>
+
+{% endblock content %}
