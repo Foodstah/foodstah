@@ -13,5 +13,5 @@ urlpatterns = [
     path("post/<slug:slug>/download-recipe", views.recipe_to_pdf, name="download-recipe"),
     path("post/<int:pk>/save", views.save_post, name="save-post"),
     path("profile/<username>/saved-posts/", views.saved_post,name="saved-posts"),
-
+    path("post/<slug:slug>/new-comment", views.add_comment, name="new-comment"),
 ]

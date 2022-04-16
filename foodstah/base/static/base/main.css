@@ -25,7 +25,6 @@ body {
 	max-width: 1050px;
 	margin: auto;
 	background-color: white;
-	padding-bottom: 10px;
 }
 
 /* Centered text image */
@@ -145,6 +144,14 @@ div.div-space {
 	padding-right: .75rem;
 }
 
+.investor-relations img {
+	margin-left: auto;
+	margin-right: auto;
+	width: 60%;
+	height: auto;
+	border: 8px solid #4b3fd8;
+	border-radius: 20px;
+}
 .what-is-foodstah img {
 	margin-left: auto;
 	margin-right: auto;
@@ -280,6 +287,13 @@ input[type="checkbox"]:checked::before {
 textarea {
 	width: 60%;
 	height: 100px;
+}
+
+footer {
+	padding-top: 20px;
+	background-color: #4b3fd8;
+	color: #ffffff;
+	margin-bottom: 0;
 }
 
 /* BOOTSTRAP OVERRIDES */
