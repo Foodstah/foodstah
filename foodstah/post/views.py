@@ -105,7 +105,12 @@ footer {
     return response
 
 def post(request):
-    posts = Post.objects.all().order_by("-date_created")
+    posts = []
+    for post in Post.objects.all().order_by("-date_created"):
+        posts.append({
+            'post': post,
+            'is_favorite': post.favorite_posts.filter(id=request.user.id).exists()
+        })
     return render(request, "post/food-feed.html", {"posts": posts})
 
 
