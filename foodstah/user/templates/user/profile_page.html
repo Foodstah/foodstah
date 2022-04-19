@@ -142,8 +142,12 @@
               
 
               <div class="d-flex">
+                {% if post.author == user %}
+                <a href="{% url 'profile-update' user.username %}" class="btn btn-secondary py-auto mt-3">Edit profile 
+                  <img class="svg-white" src="{% static 'base/typicons/svg/edit.svg' %}" alt="Foodstah edit icon">
+                </a>
+                {% endif %}
 
-                <a href="{% url 'profile-update' user.username %}" class="btn btn-secondary mt-3">Edit profile</a>
 
                 <form action="{% url 'followers_count' %}" method="POST">
 
@@ -156,13 +160,14 @@
                     {% if follow_button_value == "follow" %}
                     <input type="hidden" name="value" value="follow">
                         <button type="submit" class="btn btn-secondary mt-3">
-                            Follow
+                          Follow <img class="svg-white" src="{% static 'base/typicons/svg/user-add.svg' %}" alt="Foodstah add user icon">
+                            
                         </button>
 
                     {% else %}
                     <input type="hidden" name="value" value="unfollow">
                         <button type="submit" class="btn btn-secondary mt-3">
-                            Unfollow
+                            Unfollow <img class="svg-white" src="{% static 'base/typicons/svg/user-delete.svg' %}" alt="Foodstah remove user icon">
                         </button>
 
                     {% endif %}
