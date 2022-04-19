@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.views.decorators.http import require_POST
+from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, redirect
 from .models import Profile, Following
 from post.models import Post
@@ -29,7 +30,7 @@ class Logout(LogoutView):
             messages.info(request, "You have successfully logged out.")
         return super().dispatch(request, *args, **kwargs)
 
-
+@csrf_exempt
 def signup(request):
 
     if request.method == "POST":
