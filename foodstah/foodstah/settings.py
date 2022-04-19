@@ -33,13 +33,21 @@ DEBUG = True
 
 # security settings
 
-CSRF_TRUSTED_ORIGINS = ["https://foodstah.co"]
+CSRF_TRUSTED_ORIGINS = ["https://foodstah.co", "http://foodstah.co"]
 
 SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = False
 SECURE_SSL_REDIRECT = False
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "54.210.68.90", "foodstah.co"]
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "54.210.68.90",
+    "https://foodstah.co",
+    "http://foodstah.co",
+]
 
 
 # Application definition
@@ -150,4 +158,3 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 LOGIN_REDIRECT_URL = "/food-feed/"
-
