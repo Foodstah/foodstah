@@ -25,7 +25,6 @@ body {
 	max-width: 1050px;
 	margin: auto;
 	background-color: white;
-	padding-bottom: 10px;
 }
 
 /* Centered text image */
@@ -103,6 +102,10 @@ h6 {
 	width: 30px;
 	filter: invert(100%) sepia(1%) saturate(2%) hue-rotate(248deg) brightness(111%) contrast(101%);
 }
+.svg-purple {
+	width: 30px;
+	filter: invert(34%) sepia(72%) saturate(7498%) hue-rotate(243deg) brightness(88%) contrast(91%);
+}
 
 /* LANDING PAGE / ENTER THE APP */
 
@@ -145,6 +148,14 @@ div.div-space {
 	padding-right: .75rem;
 }
 
+.investor-relations img {
+	margin-left: auto;
+	margin-right: auto;
+	width: 60%;
+	height: auto;
+	border: 8px solid #4b3fd8;
+	border-radius: 20px;
+}
 .what-is-foodstah img {
 	margin-left: auto;
 	margin-right: auto;
@@ -280,6 +291,13 @@ input[type="checkbox"]:checked::before {
 textarea {
 	width: 60%;
 	height: 100px;
+}
+
+footer {
+	padding-top: 20px;
+	background-color: #4b3fd8;
+	color: #ffffff;
+	margin-bottom: 0;
 }
 
 /* BOOTSTRAP OVERRIDES */

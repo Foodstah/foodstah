@@ -1,0 +1,137 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html class="mb-0" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" property="og:description" content="Discover new food, drinks, recipes and more. Foodstah is the perfect place for foodies to save and share recipes with people around the globe.">
+    <meta name="keywords" content="foodstah, recipes, food, drinks, foodster">
+
+    <title>Foodstah</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'base/images/favicon.ico' %}">
+
+    <!-- Poppins and Caveat font (Main font) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Poppins:ital,wght@0,200;0,400;0,700;0,800;1,200;1,400;1,900&display=swap" rel="stylesheet">
+  
+    <!-- CSS Bootstrap link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+ 
+    <!-- Main custom CSS file. All overrides for CSS will be here -->
+    <link rel="stylesheet" href="{% static 'base/main.css' %}">
+
+    <script src="https://unpkg.com/typeit@8.3.3/dist/index.umd.js"></script>
+
+</head>
+<body class="mb-0 pb-0">
+
+  <!-- NAVIGATION BAR -->
+  
+  <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+    <div class="container-fluid">
+      
+  <!-- Logo text. -->
+        
+            <a class="navbar-brand mr-4 text-light" href="javascript:void(0)">
+                <img style="width: 60px;" src="{% static 'base/images/F_purple.png' %}" alt="">
+                <h1 class="d-inline-block align-middle pt-2 ">Foodstah</h1>
+            </a>
+            <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+              <span class="navbar-toggler-icon custom-toggler"></span>
+            </button>   
+  
+            <div class="collapse navbar-collapse" id="mynavbar">
+            <div class="navbar-nav ms-auto">
+  <!-- User links -->
+              <div class="navbar-nav">
+                
+                <!-- <a class="nav-item nav-link" href="javascript:void(0)">
+                  <img class="svg-white" src="{% static 'typicons/svg/user.svg' %}" alt="">Profile</a> -->
+              
+                <a class="nav-item nav-link me-2" href="{% url 'login' %}">
+                  <img class="svg-white svg-large" src="{% static 'base/typicons/svg/user.svg' %}" alt="">Login</a>
+                  <a class="nav-item my-auto btn btn-primary button" href="{% url 'signup' %}">Signup</a>
+              </div>
+            </div>
+          </div>
+    </div>
+    
+  </nav>
+  <div class="home-page-container">
+    
+    <div class="investor-relations pt-3">
+        
+        <h1 class="pt-4 pb-4 text-center">Investor Relations</h1>
+        <div class="topborder mx-auto mb-3" style="border-top: 2px solid #4b3fd8; width: 80%;"></div>
+        <div class="row mt-4 ps-0">
+            <div class="mt-4 mb-5 col-12 col-sm-12 col-md-12 col-lg-6">
+                <h4 class="text-center px-3">Sir Johannes Impossibilius IV <br> of Norway </h4>
+                    <br>
+                <p class="px-5">
+                    Reining from Norway, Sir Johannes Impossibilius the fourth is the man that helped lay the foundations for Foodstah.
+                    With a big brain and an even bigger bank account this project wouldn't have been possible without this man.
+                </p>
+                <p class="px-5">
+                    With 100% of the 25 million euros that Foodstah has raised for their Series A funding coming from this man,
+                    the team can't stress enough how vital Impossibilius has been in helping get Foodstah's feet up off the ground.
+                </p>
+                
+                <div class="text-center">
+                    <a class="btn btn-secondary mt-2" href="{% url 'signup' %}">Sign Up Now!</a>
+                </div>
+            </div>
+            <div class="d-lg-block mt-4 mb-5 col-12 col-sm-12 col-md-12 col-lg-6">
+                <img class="mx-auto d-block" src="{% static 'base/images/johannes.jpg' %}" alt="Foodstah image of pancakes with berries ans syrup">
+            </div>
+            
+    </div>
+    
+
+  <footer class="d-none d-md-flex justify-content-around mt-5">
+    <div class="links">
+        <p style="border-bottom:2px solid white; font-size: 20px;" class="mb-2 px-5 pb-1 text-center"><strong>Quick Links </strong> </p>
+        <a class="d-block pt-1" style="color: white;" href="{% url 'signup' %}">- Sign Up</a>
+        <a class="d-inline-block" style="color: white;" href="{% url 'food-feed' %}">- The Food Feed</a>
+        <a class="d-block" style="color: white;" href="{% url 'investor-relations' %}">- Investor Relations</a>
+        <a class="d-inline-block pb-2" style="color: white;" target="blank" href="https://www.instagram.com/foodstah_co/">- Contact</a>
+    </div>
+    <div class="copyright my-auto">
+        <p><strong>Copyright &copy; The Foodstah co </strong> </p>
+    </div>
+    <div class="social-media">
+        <a target="blank" href="https://www.instagram.com/foodstah_co/">
+            <img style="width: 150px;" class="my-0 py-0" src="{% static 'base/typicons/svg/instagram-logo.png' %}" alt="">
+        </a>
+    </div>
+</footer>
+
+<footer class="d-sm-block d-md-none px-5 text-center mt-4">
+    <div class="links mt-2">
+        <p style="border-bottom:2px solid white; font-size: 20px;" class="mb-2"><strong>Quick Links </strong> </p>
+        <a class="d-block px-4 pt-1 pb-2" style="color: white;" href="{% url 'signup' %}">Sign Up</a>
+        <a class="d-block px-4 pt-1 pb-2" style="color: white;" href="{% url 'food-feed' %}">The Food Feed</a>
+        <a class="d-block px-4 pt-1 pb-2" style="color: white;" href="{% url 'investor-relations' %}">Investor Relations</a>
+        <a class="d-block px-4 pt-1 pb-0" style="color: white;" target="blank" href="https://www.instagram.com/foodstah_co/">Contact</a>
+    </div>
+    <div class="social-media mx-auto">
+        <a target="blank" href="https://www.instagram.com/foodstah_co/">
+            <img style="width: 100px;" class="my-0 py-0" src="{% static 'base/typicons/svg/instagram-logo.png' %}" alt="">
+        </a>
+    </div>
+    <div class="copyright pb-2">
+        <p><strong>Copyright &copy; The Foodstah co </strong> </p>
+    </div>
+</footer>
+  
+
+</div>
+
+
+<!-- JS script linking for Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</body>
+</html>
