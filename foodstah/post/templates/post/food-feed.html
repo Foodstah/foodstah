@@ -68,11 +68,6 @@
               </a>
               {% endif %}
               {% if post.is_recipe %}
-              <a href="{% url 'download-recipe' post.post.slug %}" class="btn btn-primary float-end">Download recipe</a>
-              <a href="{% url 'save-post' post.id %}" class="btn btn-primary float-start"><strong>Save post </strong>
-                <img class="svg-purple" src="{% static 'base/typicons/svg/bookmark.svg' %}" alt="Foodstah bookmark icon">
-              </a>
-              {% if post.is_recipe %}
               <a href="{% url 'download-recipe' post.slug %}" class="btn btn-primary float-end"><strong>Download recipe </strong> 
                 <img class="svg-purple" src="{% static 'base/typicons/svg/download-outline.svg' %}" alt="Foodstah download icon">
               </a>
