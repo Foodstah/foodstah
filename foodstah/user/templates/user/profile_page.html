@@ -114,14 +114,14 @@
           <div class="user-image-stats pb-3 border-bottom">
             <div style="display: none;" class="d-md-block">
               <div class="d-inline-block d-flex justify-content-end">
-                <img class="my-auto me-auto" src="{{ user.profile.image.url }}" alt="">
+                <img class="my-auto me-auto" src="{{ profile.profile.image.url }}" alt="">
                 <h5 class="ms-3 my-auto d-inline-block"> {{ profile_posts }} Posts</h5>
                 <h5 class="ms-3 my-auto d-inline-block"> {{ profile_followers }} Followers</h5>
                 <h5 class="ms-3 my-auto d-inline-block"> {{ profile_following }} Following</h5>
               </div>
             </div>
             <div class="d-sm-block d-md-none">
-              <img class="mb-3 me-auto" src="{{ user.profile.image.url }}" alt="">
+              <img class="mb-3 me-auto" src="{{ profile.profile.image.url }}" alt="">
               <div class="d-flex">
                 <h5 class="ms-2 my-auto"> {{ profile_posts }} Posts</h5>
                 <h5 class="ms-3 my-auto"> {{ profile_followers }} Followers</h5>
@@ -136,9 +136,9 @@
               <h2>@{{ profile.username }}</h2>
 
 
-              <h6>{{ user.profile.first_name|default_if_none:"" }} {{ user.profile.last_name|default_if_none:"" }}</h6>
-              <p>{{ user.profile.description|default_if_none:"" }} </p>
-              <a href="{{ user.profile.website }}" target="blank">{{ user.profile.website|default_if_none:"" }} </a>
+              <h6>{{ profile.profile.first_name|default_if_none:"" }} {{ profile.profile.last_name|default_if_none:"" }}</h6>
+              <p>{{ profile.profile.description|default_if_none:"" }} </p>
+              <a href="{{ profile.profile.website }}" target="blank">{{ profile.profile.website|default_if_none:"" }} </a>
               
 
               <div class="d-flex">

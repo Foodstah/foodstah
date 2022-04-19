@@ -8,11 +8,16 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('post', '0002_post_favorite_posts'),
+        ('post', '0002_alter_post_options_post_slug'),
     ]
 
     operations = [
         migrations.AlterField(
+            model_name="post",
+            name="title",
+            field=models.CharField(max_length=80),
+        ),
+        migrations.AddField(
             model_name='post',
             name='favorite_posts',
             field=models.ManyToManyField(blank=True, default=None, related_name='favorite_posts', to=settings.AUTH_USER_MODEL),
