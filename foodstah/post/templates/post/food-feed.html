@@ -70,8 +70,12 @@
 {% endfor %}
 
 {% else %}
-<p class="alert .info-message">No posts available. You must create a new post or follow another user to see posts.</p>
+<div class="container">
+  <p class="alert info-message">No posts available. You must create a new post or follow another user to see posts.</p>
+</div>
 {% endif %}
+
+
 <script type="text/javascript">
   const pageContainer = document.querySelector('.page-container')
   pageContainer.addEventListener('click', event => {

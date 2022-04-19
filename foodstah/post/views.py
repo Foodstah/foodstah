@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse_lazy, reverse
 from django.contrib import messages
+from user.models import User
 from django.http import HttpResponseRedirect, JsonResponse, HttpResponse
 from django.views.generic import DetailView, UpdateView, DeleteView
 from django.contrib.messages.views import SuccessMessageMixin
@@ -101,33 +102,6 @@ footer {
     content = f"attachment; filename={filename}"
     response['Content-Disposition'] = content
     return response
-
-# def render_to_pdf(template_src, context_dict={}):
-#     template = get_template(template_src)
-#     html = template.render(context_dict)
-#     result = BytesIO()
-#     pdf = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")), result)
-#     if not pdf.err:
-#         return HttpResponse(result.getvalue(), content_type="application/pdf")
-#     return None
-
-
-# def recipe_to_pdf(request, pk):
-#     recipe = Post.objects.get(pk=pk)
-
-#     context = {}
-#     context["post"] = recipe
-#     pdf = render_to_pdf("post/pdf_template.html", context_dict=context)
-
-#     response = HttpResponse(pdf, content_type="application/pdf")
-#     filename = f"Foodstah - {recipe.title}.pdf"
-#     content = f"attachment; filename={filename}"
-#     response["Content-Disposition"] = content
-#     return response
-
-
-# Create your views here.
-
 
 def post(request):
     posts = Post.objects.all().order_by("-date_created")
@@ -234,8 +208,9 @@ def add_comment(request,slug):
         form = NewCommentForm(request.POST, request.FILES)
 
         if form.is_valid():
-            form.instance.post_slug = {'slug': slug}
-            form.instance.user = request.user
+            form.instance.username = User.objects.get(username=request.user)
+            post = Post.objects.get(slug=slug)
+            form.instance.post = post
             form.save()
             messages.success(request, "Your comment was added successfully.")
             return redirect("food-feed")
