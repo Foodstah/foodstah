@@ -143,7 +143,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_REDIRECT_URL = "/food-feed/"
 
-CSRF_TRUSTED_ORIGINS = ["https://foodstah.co"]
+CSRF_TRUSTED_ORIGINS = ["foodstah.co"]
 
 SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = False
