@@ -77,7 +77,7 @@ TEMPLATES = [
     },
 ]
 
-MEDIA_ROOT = env("MEDIA_ROOT")
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
 
 WSGI_APPLICATION = "foodstah.wsgi.application"
