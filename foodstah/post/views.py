@@ -235,12 +235,11 @@ def add_comment(request,slug):
         form = NewCommentForm(request.POST)
         if form.is_valid():
             form.instance.username = User.objects.get(username=request.user)
-            # form.instance.username = request.user
-            form.instance.post_slug = {'slug': slug}
+            post = Post.objects.get(slug=slug)
+            form.instance.post = post
             form.save()
             messages.success(request, "Your comment was added successfully.")
             return redirect("food-feed")
-
         messages.info(
             request,
             "There was an problem trying to add your comment.",
