@@ -31,6 +31,14 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# security settings
+
+CSRF_TRUSTED_ORIGINS = ["https://foodstah.co"]
+
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+SECURE_SSL_REDIRECT = False
+
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "54.210.68.90", "foodstah.co"]
 
 
@@ -143,8 +151,3 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_REDIRECT_URL = "/food-feed/"
 
-CSRF_TRUSTED_ORIGINS = ["foodstah.co"]
-
-SESSION_COOKIE_SECURE = False
-CSRF_COOKIE_SECURE = False
-SECURE_SSL_REDIRECT = False
