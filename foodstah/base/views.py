@@ -7,6 +7,5 @@ from django.contrib.auth.models import User
 def index(request):
     return render(request, "base/index.html")
 
-
 def investor_relations(request):
     return render(request, "base/investor-relations.html")

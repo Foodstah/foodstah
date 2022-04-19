@@ -59,14 +59,27 @@
               {% endif %}
               </div>
               {% if post.is_favorite %}
-                <a href="{% url 'save-post' post.post.id %}" class="btn btn-primary float-start">Unsave post</a>
+                <a href="{% url 'save-post' post.post.id %}" class="btn btn-primary float-start"><strong>Unsave post </strong>
+                  <img class="svg-purple" src="{% static 'base/typicons/svg/bookmark.svg' %}" alt="Foodstah bookmark icon">
+                </a>
               {% else %}
-              <a href="{% url 'save-post' post.post.id %}" class="btn btn-primary float-start">Save post</a>
+              <a href="{% url 'save-post' post.post.id %}" class="btn btn-primary float-start"><strong>Save post </strong>
+                <img class="svg-purple" src="{% static 'base/typicons/svg/bookmark.svg' %}" alt="Foodstah bookmark icon">
+              </a>
               {% endif %}
               {% if post.is_recipe %}
               <a href="{% url 'download-recipe' post.post.slug %}" class="btn btn-primary float-end">Download recipe</a>
+              <a href="{% url 'save-post' post.id %}" class="btn btn-primary float-start"><strong>Save post </strong>
+                <img class="svg-purple" src="{% static 'base/typicons/svg/bookmark.svg' %}" alt="Foodstah bookmark icon">
+              </a>
+              {% if post.is_recipe %}
+              <a href="{% url 'download-recipe' post.slug %}" class="btn btn-primary float-end"><strong>Download recipe </strong> 
+                <img class="svg-purple" src="{% static 'base/typicons/svg/download-outline.svg' %}" alt="Foodstah download icon">
+              </a>
               {% else %}
-              <a href="#" class="btn btn-primary float-end">Request recipe</a>
+              <a href="#" class="btn btn-primary float-end"><strong>Request recipe </strong> 
+              <img class="svg-purple" src="{% static 'base/typicons/svg/bell.svg' %}" alt="Foodstah bell icon">
+            </a>
               {% endif %}
             </div>
           </div>

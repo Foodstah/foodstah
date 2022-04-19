@@ -9,8 +9,6 @@ from .forms import NewPostForm, NewCommentForm
 from .models import Post
 from user.models import User
 from io import BytesIO
-from django.template.loader import get_template
-from xhtml2pdf import pisa
 
 from django.conf import settings
 from weasyprint import HTML, CSS
