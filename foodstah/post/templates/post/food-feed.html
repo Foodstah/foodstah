@@ -9,36 +9,36 @@
           <div class="my-5 col-12 col-sm-12 col-md-6 col-lg-6">
             <div class="card mx-auto" style="width: 100%;">
               <div class="card-header d-flex flex-row">
-                <a href="{% url 'profile-page' username=post.author.username %}">
-                  <img src="{{ post.author.profile.image.url }}" alt="Profile image for {{ post.author}}">
+                <a href="{% url 'profile-page' username=post.post.author %}">
+                  <img src="{{ post.post.author.profile.image.url }}" alt="Profile image for {{ post.author}}">
                 </a>
-                <a class="my-auto" style="color: white;" href="{% url 'profile-page' username=post.author.username %}">
-                  <h5 class="my-auto ms-2">{{ post.author }}</h5>
+                <a class="my-auto" style="color: white;" href="{% url 'profile-page' username=post.post.author %}">
+                  <h5 class="my-auto ms-2">{{ post.post.author }}</h5>
                 </a>
-                <p class="my-auto ms-auto">{{ post.date_created }}</p>
+                <p class="my-auto ms-auto">{{ post.post.date_created }}</p>
               </div>
-              <a href="{{ post.get_absolute_url }}">
-              <img src="{{ post.main_image.url }}" class="card-img-top" alt="Image of {{ post.title }} by {{post.author}}">
+              <a href="{{ post.post.get_absolute_url }}">
+              <img src="{{ post.post.main_image.url }}" class="card-img-top" alt="Image of {{ post.title }} by {{post.author}}">
               </a>
               <div class="card-body">
                 <div class="title-and-likes">
                   <a href="{{ post.get_absolute_url }}">
-                    <h5 class="card-title d-inline-block w-50">{{ post.title }}</h5>
+                    <h5 class="card-title d-inline-block w-50">{{ post.post.title }}</h5>
                   </a>
                   <div class="float-end">
-                    <a class="d-inline-block reaction-button" href="{% url 'give-like' post.id %}" data-id="like-{{ post.id }}">&#128077; &nbsp;</a><span id="like-{{ post.id }}">{{ post.like_count }}</span>&nbsp;
-                    <a class="d-inline-block reaction-button" href="{% url 'give-love' post.id %}" data-id="love-{{ post.id }}">&#128155; &nbsp;</a><span id="love-{{ post.id }}">{{ post.love_count }}</span> &nbsp;
-                    <a class="d-inline-block no-link reaction-button" href="{% url 'give-drooling-face' post.id %}" data-id="drool-{{ post.id }}">&#129316; &nbsp;</a><span id="drool-{{ post.id }}">{{ post.droolingface_count }}</span>
+                    <a class="d-inline-block reaction-button" href="{% url 'give-like' post.post.id %}" data-id="like-{{ post.id }}">&#128077; &nbsp;</a><span id="like-{{ post.id }}">{{ post.post.like_count }}</span>&nbsp;
+                    <a class="d-inline-block reaction-button" href="{% url 'give-love' post.post.id %}" data-id="love-{{ post.id }}">&#128155; &nbsp;</a><span id="love-{{ post.id }}">{{ post.post.love_count }}</span> &nbsp;
+                    <a class="d-inline-block no-link reaction-button" href="{% url 'give-drooling-face' post.post.id %}" data-id="drool-{{ post.id }}">&#129316; &nbsp;</a><span id="drool-{{ post.id }}">{{ post.post.droolingface_count }}</span>
                   </div>
                 <div>
-                  <p>{{ post.post_description }}</p>
+                  <p>{{ post.post.post_description }}</p>
                 </div>
                 <div>
-                {% if post.is_recipe %}
+                {% if post.post.is_recipe %}
                 <h6>Recipe</h6>
-                <p>Ingredients: {{ post.ingredients }}</p>
-                <p>Instructions: {{ post.recipe_description }}</p>
-                <p>Cooking time: {{ post.cooking_time }}</p>
+                <p>Ingredients: {{ post.post.ingredients }}</p>
+                <p>Instructions: {{ post.post.recipe_description }}</p>
+                <p>Cooking time: {{ post.post.cooking_time }}</p>
                 {% endif %}
                 </div>
                 <!--Comments section. -->
@@ -46,21 +46,25 @@
               <div class="comment-section py-2 my-3">
                 <h5>Comments</h5>
 
-              {% if post.comments.all %}
-              {% for comment in post.comments.all %}
+              {% if post.post.comments.all %}
+              {% for comment in post.post.comments.all %}
                 <p class="card-text">{{ comment.body }}  <br>  <span class="text-muted"> <a href="#">{{ comment.username }}</a> - {{ comment.date_added }}</span></p>
               {% endfor %}
               <div class="border-top me-2 py-2"> 
-              <p>Want to add a comment? <a class="card-text" href="{% url 'new-comment' post.slug %}">Add one here.</a></p>
+              <p>Want to add a comment? <a class="card-text" href="{% url 'new-comment' post.post.slug %}">Add one here.</a></p>
               </div>
               {% else %}
-               <p>No comments yet, <a class="card-text" href="{% url 'new-comment' post.slug %}">add one here.</a></p>
+               <p>No comments yet, <a class="card-text" href="{% url 'new-comment' post.post.slug %}">add one here.</a></p>
 
               {% endif %}
               </div>
-              <a href="{% url 'save-post' post.id %}" class="btn btn-primary float-start">Save post</a>
+              {% if post.is_favorite %}
+                <a href="{% url 'save-post' post.post.id %}" class="btn btn-primary float-start">Unsave post</a>
+              {% else %}
+              <a href="{% url 'save-post' post.post.id %}" class="btn btn-primary float-start">Save post</a>
+              {% endif %}
               {% if post.is_recipe %}
-              <a href="{% url 'download-recipe' post.slug %}" class="btn btn-primary float-end">Download recipe</a>
+              <a href="{% url 'download-recipe' post.post.slug %}" class="btn btn-primary float-end">Download recipe</a>
               {% else %}
               <a href="#" class="btn btn-primary float-end">Request recipe</a>
               {% endif %}
