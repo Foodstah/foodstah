@@ -1,7 +1,7 @@
 body {
 	font-family: 'Poppins', sans-serif;
 	background-color: #e9f2ff;
-	/* background-image: linear-gradient(to right top, #ffffff, #ffb662, #ff7588, #ff50c8, #1367E1); */
+	/* background-image: linear-gradient(to right top, #ffffff, #ffb662, #ff7588, #ff50c8, #4B3FD8); */
 	color: #0e101c;
 }
 @media (max-width: 768px) {
@@ -114,7 +114,7 @@ img.main-image {
 }
 
 .main-call-to-action {
-	background-color: #1367e1;
+	background-color: #4b3fd8;
 	padding: 20px 0;
 }
 
@@ -150,13 +150,13 @@ div.div-space {
 	margin-right: auto;
 	width: 85%;
 	height: auto;
-	border: 8px solid #1367e1;
+	border: 8px solid #4b3fd8;
 	border-radius: 20px;
 }
 .meet-the-team img {
 	width: 250px;
 	height: auto;
-	border: 8px solid #1367e1;
+	border: 8px solid #4b3fd8;
 	border-radius: 200px;
 }
 
@@ -168,14 +168,15 @@ div.div-space {
 
 .card-header,
 .card-body {
-	background-color: #1367e1;
+	background-color: #4b3fd8;
 	color: white;
 }
 
 .card-header a img {
 	width: 50px;
-	height: auto;
+	height: 50px;
 	border-radius: 100%;
+	border: 2px solid #ffffff;
 }
 
 .comment-section {
@@ -191,8 +192,8 @@ div.div-space {
 
 .user-image-stats img {
 	width: 150px;
-	height: auto;
-	border: 8px solid #ffffff;
+	height: 150px;
+	border: 6px solid #4b3fd8;
 	border-radius: 200px;
 }
 .user-image-card {
@@ -253,10 +254,10 @@ input[type="checkbox"] {
 	appearance: none;
 	background-color: #fff;
 	font: inherit;
-	color: #1367e1;
+	color: #4b3fd8;
 	width: 1.15em;
 	height: 1.15em;
-	border: 0.15em solid #1367e1;
+	border: 0.15em solid #4b3fd8;
 	border-radius: 0.15em;
 	transform: translateY(-0.075em);
 	display: grid;
@@ -284,7 +285,7 @@ textarea {
 /* BOOTSTRAP OVERRIDES */
 
 /* COLOURS
-    "primary":    #1367E1 ,
+    "primary":    #4B3FD8 ,
     "secondary":  #ffffff,
     "info":       #ffa8d4,
     "success":    #50d400,
@@ -299,7 +300,7 @@ textarea {
 	background-color: #ffffff !important;
 }
 .bg-secondary {
-	background-color: #1367e1 !important;
+	background-color: #4b3fd8 !important;
 }
 .bg-info {
 	background-color: #ffa8d4 !important;
@@ -321,7 +322,7 @@ textarea {
 	color: #ffffff !important;
 }
 .text-secondary {
-	color: #1367e1 !important;
+	color: #4b3fd8 !important;
 }
 .text-info {
 	color: #ffa8d4 !important;
@@ -380,22 +381,22 @@ textarea {
 
 .btn-primary {
 	background-color: #ffffff !important;
-	color: #1367e1;
-	border-color: #1367e1;
+	color: #4b3fd8;
+	border-color: #4b3fd8;
 }
 .btn-primary:hover {
 	color: #000000;
 }
 .btn-secondary {
-	background-color: #1367e1 !important;
+	background-color: #4b3fd8 !important;
 	color: #ffffff;
 	border: 2px solid #ffffff;
 	border-color: #ffffff;
 	border-radius: 5px;
 }
 .btn-secondary:hover {
-	border-color: #1367e1;
-	color: #1367e1;
+	border-color: #4b3fd8;
+	color: #4b3fd8;
 	background-color: #ffffff !important;
 }
 

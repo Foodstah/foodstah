@@ -1,13 +1,12 @@
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.views.decorators.http import require_POST
-
 from django.shortcuts import render, redirect
 from .models import Profile, Following
 from post.models import Post
-from .forms import UserSignupForm, ProfileForm
+from .forms import UserSignupForm, ProfileForm, UserSignInForm
 from django.contrib import messages
-from django.contrib.auth.views import LogoutView
+from django.contrib.auth.views import LogoutView, LoginView
 
 # Create your views here.
 
@@ -19,8 +18,9 @@ def home(request):
         return render(request, "base/index.html")
 
 
-def login(request):
-    return render(request, "user/login.html")
+class Login(LoginView):
+    """ Must enter a login view with login username as lower() """
+    form_class = UserSignInForm
 
 
 class Logout(LogoutView):
@@ -71,7 +71,7 @@ def profile_page(request, username):
     
     user_posts = Post.objects.filter(author=profile)
 
-
+    user_saved_post = Post.objects.filter(favorite_posts=request.user)
 
 
     # the context
@@ -81,7 +81,8 @@ def profile_page(request, username):
         "profile_following": profile_following,
         "follow_button_value": follow_button_value,
         "profile_posts": profile_posts,
-        "user_posts": user_posts
+        "user_posts": user_posts,
+        "user_saved_post": user_saved_post
     }
     return render(request, "user/profile_page.html", context)
 
@@ -112,10 +113,10 @@ def followers_count(request):
     # Then we will create / delete the object from the Follower
     user = User.objects.get(username=request.POST["user"])
     follower = User.objects.get(username=request.POST["follower"])
-    print(follower)
     if value == "follow":
         followers_cnt = Following.objects.create(follower=follower, user=user)
         followers_cnt.save()
+        print(follower, user)
     if value == "unfollow":
         followers_cnt = Following.objects.get(follower=follower, user=user)
         followers_cnt.delete()

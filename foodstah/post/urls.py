@@ -10,8 +10,8 @@ urlpatterns = [
     path("post/<slug:slug>/", views.PostDetailsView.as_view(), name="post-detail"),
     path("post/<int:pk>/update", views.PostUpdateView.as_view(), name="post-update"),
     path("post/<int:pk>/delete", views.PostDeleteView.as_view(), name="post-delete"),
-    path("post/<int:pk>/download-recipe", views.recipe_to_pdf, name="download-recipe"),
+    path("post/<slug:slug>/download-recipe", views.recipe_to_pdf, name="download-recipe"),
     path("post/<int:pk>/save", views.save_post, name="save-post"),
     path("profile/<username>/saved-posts/", views.saved_post,name="saved-posts"),
-
+    path("post/<slug:slug>/new-comment", views.add_comment, name="new-comment"),
 ]

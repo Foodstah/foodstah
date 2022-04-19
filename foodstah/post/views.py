@@ -4,35 +4,127 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect, JsonResponse, HttpResponse
 from django.views.generic import DetailView, UpdateView, DeleteView
 from django.contrib.messages.views import SuccessMessageMixin
-from .forms import NewPostForm
+from .forms import NewPostForm, NewCommentForm
 from .models import Post
+from user.models import User
 from io import BytesIO
 from django.template.loader import get_template
 from xhtml2pdf import pisa
 
-
-def render_to_pdf(template_src, context_dict={}):
-    template = get_template(template_src)
-    html = template.render(context_dict)
-    result = BytesIO()
-    pdf = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")), result)
-    if not pdf.err:
-        return HttpResponse(result.getvalue(), content_type="application/pdf")
-    return None
+from django.conf import settings
+from weasyprint import HTML, CSS
+from weasyprint.text.fonts import FontConfiguration
+from django.template.loader import render_to_string
 
 
-def recipe_to_pdf(request, pk):
-    recipe = Post.objects.get(pk=pk)
-
+def recipe_to_pdf(request, slug):
+    font_config = FontConfiguration()
+    recipe = Post.objects.get(slug=slug)
+    title = recipe.title
     context = {}
     context["post"] = recipe
-    pdf = render_to_pdf("post/pdf_template.html", context_dict=context)
 
-    response = HttpResponse(pdf, content_type="application/pdf")
-    filename = f"Foodstah - {recipe.title}.pdf"
+    html_template = render_to_string('post/pdf_template.html', context=context)
+    html = HTML(string=html_template)
+    css = CSS(
+        string="""
+        @font-face {
+	font-family: Poppins;
+	src: url(https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,700;0,800;1,200;1,400;1,900);
+}
+
+
+@page {
+	size: A4; /* Change from the default size of A4 */
+	margin: 40px; /* Set margin on each page */
+}
+
+body {
+	font-family: Poppins
+}
+h1 {
+	font-weight: 800;
+	font-size: 44px;
+	text-align: center;
+	margin-bottom: 0;
+	padding-bottom: 0;
+    font-family: Poppins
+}
+h3 {
+	margin-top: 10px;
+	padding-left: 80px;
+    text-align: right;
+    display:block;
+	font-weight: 800;
+	font-size: 28px;
+    color: #4B3FD8;
+    font-family: Poppins
+}
+
+img {
+	display: block;
+	margin: auto;
+	max-width: 350px;
+	max-height: auto;
+    border: 4px solid #4B3FD8;
+    border-radius: 10px;
+}
+
+.inline {
+	display: inline-block;
+	margin: 0;
+}
+
+footer {
+	display: block;
+	position: fixed;
+	bottom: 0px;
+	left: 400px;
+    color: #4B3FD8;
+    border: 2px solid #4B3FD8;
+    padding: 5px;
+    border-radius: 10px;
+}
+.center{
+    display: block;
+    text-align: center;
+    color: #4B3FD8;
+}
+""",
+        font_config=font_config,
+    )
+    pdf_file = html.write_pdf(stylesheets=[css],
+        font_config=font_config)
+
+    
+    response = HttpResponse(pdf_file, content_type='application/pdf')
+    filename = f"Foodstah - {title}.pdf"
     content = f"attachment; filename={filename}"
-    response["Content-Disposition"] = content
+    response['Content-Disposition'] = content
     return response
+
+# def render_to_pdf(template_src, context_dict={}):
+#     template = get_template(template_src)
+#     html = template.render(context_dict)
+#     result = BytesIO()
+#     pdf = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")), result)
+#     if not pdf.err:
+#         return HttpResponse(result.getvalue(), content_type="application/pdf")
+#     return None
+
+
+# def recipe_to_pdf(request, pk):
+#     recipe = Post.objects.get(pk=pk)
+
+#     context = {}
+#     context["post"] = recipe
+#     pdf = render_to_pdf("post/pdf_template.html", context_dict=context)
+
+#     response = HttpResponse(pdf, content_type="application/pdf")
+#     filename = f"Foodstah - {recipe.title}.pdf"
+#     content = f"attachment; filename={filename}"
+#     response["Content-Disposition"] = content
+#     return response
 
 
 # Create your views here.
@@ -136,3 +228,21 @@ class PostDeleteView(DeleteView):
     def get_success_url(self):
         messages.info(self.request, f"Your post was deleted successfully.")
         return reverse("food-feed")
+
+
+def add_comment(request,slug):
+    if request.method == "POST":
+        form = NewCommentForm(request.POST)
+        if form.is_valid():
+            form.instance.username = User.objects.get(username=request.user)
+            post = Post.objects.get(slug=slug)
+            form.instance.post = post
+            form.save()
+            messages.success(request, "Your comment was added successfully.")
+            return redirect("food-feed")
+        messages.info(
+            request,
+            "There was an problem trying to add your comment.",
+        )
+    form = NewCommentForm()
+    return render(request, "post/new_comment.html", {"new_comment_form": form})

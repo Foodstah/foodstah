@@ -24,7 +24,7 @@
 <div class="ms-5 ps-5 mt-4">
     <a href="#" class="btn btn-primary">Save post</a>
     {% if post.is_recipe %}
-    <a href="{% url 'download-recipe' post.id %}" class="btn btn-secondary">Download recipe</a>
+    <a href="{% url 'download-recipe' post.slug %}" class="btn btn-secondary">Download recipe</a>
     {% else %}
     <a href="#" class="btn btn-secondary">Request recipe</a>
     {% endif %}

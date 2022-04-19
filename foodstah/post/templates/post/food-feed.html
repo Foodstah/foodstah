@@ -44,13 +44,23 @@
                 <!--Comments section. -->
               </div>
               <div class="comment-section py-2 my-3">
-                <p class="card-text">User X - Omg I love fooooood!</p>
-                <p class="card-text">User Y - Put the pancakes in my belly!</p>
-                <p class="card-text">User Z - I just saved the recipe for later, thanks for this one!</p>
+                <h5>Comments</h5>
+
+              {% if post.comments.all %}
+              {% for comment in post.comments.all %}
+                <p class="card-text">{{ comment.body }}  <br>  <span class="text-muted"> <a href="#">{{ comment.username }}</a> - {{ comment.date_added }}</span></p>
+              {% endfor %}
+              <div class="border-top me-2 py-2"> 
+              <p>Want to add a comment? <a class="card-text" href="{% url 'new-comment' post.slug %}">Add one here.</a></p>
+              </div>
+              {% else %}
+               <p>No comments yet, <a class="card-text" href="{% url 'new-comment' post.slug %}">add one here.</a></p>
+
+              {% endif %}
               </div>
               <a href="{% url 'save-post' post.id %}" class="btn btn-primary float-start">Save post</a>
               {% if post.is_recipe %}
-              <a href="#" class="btn btn-primary float-end">Download recipe</a>
+              <a href="{% url 'download-recipe' post.slug %}" class="btn btn-primary float-end">Download recipe</a>
               {% else %}
               <a href="#" class="btn btn-primary float-end">Request recipe</a>
               {% endif %}

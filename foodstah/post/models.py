@@ -12,7 +12,7 @@ from django.urls import reverse
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=80)
-    slug = models.SlugField(max_length=250, null=True, blank=True)
+    slug = models.SlugField(max_length=250, null=True, blank=True, unique=True)
     post_description = models.TextField(max_length=140, null=True, blank=True)
     date_created = models.DateTimeField(default=timezone.now)
     date_updated = models.DateTimeField(auto_now=True)
@@ -63,3 +63,15 @@ class Post(models.Model):
 
     def droolingface_count(self):
         return self.drooling_faces.count()
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post, related_name="comments", on_delete=models.CASCADE)
+    username = models.ForeignKey(User, on_delete=models.CASCADE)
+    body = models.TextField()
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self) -> str:
+        return f"{self.post.title} - {self.username}"
+    
+    def get_absolute_url(self):
+        return reverse("new-comment", kwargs={"slug": self.post.slug})
