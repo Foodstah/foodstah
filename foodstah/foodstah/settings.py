@@ -36,7 +36,7 @@ DEBUG = True
 CSRF_TRUSTED_ORIGINS = ["https://foodstah.co", "http://foodstah.co"]
 
 SESSION_COOKIE_SECURE = False
-CSRF_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = True
 SECURE_SSL_REDIRECT = False
 
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
@@ -47,6 +47,7 @@ ALLOWED_HOSTS = [
     "54.210.68.90",
     "https://foodstah.co",
     "http://foodstah.co",
+    "foodstah.co",
 ]
 
 
