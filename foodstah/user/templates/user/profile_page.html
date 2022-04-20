@@ -146,7 +146,7 @@
               
 
               <div class="d-flex">
-                {% if post.author == user %}
+                {% if post.author == username %}
                 <a href="{% url 'profile-update' user.username %}" class="btn btn-secondary py-auto mt-3">Edit profile 
                   <img class="svg-white" src="{% static 'base/typicons/svg/edit.svg' %}" alt="Foodstah edit icon">
                 </a>
