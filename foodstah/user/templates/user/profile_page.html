@@ -116,8 +116,12 @@
               <div class="d-inline-block d-flex justify-content-end">
                 <img class="my-auto me-auto" src="{{ profile.profile.image.url }}" alt="">
                 <h5 class="ms-3 my-auto d-inline-block"> {{ profile_posts }} Posts</h5>
+                {% if profile_followers > 1 %}
                 <h5 class="ms-3 my-auto d-inline-block"> {{ profile_followers }} Followers</h5>
-                <h5 class="ms-3 my-auto d-inline-block"> {{ profile_following }} Following</h5>
+                {% else %}
+                <h5 class="ms-3 my-auto d-inline-block"> {{ profile_followers }} Follower</h5>
+                {% endif %}
+                {% comment %} <h5 class="ms-3 my-auto d-inline-block"> {{ profile_following }} Following</h5> {% endcomment %}
               </div>
             </div>
             <div class="d-sm-block d-md-none">
