@@ -33,7 +33,7 @@ DEBUG = True
 
 # security settings
 
-CSRF_TRUSTED_ORIGINS = ["https://foodstah.co", "http://foodstah.co"]
+CSRF_TRUSTED_ORIGINS = ["https://foodstah.co", "http://foodstah.co", "http://www.foodstah.co", "https://www.foodstah.co"]
 
 SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = True
@@ -48,6 +48,7 @@ ALLOWED_HOSTS = [
     "https://foodstah.co",
     "http://foodstah.co",
     "foodstah.co",
+    "www.foodstah.co",
 ]
 
 
