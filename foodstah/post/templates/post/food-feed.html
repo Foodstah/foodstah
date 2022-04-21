@@ -26,9 +26,9 @@
                     <h5 class="card-title d-inline-block w-50">{{ post.post.title }}</h5>
                   </a>
                   <div class="float-end">
-                    <a class="d-inline-block reaction-button" href="{% url 'give-like' post.post.id %}" data-id="like-{{ post.id }}">&#128077; &nbsp;</a><span id="like-{{ post.id }}">{{ post.post.like_count }}</span>&nbsp;
-                    <a class="d-inline-block reaction-button" href="{% url 'give-love' post.post.id %}" data-id="love-{{ post.id }}">&#128155; &nbsp;</a><span id="love-{{ post.id }}">{{ post.post.love_count }}</span> &nbsp;
-                    <a class="d-inline-block no-link reaction-button" href="{% url 'give-drooling-face' post.post.id %}" data-id="drool-{{ post.id }}">&#129316; &nbsp;</a><span id="drool-{{ post.id }}">{{ post.post.droolingface_count }}</span>
+                    <a class="d-inline-block reaction-button" href="{% url 'give-like' post.post.id %}" data-id="like-{{ post.post.id }}">&#128077; &nbsp;</a><span id="like-{{ post.post.id }}">{{ post.post.like_count }}</span>&nbsp;
+                    <a class="d-inline-block reaction-button" href="{% url 'give-love' post.post.id %}" data-id="love-{{ post.post.id }}">&#128155; &nbsp;</a><span id="love-{{ post.post.id }}">{{ post.post.love_count }}</span> &nbsp;
+                    <a class="d-inline-block no-link reaction-button" href="{% url 'give-drooling-face' post.post.id %}" data-id="drool-{{ post.post.id }}">&#129316; &nbsp;</a><span id="drool-{{ post.post.id }}">{{ post.post.droolingface_count }}</span>
                   </div>
                 <div>
                   <p>{{ post.post.post_description }}</p>
