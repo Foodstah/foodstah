@@ -183,7 +183,7 @@
       </div>
 
       <div class="my-posts" style="display: block;" id="myPosts">
-        <h1>My posts</h1>
+        <!-- <h1 class="pt-4">My posts</h1> -->
             <div class="user-posts-saved-posts pt-3 d-flex justify-content-center">
                 <button class="btn btn-secondary me-2">My Posts</button>
                 <button class="btn btn-primary enable-saved-posts ms-2">Saved Posts</button>
@@ -191,7 +191,7 @@
             <div class="row">
             {% if user_posts%}
             {% for post in user_posts %}
-              <div class="my-5 col-12 col-sm-12 col-md-6 col-lg-6">
+              <div class="mt-5 mb-3 col-12 col-sm-12 col-md-6 col-lg-6">
                 <div class="card mx-auto" style="width: 100%;">
                   <div class="card-header d-flex flex-row">
                     <a href="{% url 'profile-page' username=post.author.username %}">
@@ -200,7 +200,8 @@
                     <a class="my-auto" style="color: white;" href="{% url 'profile-page' username=post.author.username %}">
                       <h5 class="my-auto ms-2">{{ post.author }}</h5>
                     </a>
-                    <p class="my-auto ms-auto">{{ post.date_created }}</p>
+                    <a class="btn btn-primary my-auto py-auto px-3 ms-auto" href="{% url 'post-update' post.id %}">Edit</a>
+                    <!-- <p class="my-auto ms-auto">{{ post.date_created }}</p> -->
                   </div>
                   <a href="{{ post.get_absolute_url }}">
                     <img src="{{ post.main_image.url }}" class="card-img-top" alt="Image of {{ post.title }} by {{post.author}}">
@@ -225,7 +226,7 @@
       </div>
 
       <div  class="saved-posts" style="display: none;" id="savedPosts">
-        <h1>Saved posts</h1>
+        <!-- <h1 class="pt-4">Saved posts</h1> -->
         <div class="user-posts-saved-posts pt-3 d-flex justify-content-center">
           <button class="btn btn-primary me-2 enable-my-posts" >My Posts</button>
           <button class="btn btn-secondary ms-2">Saved Posts</button>
@@ -233,17 +234,16 @@
         <div class="row">
           {% if user_saved_post %}
           {% for post in user_saved_post %}
-          <div class="my-5 col-12 col-sm-12 col-md-6 col-lg-6">
+          <div class="mt-5 mb-3 col-12 col-sm-12 col-md-6 col-lg-6">
               <div class="card mx-auto" style="width: 100%;">
                   <div class="card-header d-flex flex-row">
-                      <a href="javascript:void(0)">
+                      <a href="{% url 'profile-page' username=post.author.username %}">
                           <img src="{{ post.author.profile.image.url }}" alt="">
                       </a>
-                      <h5 class="my-auto ms-2">{{ post.author }}</h5>
-                      {% comment %} <a href="{% url 'profile-page' username=user.username %}">
-                          <h5 class="my-auto ms-2">{{ post.author }}</h5>
-                      </a> {% endcomment %}
-                      <p class="my-auto ms-auto">{{ post.date_created }}</p>
+                      <h5 class="my-auto ms-2"><a style="color: #ffffff;" href="{% url 'profile-page' username=post.author.username %}">{{ post.author }}</h5>
+                      
+                          <!-- <h5 class="my-auto ms-2">{{ post.author }}</h5> -->
+                      <!-- <p class="my-auto ms-auto">{{ post.date_created }}</p> -->
                   </div>
                   <a href="{% url 'post-detail' post.slug %}">
                       <img src="{{ post.main_image.url }}" class="card-img-top" alt="...">
@@ -267,6 +267,10 @@
                           <p>Ingredients: {{ post.ingredients }}</p>
                           <p>Instructions: {{ post.recipe_description }}</p>
                           <p>Cooking time: {{ post.cooking_time }}</p>
+                          <br>
+                          <a href="{% url 'download-recipe' post.slug %}" style="color: #4B3FD8;" class="btn btn-primary float-end"><strong>Download recipe </strong> 
+                            <img class="svg-purple" src="{% static 'base/typicons/svg/download-outline.svg' %}" alt="Foodstah download icon">
+                          </a>
                           {% endif %}
                           </div>
                           <!-- <div>

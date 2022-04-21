@@ -35,13 +35,25 @@
         <div class="form-group text-center mb-2">
             <button class="btn btn-primary" type="submit">Login</button>
         </div>
-        <div class="border-top mt-4 py-3 ">
+        <div class="d-none d-md-block border-top mt-4 py-3 ">
             <small class="text-muted">
                 Need An Account? 
                 <a class="ms-2 btn btn-secondary" href="{% url 'signup' %}">Sign Up</a> 
                 
             </small>
             <small class="float-end text-muted">
+                Forgot Password? 
+                <a class="ms-2 btn btn-secondary" href="{% url 'password-reset' %}">Reset Password</a> 
+                
+            </small>
+        </div>
+        <div class="d-md-none border-top mt-4 py-3 text-center">
+            <small class="text-muted">
+                Need An Account? 
+                <a class="ms-2 btn btn-secondary" href="{% url 'signup' %}">Sign Up</a> 
+            </small>
+            
+            <small class="d-block mt-2 text-muted">
                 Forgot Password? 
                 <a class="ms-2 btn btn-secondary" href="{% url 'password-reset' %}">Reset Password</a> 
                 
