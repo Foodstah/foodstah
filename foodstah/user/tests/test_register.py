@@ -8,13 +8,28 @@ from django.urls import reverse
 class ModelBaseTest(TestCase):
     def setUp(self):
         self.user = {
-            "username": "Raphiie",
+            "username": "Daniel",
             "email": "test@test.com",
-            "password": "se",
+            "password": "password",
         }
+    def tearDown(self):
+        self.user.delete()
 
 
 class SignUpModelTest(ModelBaseTest):
+    def test_signup_page(self):
+        response = self.client.get("/signup/")
+        self.assertEqual(response.status_code, 200)
+        response = self.client.post(
+            "/signup/",
+            {
+                "username": "Tester_McTestsalot",
+                "email": "email@email.com",
+                "password1": "password",
+                "password2": "password",
+            },
+        )
+        self.assertEqual(response.status_code, 200)
 
     def test_user_registration(self):
         user = get_user_model().objects.create_user(**(self.user))
@@ -26,48 +41,10 @@ class SignUpModelTest(ModelBaseTest):
         self.assertTrue(user.is_active)
 
 
-    # def test_value_error_when_email_is_none(self):
-    #     with self.assertRaises(ValueError):
-    #         self.user["email"] = None
-    #         get_user_model().objects.create_user(**(self.user))
-
-    # def test_value_error_when_email_is_empty(self):
-    #     with self.assertRaises(ValueError):
-    #         self.user["email"] = ""
-    #         get_user_model().objects.create_user(**(self.user))
-
-    # def test_email_passes_with_standard_email_address(self):
-    #     with self.assertRaises(ValueError):
-    #         self.user["email"] = "test@test.com"
-    #         get_user_model().objects.create_user(**(self.user))
-
-
-
-# class RegisterSuperuserModelTest(ModelBaseTest):
-#     def test_value_error_when_email_is_none(self):
-#         with self.assertRaises(ValueError):
-#             self.user["email"] = None
-#             get_user_model().objects.create_user(**(self.user))
-
-#     def test_value_error_when_email_is_empty(self):
-#         with self.assertRaises(ValueError):
-#             self.user["email"] = ""
-#             get_user_model().objects.create_user(**(self.user))
-
-#     def test_value_error_when_is_staff_false(self):
-#         with self.assertRaises(ValueError):
-#             get_user_model().objects.create_superuser(**(self.user), is_staff=False)
-
-#     def test_value_error_when_is_superuser_false(self):
-#         with self.assertRaises(ValueError):
-#             get_user_model().objects.create_superuser(**(self.user), is_superuser=False)
-
-#     def test_superuser_registration(self):
-#         user = get_user_model().objects.create_superuser(**(self.user))
-#         self.assertEquals(user.username, self.user["username"])
-#         self.assertEquals(user.first_name, self.user["first_name"])
-#         self.assertEquals(user.email, self.user["email"])
-#         self.assertTrue(user.check_password(self.user["password"]))
-#         self.assertTrue(user.is_superuser)
-#         self.assertTrue(user.is_staff)
-#         self.assertTrue(user.is_active)
+    def test_user_profile_created_on_registration(self):
+        user = get_user_model().objects.create_user(**(self.user))
+        username = user.username
+        self.client.login(username="Daniel", password="password")
+        response = self.client.get(f"/profile/{username}/")
+        self.assertContains(response, f"{username}")
+        self.assertEqual(response.status_code, 200)
