@@ -33,7 +33,8 @@ DEBUG = True
 
 # security settings
 
-CSRF_TRUSTED_ORIGINS = ["https://foodstah.co", "http://foodstah.co", "http://www.foodstah.co", "https://www.foodstah.co"]
+CSRF_TRUSTED_ORIGINS = ["https://foodstah.co", "http://foodstah.co",
+                        "http://www.foodstah.co", "https://www.foodstah.co"]
 
 SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = True
@@ -151,7 +152,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = "static/"
-STATIC_ROOT = env("STATIC_ROOT")
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

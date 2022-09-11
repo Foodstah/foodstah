@@ -2,11 +2,13 @@
 
 <!DOCTYPE html>
 <html class="mb-0" lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" property="og:description" content="Discover new food, drinks, recipes and more. Foodstah is the perfect place for foodies to save and share recipes with people around the globe.">
+    <meta name="description" property="og:description"
+        content="Discover new food, drinks, recipes and more. Foodstah is the perfect place for foodies to save and share recipes with people around the globe.">
     <meta name="keywords" content="foodstah, recipes, food, drinks, foodster">
 
     <title>Foodstah</title>
@@ -15,175 +17,202 @@
     <!-- Poppins and Caveat font (Main font) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Poppins:ital,wght@0,200;0,400;0,700;0,800;1,200;1,400;1,900&display=swap" rel="stylesheet">
-  
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Poppins:ital,wght@0,200;0,400;0,700;0,800;1,200;1,400;1,900&display=swap"
+        rel="stylesheet">
+
     <!-- CSS Bootstrap link -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
- 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     <!-- Main custom CSS file. All overrides for CSS will be here -->
     <link rel="stylesheet" href="{% static 'base/main.css' %}">
 
     <script src="https://unpkg.com/typeit@8.3.3/dist/index.umd.js"></script>
 
 </head>
+
 <body class="mb-0 pb-0">
 
-  <!-- NAVIGATION BAR -->
-  
-  <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
-    <div class="container-fluid">
-      
-  <!-- Logo text. -->
-        
+    <!-- NAVIGATION BAR -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+        <div class="container-fluid">
+
+            <!-- Logo text. -->
+
             <a class="navbar-brand mr-4 text-light" href="javascript:void(0)">
                 <img style="width: 60px;" src="{% static 'base/images/F_purple.png' %}" alt="">
                 <h1 class="d-inline-block align-middle pt-2 ">Foodstah</h1>
             </a>
-            <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-              <span class="navbar-toggler-icon custom-toggler"></span>
-            </button>   
-  
-            <div class="collapse navbar-collapse" id="mynavbar">
-            <div class="navbar-nav ms-auto">
-  <!-- User links -->
-              <div class="navbar-nav">
-                
-                <!-- <a class="nav-item nav-link" href="javascript:void(0)">
-                  <img class="svg-white" src="{% static 'typicons/svg/user.svg' %}" alt="">Profile</a> -->
-              
-                <a class="nav-item nav-link me-2" href="{% url 'login' %}">
-                  <img class="svg-white svg-large" src="{% static 'base/typicons/svg/user.svg' %}" alt="">Login</a>
-                  <a class="nav-item my-auto btn btn-primary button" href="{% url 'signup' %}">Signup</a>
-              </div>
-            </div>
-          </div>
-  </nav>
+            <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#mynavbar">
+                <span class="navbar-toggler-icon custom-toggler"></span>
+            </button>
 
-  <!-- Main image and button to bring user to the app -->
+            <div class="collapse navbar-collapse" id="mynavbar">
+                <div class="navbar-nav ms-auto">
+                    <!-- User links -->
+                    <div class="navbar-nav">
+
+                        <!-- <a class="nav-item nav-link" href="javascript:void(0)">
+                  <img class="svg-white" src="{% static 'typicons/svg/user.svg' %}" alt="">Profile</a> -->
+
+                        <a class="nav-item nav-link me-2" href="{% url 'login' %}">
+                            <img class="svg-white svg-large" src="{% static 'base/typicons/svg/user.svg' %}"
+                                alt="">Login</a>
+                        <a class="nav-item my-auto btn btn-primary button" href="{% url 'signup' %}">Signup</a>
+                    </div>
+                </div>
+            </div>
+    </nav>
+
+    <!-- Main image and button to bring user to the app -->
     <!-- Carousel -->
     <div class="home-page-container">
         <div class="image-container">
 
-    <div id="demo" class="carousel slide" data-bs-ride="carousel">
+            <div id="demo" class="carousel slide" data-bs-ride="carousel">
 
-        <!-- Indicators/dots -->
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="3"></button>
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="4"></button>
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="5"></button>
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="6"></button>
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="7"></button>
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="8"></button>
-        </div>
-    
-        <!-- The slideshow/carousel -->
-        <div class="carousel-inner">
-            <div class="carousel-item active max-height">
-                <h1 class="centered-text" >Food</h1>
-                <img src="{% static 'base/images/food1.jpg' %}" alt="Foodstah image of roast dinner with vegetables and gravy" class="d-block w-100">
+                <!-- Indicators/dots -->
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="3"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="4"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="5"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="6"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="7"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="8"></button>
+                </div>
+
+                <!-- The slideshow/carousel -->
+                <div class="carousel-inner">
+                    <div class="carousel-item active max-height">
+                        <h1 class="centered-text">Food</h1>
+                        <img src="{% static 'base/images/food1.jpg' %}"
+                            alt="Foodstah image of roast dinner with vegetables and gravy" class="d-block w-100">
+                    </div>
+                    <div class="carousel-item max-height">
+                        <h1 class="centered-text">Drinks</h1>
+                        <img src="{% static 'base/images/drink1.jpg' %}"
+                            alt="Foodstah Non alcoholic cocktails with summer fruits berries and rosemary"
+                            class="d-block w-100">
+                    </div>
+                    <div class="carousel-item max-height">
+                        <h1 class="centered-text">Recipes</h1>
+                        <img src="{% static 'base/images/food2.jpg' %}"
+                            alt="Foodstah image of asian dips with rice and salt" class="d-block w-100">
+                    </div>
+                    <div class="carousel-item max-height">
+                        <h1 class="centered-text">Food</h1>
+                        <img src="{% static 'base/images/food3.jpg' %}" alt="Foodstah image of avocado on toast"
+                            class="d-block w-100">
+                    </div>
+                    <div class="carousel-item max-height">
+                        <h1 class="centered-text">Drinks</h1>
+                        <img src="{% static 'base/images/drink2.jpg' %}"
+                            alt="Foodstah image of drink with orange, mango and blueberry" class="d-block w-100">
+                    </div>
+                    <div class="carousel-item max-height">
+                        <h1 class="centered-text">Recipes</h1>
+                        <img src="{% static 'base/images/food4.jpg' %}"
+                            alt="Foodstah image of scrambled egg sausage beans toast and some berries"
+                            class="d-block w-100">
+                    </div>
+                    <div class="carousel-item max-height">
+                        <h1 class="centered-text">Food</h1>
+                        <img src="{% static 'base/images/food5.jpg' %}" alt="Foodstah baked cake with chocolate chunks"
+                            class="d-block w-100">
+                    </div>
+                    <div class="carousel-item max-height">
+                        <h1 class="centered-text">Drinks</h1>
+                        <img src="{% static 'base/images/drink3.jpg' %}"
+                            alt="Foodstah image of a healthy red berry smoothie" class="d-block w-100">
+                    </div>
+                    <div class="carousel-item max-height">
+                        <h1 class="centered-text">Recipes</h1>
+                        <img src="{% static 'base/images/food6.jpg' %}" alt="Foodstah sea food spaghetti recipe"
+                            class="d-block w-100">
+                    </div>
+                </div>
             </div>
-            <div class="carousel-item max-height">
-                <h1 class="centered-text" >Drinks</h1>
-                <img src="{% static 'base/images/drink1.jpg' %}" alt="Foodstah Non alcoholic cocktails with summer fruits berries and rosemary" class="d-block w-100">
-            </div>
-            <div class="carousel-item max-height">
-                <h1 class="centered-text" >Recipes</h1>
-                <img src="{% static 'base/images/food2.jpg' %}" alt="Foodstah image of asian dips with rice and salt" class="d-block w-100">
-            </div>
-            <div class="carousel-item max-height">
-                <h1 class="centered-text" >Food</h1>
-                <img src="{% static 'base/images/food3.jpg' %}" alt="Foodstah image of avocado on toast" class="d-block w-100">
-            </div>
-            <div class="carousel-item max-height">
-                <h1 class="centered-text" >Drinks</h1>
-                <img src="{% static 'base/images/drink2.jpg' %}" alt="Foodstah image of drink with orange, mango and blueberry" class="d-block w-100">
-            </div>
-            <div class="carousel-item max-height">
-                <h1 class="centered-text" >Recipes</h1>
-                <img src="{% static 'base/images/food4.jpg' %}" alt="Foodstah image of scrambled egg sausage beans toast and some berries" class="d-block w-100">
-            </div>
-            <div class="carousel-item max-height">
-                <h1 class="centered-text" >Food</h1>
-                <img src="{% static 'base/images/food5.jpg' %}" alt="Foodstah baked cake with chocolate chunks" class="d-block w-100">
-            </div>
-            <div class="carousel-item max-height">
-                <h1 class="centered-text" >Drinks</h1>
-                <img src="{% static 'base/images/drink3.jpg' %}" alt="Foodstah image of a healthy red berry smoothie" class="d-block w-100">
-            </div>
-            <div class="carousel-item max-height">
-                <h1 class="centered-text" >Recipes</h1>
-                <img src="{% static 'base/images/food6.jpg' %}" alt="Foodstah sea food spaghetti recipe" class="d-block w-100">
-            </div>
-        </div>
-    </div>
-    
+
             <!-- <h1 class="centered-text" id="element"></h1> -->
             <div class="main-call-to-action">
                 <a class="btn btn-primary" href="{% url 'signup' %}">Sign Up Now!</a>
             </div>
-    
-        <!-- Left and right controls/icons -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-        <span class="carousel-control-next-icon"></span>
-        </button>
-    </div>
+
+            <!-- Left and right controls/icons -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
 
 
-    <!-- Illustration section -->
+        <!-- Illustration section -->
 
         <div class="illustrations mt-5">
-            
+
             <div class="row">
                 <div class="div-space ps-5 pe-5 my-auto col-12 col-sm-12 col-md-12 col-lg-6">
                     <h2>Impress your loved ones with your new found recipes </h2>
                 </div>
                 <div class="div-space px-5 my-auto col-12 col-sm-12 col-md-12 col-lg-6">
-                    <img style="border: none;" class="img-fluid mx-auto d-block d-lg-block" src="{% static 'base/images/lady-cooking-in-the-kitchen.jpg' %}" alt="Foodstah illustration of lady cooking a recipe in the ">
+                    <img style="border: none;" class="img-fluid mx-auto d-block d-lg-block"
+                        src="{% static 'base/images/lady-cooking-in-the-kitchen.jpg' %}"
+                        alt="Foodstah illustration of lady cooking a recipe in the ">
                 </div>
-                <div class="text-center div-space d-none d-lg-block ps-2 pe-auto my-auto col-12 col-sm-12 col-md-12 col-lg-6">
-                    <img style="border: none;" class="img-fluid mx-auto" src="{% static 'base/images/lady-going-to-buy-vegetables.jpg' %}" alt="Foodstah image of users going grocery shopping">
+                <div
+                    class="text-center div-space d-none d-lg-block ps-2 pe-auto my-auto col-12 col-sm-12 col-md-12 col-lg-6">
+                    <img style="border: none;" class="img-fluid mx-auto"
+                        src="{% static 'base/images/lady-going-to-buy-vegetables.jpg' %}"
+                        alt="Foodstah image of users going grocery shopping">
                 </div>
                 <div class="div-space ps-5 pe-5 my-auto col-12 col-sm-12 col-md-12 col-lg-6">
                     <h2>Save time by downloading your shopping list all with the click of a button </h2>
                 </div>
                 <div class="text-center">
                     <div class="d-block d-lg-none div-space px-5 my-auto col-12 col-sm-12 col-md-12 col-lg-6">
-                        <img style="border: none;" class="img-fluid mx-auto" src="{% static 'base/images/lady-going-to-buy-vegetables.jpg' %}" alt="Foodstah image of users going grocery shopping">
+                        <img style="border: none;" class="img-fluid mx-auto"
+                            src="{% static 'base/images/lady-going-to-buy-vegetables.jpg' %}"
+                            alt="Foodstah image of users going grocery shopping">
                     </div>
                 </div>
                 <div class="div-space ps-5 pe-5 my-auto col-12 col-sm-12 col-md-12 col-lg-6">
                     <h2>Follow and share your meals with your friends and family </h2>
                 </div>
                 <div class="div-space px-5 my-auto col-12 col-sm-12 col-md-12 col-lg-6">
-                    <img style="border: none;" class="img-fluid mx-auto d-block d-lg-block" src="{% static 'base/images/lady-getting-likes-on-social-media.jpg' %}" alt="Foodstah image of users using social media">
+                    <img style="border: none;" class="img-fluid mx-auto d-block d-lg-block"
+                        src="{% static 'base/images/lady-getting-likes-on-social-media.jpg' %}"
+                        alt="Foodstah image of users using social media">
                 </div>
             </div>
         </div>
-        
-    
-    <!-- What is Foodstah section? -->
-    
+
+
+        <!-- What is Foodstah section? -->
+
         <div class="what-is-foodstah">
             <div class="topborder mx-auto mb-3" style="border-top: 2px solid #4b3fd8; width: 80%;"></div>
             <h1 class="pt-4 text-center">What is Foodstah?</h1>
-            
+
             <div class="row mt-5">
                 <div class="mt-4 mb-5 col-12 col-sm-12 col-md-12 col-lg-6">
                     <h4 class="text-center px-3">The perfect social space for <br> food lovers. </h4>
-                        <br>
-                    <p class="px-5">If you enjoy food, drinks or discovering new recipes there's a lot to gain from using the app.</p>
+                    <br>
+                    <p class="px-5">If you enjoy food, drinks or discovering new recipes there's a lot to gain from
+                        using the app.</p>
                     <p class="px-5">
                         If you have ever been tired and indecisive when making a decision about what to cook,
-                        Foodstah may just be the solution to your hanger issues. 
+                        Foodstah may just be the solution to your hanger issues.
                     </p>
                     <p class="px-5">
-                        With access to hundreds of recipes at your fingertips it will make life a lot easier. 
+                        With access to hundreds of recipes at your fingertips it will make life a lot easier.
                         Join today and tryout downloading a new recipe to impress that special someone.
                     </p>
                     <div class="text-center">
@@ -191,21 +220,25 @@
                     </div>
                 </div>
                 <div class="d-none d-lg-block mt-4 mb-5 col-12 col-sm-12 col-md-12 col-lg-6">
-                    <img class="mx-auto d-block" src="{% static 'base/images/pancakes_berries.jpg' %}" alt="Foodstah image of pancakes with berries ans syrup">
+                    <img class="mx-auto d-block" src="{% static 'base/images/pancakes_berries.jpg' %}"
+                        alt="Foodstah image of pancakes with berries ans syrup">
                 </div>
                 <div class="text-center d-block d-lg-none col-12 col-sm-12 col-md-12 col-lg-6">
-                    <img src="{% static 'base/images/pancakes_berries.jpg' %}" alt="Foodstah image of pancakes with berries ans syrup">
+                    <img src="{% static 'base/images/pancakes_berries.jpg' %}"
+                        alt="Foodstah image of pancakes with berries ans syrup">
                 </div>
-            
+
                 <div class="text-center d-lg-block d-none mt-5 mb-5 col-12 col-sm-12 col-md-12 col-lg-6">
-                    <img class="mx-auto" src="{% static 'base/images/sweet-potato-fries.jpg' %}" alt="Foodstah image of sweet potato fries">
+                    <img class="mx-auto" src="{% static 'base/images/sweet-potato-fries.jpg' %}"
+                        alt="Foodstah image of sweet potato fries">
                 </div>
                 <div class="mt-5 col-12 col-sm-12 col-md-12 col-lg-6">
                     <h4 class="text-center px-2"> Food, drinks, recipes and more! </h4>
-                        <br>
+                    <br>
                     <ul class="me-4">
                         <li class="mt-2">Download hundreds of recipes for free.</li>
-                        <li class="mt-2">Add the ingredients from any recipe to a shopping list all with the click of a button.</li>
+                        <li class="mt-2">Add the ingredients from any recipe to a shopping list all with the click of a
+                            button.</li>
                         <li class="mt-2">Follow your friends and family.</li>
                         <li class="mt-2">Share pictures of delicious meals.</li>
                         <li class="mt-2">Watch videos and cooking classes all at your fingertips.</li>
@@ -215,86 +248,119 @@
                     </div>
                 </div>
                 <div class="text-center d-block d-lg-none mt-5 col-12 col-sm-12 col-md-12 col-lg-6">
-                    <img src="{% static 'base/images/sweet-potato-fries.jpg' %}" alt="Foodstah image of sweet potato fries">
-                </div>
-        </div>
-        
-
-<!-- Meet the team section -->
-
-        <div class="mt-5 meet-the-team">
-            <div class="topborder mx-auto mb-3" style="border-top: 2px solid #4b3fd8; width: 80%;"></div>
-            <h1 class="pt-4 text-center">Meet the team</h1>
-
-            <div class="row">
-                <div class="mt-4 col-12 col-sm-12 col-md-12 col-lg-4">
-                    <img class="mx-auto d-block" src="{% static 'base/images/Camila.jpg' %}" alt="Foodstah image of team member Camila Siede">
-                    <h4 class="text-center mt-4">Camilla </h4>
-                    <h6 class="text-center mt-4">Client engagement manager</h6>
-                    <p class="mx-4">When it comes to client and dev-team communications and negotiations Camila is the perfect fit for the Job. Relationship building is continuous client engagement is what is needed at Foodstah and she goes far beyond what is required. With a variety of skills not only for programming but also for communication she is the bridge between the ideas and the development of this project.</p>
-                    <p class="mx-4">“It is very important for the team to be in contact with the client, to know what their goals and needs are. But at the same time it is also important for the developers to express through someone what their real capabilities and limitations are. An honest and transparent dialogue between the two creates a healthy work environment and helps us all reach our goals".</p>
-                </div>
-                <div class="mt-4 col-12 col-sm-12 col-md-12 col-lg-4">
-                    <img class="mx-auto d-block" src="{% static 'base/images/Daniel2.jpg' %}" alt="Foodstah image of team member Daniel Lambert ">
-                    <h4 class="text-center mt-4">Daniel </h4>
-                    <h6 class="text-center mt-4">Lead developer</h6>
-                    <p class="mx-4">With a broad array of skills and urge for continuous learning Daniel took the lead for this project. </p>
-                    <p class="mx-4">Attention to detail and an eye for design came in great use while creating the brand identity and UI behind Foodstah.</p>
-                    <p class="mx-4">With his innovative mindset, strong communication skills and amazingly talented team that surrounds him he told us "this project was an enjoyable process that [he] would happily do all over again."</p>
-                </div>
-                <div class="mt-4 col-12 col-sm-12 col-md-12 col-lg-4">
-                    <img class="mx-auto d-block" src="{% static 'base/images/Raphaela.jpg' %}" alt="Foodstah image of team member Raphaela Vergud">
-                    <h4 class="text-center mt-4">Raphaela </h4>
-                    <h6 class="text-center mt-4">Operations manager</h6>
-                    <p class="mx-4">Raphaela possesses a passion for sustainable collaborations and is highly effective when creating a structured work environment. </p>
-                    <p class="mx-4">With experience in cloud based operations such as AWS, and other technologies like git and the command line, we quite quickly realised she was the perfect fit for the role.
-                        Her skills accompanied by her drive to work on a project that will bring change to the online culinary scene saw her immediately adapt into her position as a productive team member.</p>
+                    <img src="{% static 'base/images/sweet-potato-fries.jpg' %}"
+                        alt="Foodstah image of sweet potato fries">
                 </div>
             </div>
-    
-    <footer class="d-none d-md-flex justify-content-around mt-4">
-        <div class="links">
-            <p style="border-bottom:2px solid white; font-size: 20px;" class="mb-2 px-5 pb-1 text-center"><strong>Quick Links </strong> </p>
-            <a class="d-block pt-1" style="color: white;" href="{% url 'signup' %}">- Sign Up</a>
-            <a class="d-inline-block" style="color: white;" href="{% url 'food-feed' %}">- The Food Feed</a>
-            <a class="d-block" style="color: white;" href="{% url 'investor-relations' %}">- Investor Relations</a>
-            <a class="d-inline-block pb-2" style="color: white;" target="blank" href="https://www.instagram.com/foodstah_co/">- Contact</a>
-        </div>
-        <div class="copyright my-auto">
-            <p><strong>Copyright &copy; The Foodstah co </strong> </p>
-        </div>
-        <div class="social-media">
-            <a target="blank" href="https://www.instagram.com/foodstah_co/">
-                <img style="width: 150px;" class="my-0 py-0" src="{% static 'base/typicons/svg/instagram-logo.png' %}" alt="">
-            </a>
-        </div>
-    </footer>
-
-    <footer class="d-sm-block d-md-none px-5 text-center mt-4">
-        <div class="links mt-2">
-            <p style="border-bottom:2px solid white; font-size: 20px;" class="mb-2"><strong>Quick Links </strong> </p>
-            <a class="d-block px-4 pt-1 pb-2" style="color: white;" href="{% url 'signup' %}">Sign Up</a>
-            <a class="d-block px-4 pt-1 pb-2" style="color: white;" href="{% url 'food-feed' %}">The Food Feed</a>
-            <a class="d-block px-4 pt-1 pb-2" style="color: white;" href="{% url 'investor-relations' %}">Investor Relations</a>
-            <a class="d-block px-4 pt-1 pb-0" style="color: white;" target="blank" href="https://www.instagram.com/foodstah_co/">Contact</a>
-        </div>
-        <div class="social-media mx-auto">
-            <a target="blank" href="https://www.instagram.com/foodstah_co/">
-                <img style="width: 100px;" class="my-0 py-0" src="{% static 'base/typicons/svg/instagram-logo.png' %}" alt="">
-            </a>
-        </div>
-        <div class="copyright pb-2">
-            <p><strong>Copyright &copy; The Foodstah co </strong> </p>
-        </div>
-    </footer>
-      
-      
-    
-    </div>
 
 
-    <!-- JS script linking for Bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    
+            <!-- Meet the team section -->
+
+            <div class="mt-5 meet-the-team">
+                <div class="topborder mx-auto mb-3" style="border-top: 2px solid #4b3fd8; width: 80%;"></div>
+                <h1 class="pt-4 text-center">Meet the team</h1>
+
+                <div class="row">
+                    <div class="mt-4 col-12 col-sm-12 col-md-12 col-lg-4">
+                        <img class="mx-auto d-block" src="{% static 'base/images/Camila.jpg' %}"
+                            alt="Foodstah image of team member Camila Siede">
+                        <h4 class="text-center mt-4">Camilla </h4>
+                        <h6 class="text-center mt-4">Client engagement manager</h6>
+                        <p class="mx-4">When it comes to client and dev-team communications and negotiations Camila is
+                            the perfect fit for the Job. Relationship building is continuous client engagement is what
+                            is needed at Foodstah and she goes far beyond what is required. With a variety of skills not
+                            only for programming but also for communication she is the bridge between the ideas and the
+                            development of this project.</p>
+                        <p class="mx-4">“It is very important for the team to be in contact with the client, to know
+                            what their goals and needs are. But at the same time it is also important for the developers
+                            to express through someone what their real capabilities and limitations are. An honest and
+                            transparent dialogue between the two creates a healthy work environment and helps us all
+                            reach our goals".</p>
+                    </div>
+                    <div class="mt-4 col-12 col-sm-12 col-md-12 col-lg-4">
+                        <img class="mx-auto d-block" src="{% static 'base/images/Daniel2.jpg' %}"
+                            alt="Foodstah image of team member Daniel Lambert ">
+                        <h4 class="text-center mt-4">Daniel </h4>
+                        <h6 class="text-center mt-4">Lead developer</h6>
+                        <p class="mx-4">With a broad array of skills and urge for continuous learning Daniel took the
+                            lead for this project. </p>
+                        <p class="mx-4">Attention to detail and an eye for design came in great use while creating the
+                            brand identity and UI behind Foodstah.</p>
+                        <p class="mx-4">With his innovative mindset, strong communication skills and amazingly talented
+                            team that surrounds him he told us "this project was an enjoyable process that [he] would
+                            happily do all over again."</p>
+                    </div>
+                    <div class="mt-4 col-12 col-sm-12 col-md-12 col-lg-4">
+                        <img class="mx-auto d-block" src="{% static 'base/images/Raphaela.jpg' %}"
+                            alt="Foodstah image of team member Raphaela Vergud">
+                        <h4 class="text-center mt-4">Raphaela </h4>
+                        <h6 class="text-center mt-4">Operations manager</h6>
+                        <p class="mx-4">Raphaela possesses a passion for sustainable collaborations and is highly
+                            effective when creating a structured work environment. </p>
+                        <p class="mx-4">With experience in cloud based operations such as AWS, and other technologies
+                            like git and the command line, we quite quickly realised she was the perfect fit for the
+                            role.
+                            Her skills accompanied by her drive to work on a project that will bring change to the
+                            online culinary scene saw her immediately adapt into her position as a productive team
+                            member.</p>
+                    </div>
+                </div>
+
+                <footer class="d-none d-md-flex justify-content-around mt-4">
+                    <div class="links">
+                        <p style="border-bottom:2px solid white; font-size: 20px;" class="mb-2 px-5 pb-1 text-center">
+                            <strong>Quick Links </strong> </p>
+                        <a class="d-block pt-1" style="color: white;" href="{% url 'signup' %}">- Sign Up</a>
+                        <a class="d-inline-block" style="color: white;" href="{% url 'food-feed' %}">- The Food Feed</a>
+                        <a class="d-block" style="color: white;" href="{% url 'investor-relations' %}">- Investor
+                            Relations</a>
+                        <a class="d-inline-block pb-2" style="color: white;" target="blank"
+                            href="https://www.instagram.com/foodstah_co/">- Contact</a>
+                    </div>
+                    <div class="copyright my-auto">
+                        <p><strong>Copyright &copy; The Foodstah co </strong> </p>
+                    </div>
+                    <div class="social-media">
+                        <a target="blank" href="https://www.instagram.com/foodstah_co/">
+                            <img style="width: 150px;" class="my-0 py-0"
+                                src="{% static 'base/typicons/svg/instagram-logo.png' %}" alt="">
+                        </a>
+                    </div>
+                </footer>
+
+                <footer class="d-sm-block d-md-none px-5 text-center mt-4">
+                    <div class="links mt-2">
+                        <p style="border-bottom:2px solid white; font-size: 20px;" class="mb-2"><strong>Quick Links
+                            </strong> </p>
+                        <a class="d-block px-4 pt-1 pb-2" style="color: white;" href="{% url 'signup' %}">Sign Up</a>
+                        <a class="d-block px-4 pt-1 pb-2" style="color: white;" href="{% url 'food-feed' %}">The Food
+                            Feed</a>
+                        <a class="d-block px-4 pt-1 pb-2" style="color: white;"
+                            href="{% url 'investor-relations' %}">Investor Relations</a>
+                        <a class="d-block px-4 pt-1 pb-0" style="color: white;" target="blank"
+                            href="https://www.instagram.com/foodstah_co/">Contact</a>
+                    </div>
+                    <div class="social-media mx-auto">
+                        <a target="blank" href="https://www.instagram.com/foodstah_co/">
+                            <img style="width: 100px;" class="my-0 py-0"
+                                src="{% static 'base/typicons/svg/instagram-logo.png' %}" alt="">
+                        </a>
+                    </div>
+                    <div class="copyright pb-2">
+                        <p><strong>Copyright &copy; The Foodstah co </strong> </p>
+                    </div>
+                </footer>
+
+
+
+            </div>
+
+
+            <!-- JS script linking for Bootstrap -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+                crossorigin="anonymous"></script>
+
 </body>
+
 </html>
